@@ -64,13 +64,6 @@ Test files are stored on GitHub (test/test_files/) using git-lfs (retrieve these
 
 There are many parameters that can be modified to control precision and recall and tune the model to other desired use cases. See src/config/config.yml for the parameters that can be modified and how to do so.
 
-### Precommit hooks
-
-Hooks can be installed from .pre-commit-config.yaml. For example:
-
-1.  `$ pip install pre-commit`
-2.  `$ precommit install`
-
 ### Performance
 
 - Real-time latency is measured from the time that the light is emmitted by a vessel and when we ultimately show the deteceted vessel to our users. In our plaftorm, we obvserve an average latency of 2 hours from a ship emitting light to when we surface that data to our users. The latency is determined primarily by the time required to downlink the data to NASA's servers. Our processing time is < 1 second.

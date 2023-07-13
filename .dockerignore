@@ -13,3 +13,4 @@ tests/test_outputs/
 tests/test_files/dev
 tests/test_files/full_moon
 tests/test_files/new_moon
+src/feedback_model/vvd_annotations/**

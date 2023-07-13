@@ -82,9 +82,7 @@ We are very grateful to NASA for making the raw satellite data freely accessible
 
 ## Contributing
 
-If you identify a bug or have a feature request please open an issue. If you discover a new method or an improvement on the models, please fork the repo and create a pull request. You can also simply open an issue with the tag "enhancement" if you discover an issue but don't have a solution.
-
-We are grateful for your feedback and contributions are appreciated.
+We are grateful for your feedback and contributions are appreciated. Please see CONTRIBUTING.md for details on contributing.
 
 ## Limitations
 

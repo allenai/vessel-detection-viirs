@@ -1,6 +1,6 @@
 # Contributing
 
-We want to make contributing to this project as easy and transparent as possible.
+We want to make contributing to this project as easy and transparent as possible. If you identify a bug or have a feature request please open an issue. If you discover a new method or an improvement on the models, please fork the repo and create a pull request. You can also simply open an issue with the tag "enhancement" if you discover an issue but don't have a solution.
 
 ## Issues
 

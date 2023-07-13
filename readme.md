@@ -1,4 +1,4 @@
-This repository contains a computer vision model along with a containerized API for serving streaming detections of vessels in near real time. See [docs/model_card.md](./docs/model_card.md) for information about the model and [docs/openapi.json](./docs/openapi.json) for the API specification. This model was built for Skylight: a platform that supports maritime transparency through actionable intelligence in order to help protect the planet's oceans.
+This repository contains a computer vision model along with a containerized restful API (FastAPI) for serving streaming detections of vessels in near real time. See [docs/model_card.md](./docs/model_card.md) for information about the model and [docs/openapi.json](./docs/openapi.json) for the API specification. This model was built for [Skylight](https://www.skylight.global/), a product of AI2 that supports maritime transparency through actionable intelligence in order to help protect our oceans.
 
 <p float="left">
   <img src="images/summary.png" >
@@ -19,15 +19,19 @@ Note that the model and API are designed to run in resource constrained environm
 
 ## Installation
 
-Use the existing package available from GitHub
+Pull the latest package from [GitHub](https://github.com/allenai/vessel-detection-viirs/pkgs/container/vessel-detection-viirs)
 
 ```bash
-docker pull ghcr.io/vulcanskylight/skylight-vvd:latest
+docker pull ghcr.io/vulcanskylight/vessel-detection-viirs
 ```
+
+Once the package is downloaded, start the service with:
 
 ```bash
 docker run -d -p 5555:5555 vvd-service
 ```
+
+You may override the default port by passing in your preferred port in the docker run command e.g. `-e VVD_PORT=PORT`
 
 Or clone this repository and build the container with
 
@@ -66,7 +70,7 @@ There are many parameters that can be modified to control precision and recall a
 
 ### Performance
 
-- Real-time latency is measured from the time that the light is emmitted by a vessel and when we ultimately show the deteceted vessel to our users. In our plaftorm, we obvserve an average latency of 2 hours from a ship emitting light to when we surface that data to our users. The latency is determined primarily by the time required to downlink the data to NASA's servers. Our processing time is < 1 second.
+- Real-time latency is measured from the time that the light is emitted by a vessel and when we ultimately show the detected vessel to our users. In our plaftorm, we obvserve an average latency of 2 hours from a ship emitting light to when we surface that data to our users. The latency is determined primarily by the time required to downlink the data to NASA's servers. Our processing time is < 1 second.
 
 ## Model architecture
 
@@ -89,10 +93,6 @@ We are grateful for your feedback and contributions are appreciated. Please see 
 While we do our best to ensure high precision and recall across the planet every night, the model does not get everything right. The largest source of error occurs around full moons due to the interaction of moonlight and clouds. We control for that source of error by measuring the background glow of clouds and only surfacing detections that are not underneath clouds and above the background glow of clouds. This conditional processing only occurs on and around full moons (+/- 2 days).
 
 Note that the repository only contains the model and service to create streaming vessel detections from raw VIIRS data. There are tools within this repository to download the raw data from NASA's servers but this application does not do so automatically. To create a fully automated streaming service of vessel detections, one would need to add logic to poll NASA's servers, copy new data, and inference that data (using this service).
-
-## License
-
-Apache 2.0.
 
 ## Contact
 

@@ -1,0 +1,43 @@
+---
+name: Create and publish a Docker image
+
+on:
+  push:
+
+env:
+  REGISTRY: gcr.io
+  IMAGE_NAME: skylight-docker-images/gh-actions/${{ github.repository }}/${{ github.ref_name }}
+
+jobs:
+  build-and-push-image:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v3
+        with:
+          lfs: false
+
+      - name: Authenticate to Google Cloud
+        id: auth
+        uses: google-github-actions/auth@v1
+        with:
+          credentials_json: "${{ secrets.ENCODED_GCR_KEY }}"
+
+      - name: Configure Docker
+        run: gcloud auth configure-docker
+
+      - name: Extract metadata (tags, labels) for Docker
+        id: meta
+        uses: docker/metadata-action@v4
+        with:
+          images: ${{ env.REGISTRY }}/${{ env.IMAGE_NAME }}
+          tags: |
+            type=sha,format=short
+            type=raw,value=latest
+      - name: Build and push Docker image
+        uses: docker/build-push-action@v3
+        with:
+          context: .
+          push: true
+          tags: ${{ steps.meta.outputs.tags }}
+          labels: ${{ steps.meta.outputs.labels }}

@@ -1,0 +1,180 @@
+model:
+  KERNEL_DIM_1: 1
+  # kernel size to search for vessels, axis=1 (I don't recommend modifying this)
+
+  KERNEL_DIM_2: 1
+  # kernel size to search for vessels, axis=1 (I don't recommend modifying this)
+
+  IMG_MAX_VALUE: 255
+  # max value used to normalize images (I don't recommend modifying this)
+
+  BLOCK_SIZE: 3
+  # Size of a pixel neighborhood that is used to calculate a threshold value
+  # This is used in the adaptive thresholding algorithm, a larger values will result
+  # in more values used to compute the threhsold, a smaller value (e.g. 2) will result
+  # in fewer pixels contributing to the threshold. I don't recommend modifying this, but
+  # if you were concerned about the threshold, you could try making it larger.
+
+  ADAPTIVE_CONSTANT: 3
+  # used in adaptive threshold, values can range from 0-15
+  # This is added to the threshold, if you decrease the value, you may increase recall
+  # slightly (by identifying more faint vessels but decrease precision (clouds).
+  # I don't recommend large modifications but you may try reducing to 2 if you are
+  # concerned about missing faint vessels.
+
+  CLIP_MAX: 100 # in nanowatts
+  # used before image normalization to clip image. I don't recommend modifying this.
+
+  OUTLIER_THRESHOLD_NW: 1000
+  # defined by Elvidge et. al. 2015, pixel intensities above this value are considered
+  # noise. You could increase or decrase this value to retain vessels that are extremely
+  # bright (by increasing the threshold) or decreasing the threshold to remove more
+  # vessels that are less bright. 1000 nanowatts is a relatively conservative threhsold
+  # but on some ocassioans, a cluster of very bright fishining vessels could exceed
+  # this value.
+
+  MOONLIGHT_ILLUMINATION_PERCENT: 80
+  # this value determines when the cloud mask is used. If you increase the threhsold,
+  # the cloud mask will get used on fewer days (when the moon brightness) is at least
+  # that bright. If you decrease the threshold, the cloud mask will be used on more
+  # days. Increase the threshold will reduce recall (increase precision) and decreasing
+  # the threshold will increase recall (decrease precision). We found that above 80%
+  # we started to see more false positives. This is probably the value that you or your
+  # team would be most interested in playing around with.  As we have been discussing
+  # we tune towards high precision (were very worried about showing false positives) to
+  # our users. And I was willing to take a massive hit to recall for the sake of
+  # retaining high precision.
+
+  VESSEL_CONNECTIVITY: 1
+  # The value refers to the maximum number of orthogonal hops to consider a pixel
+  # a neighbor. I don't recommend modifying this.
+
+postprocessor:
+  TRIM_DETECTIONS_EDGE: 10
+  # Artifacts appear on left edge of frame up to including 8 pixels (columns)
+  # This is the number of pixels to trim from the left edge of the frame. We find
+  # artifacts are very common in VIIRS frames and usually on this edge. We are comfortable
+  # trimming this edge because we know that on subsequent pass/second satellite we will
+  # pick up this location.
+
+  TRIM_DETECTIONS_EDGE_THRESHOLD: 2
+  # how many detections along the edge of frame that indicate a potential artifact
+  # you may wish to increase this value if you are less concerned about artifacts.
+  # Based on how many artifacts we see, we wanted a fairly agressive (low) threshold.
+
+  N_LINES_PER_SCAN: 16
+  # satellite constant for VIIRS (don't change this)
+
+  MAX_DETECTIONS: 10000
+  # max number of allowable detections per frame. If you think there are more than 10000
+  # legitimate detections in a frame, you may consider modifying this. We see a max
+  # of about 6000 on the darkest days in the most dense areas (Indonesia, China, etc.)
+
+  NMS_THRESHOLD: 0.5
+  # non-maximum suppression threshold. NMS plays a minor role. Because of the tiny
+  # objects its not very common for there to be multiple detections overlapping.
+
+  NEAR_SHORE_THRESHOLD: 3000 # meters.
+  # Note that Elvidge et. al. used 2000m. We noticed that light from major cities
+  # often could extend beyond that range. Also note that the accuracy the pixel
+  # locations is defined by pixel dim (750m), geolocation accuracy (375m),
+  # land-water mask accuracy (500m) (i.e. at minimum 1625m). You may consider modifying
+  # this if you want to pick up vessels closer to shore. I wouldn't go lower than 2000 though
+
+  FLARE_DISTANCE_THRESHOLD: 1.50
+  # in kilometers, how close to a gas flare to be considered part of a platform. You
+  # may wish to modify this to a smaller value if you want to pick up vessels closer to
+  # platofrms (recall that pixel==750 meteres)
+
+  CONFIDENCE_THRESHOLD: 0.95
+  # confidence threshold used in feedback cnn in postprocessor that controls whether
+  # a detection is considered a false positive. Model outputs with confidence scores
+  # above this value will be considered a false positive. modifying this will have the
+  # antiicpated result (higher value -> increase precision, less recall)
+
+  EVAL_BATCH_SIZE: 100
+  # batch size used in feedback CNN at inference. No need to modify.
+
+  SOUTHERN_ATLANTIC_ANOMALY_BOUNDS: # you may wish to modify this if you have better data on what the SAA covers.
+    SOUTH: -40
+    NORTH: 0
+    WEST: -95
+    EAST: -15
+
+pipeline:
+  filters: aurora
+    - bowtie
+    - artifacts
+    - near_shore
+    - edge
+    - moonlight
+    - lightning
+    - gas_flares
+    - feedback_cnn
+    - south_atlantic_anomaly
+
+utils:
+  VIIRS_PIXEL_SIZE: 750
+  # meters per pixel. no need to modify
+
+  CHIP_IMG_DIM_HEIGHT: 350
+  # pixels to display in UI, image size in pixels
+
+  CHIP_IMG_DIM_WIDTH: 350
+  # pixels to display in UI, image size in pixels
+
+  OCEAN_VALS: { 0, 6, 7 }
+  # shallow, moderate, and deep ocean, if you want to pick up vessel sin epheremal water
+  # or on shore, you can add more values to this list. Note that the land-water mask is
+  # defined in utils.
+
+  IMAGE_CHIP_SIZE: 20
+  # in pixels
+
+  LIGHTNING_WIDTH: 15
+  # number of pixels (longitude) don't recommend modifying this.
+
+  LIGHTNING_HEIGHT: 16
+  # number of pixels (latitude) (note this is equal to the number of scan lines)
+
+  MAX_LIGHTNING_LENGTH: 100
+  # number of pixels above which is not likely to be lightning. How long (in pixels)
+  # can a lightning strike be? This is fairly conservative, Lightning strikes play a
+  # very minor role at this point, ebecause the vessel detection kernel does not often
+  # get confused by them.
+
+  MIN_LIGHTNING_LENGTH: 8
+  # minimum number of consecutive pixels that are required to be classified as lightning/
+  # same as above.
+
+  AURORA_LAT_THRESHOLD: 50
+  # latitude north (or south) where the model will look for aurora glow (and remove if found)
+  # don't recommend modifying this.
+
+  AURORA_BLUR_KERNEL_SIZE: 1000
+  # kernel size to erode the clouds near the aurora
+  # don't recommend modifying this.
+
+  DILATION_KERNEL_SIZE: 500
+  # kernel to dilate the lit clouds near the aurora to better control false positives
+  # don't recommend modifying this.
+
+  HIGH_AURORA: 1000
+  # lit pixels within the aurora
+  # don't recommend modifying this.
+
+  MID_AURORA: 100
+  # cloud lit pixels nearby aurora
+  # don't recommend modifying this.
+
+  LOW_AURORA: 50
+  # cloud lit pixels further away from the aurora, but still lit by them.
+
+  GAS_FLARE_THRESHOLD: 0.001
+  # threshold that defines whether a spike is a gas flare
+
+  CLOUD_EROSION_KERNEL_DIM: 1
+  # controls the extent to which the clouds are eroded in the cloud mask to
+  # reduces false positives on the edge of bright moonlit clouds. If you increase this
+  # value, you will erode the clouds more which will result in fewer detections near clouds
+  # (increased precision). It is not possible to decrease this value (higher recall)

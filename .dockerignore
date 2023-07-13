@@ -1,0 +1,15 @@
+.git
+.gitlab-ci.yml
+.dockerignore
+dist
+Dockerfile
+docker-compose.yml
+**/.ipynb_checkpoints
+**/.pytest_cache
+**/__pycache__
+**/*.ipynb
+**/__pycache__
+tests/test_outputs/
+tests/test_files/dev
+tests/test_files/full_moon
+tests/test_files/new_moon

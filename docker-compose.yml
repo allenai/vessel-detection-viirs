@@ -1,0 +1,14 @@
+version: "3.9"
+services:
+  test:
+    hostname: vvd-test
+    environment:
+      - EARTHDATA_TOKEN=${EARTHDATA_TOKEN}
+    build:
+      context: .
+      dockerfile: Dockerfile
+    extra_hosts:
+      - "host.docker.internal:host-gateway"
+    stdin_open: true
+    ports:
+      - 5555:5555

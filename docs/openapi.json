@@ -1,0 +1,295 @@
+{
+  "components": {
+    "schemas": {
+      "FormattedPrediction": {
+        "properties": {
+          "chip_path": {
+            "title": "Chip Path",
+            "type": "string"
+          },
+          "clear_sky_confidence": {
+            "title": "Clear Sky Confidence",
+            "type": "number"
+          },
+          "latitude": {
+            "title": "Latitude",
+            "type": "number"
+          },
+          "longitude": {
+            "title": "Longitude",
+            "type": "number"
+          },
+          "meters_per_pixel": {
+            "title": "Meters Per Pixel",
+            "type": "integer"
+          },
+          "moonlight_illumination": {
+            "title": "Moonlight Illumination",
+            "type": "number"
+          },
+          "nanowatts": {
+            "title": "Nanowatts",
+            "type": "number"
+          },
+          "orientation": {
+            "title": "Orientation",
+            "type": "number"
+          },
+          "x": {
+            "title": "X",
+            "type": "integer"
+          },
+          "y": {
+            "title": "Y",
+            "type": "integer"
+          }
+        },
+        "required": [
+          "x",
+          "y",
+          "latitude",
+          "longitude",
+          "chip_path",
+          "orientation",
+          "meters_per_pixel",
+          "moonlight_illumination",
+          "nanowatts",
+          "clear_sky_confidence"
+        ],
+        "title": "FormattedPrediction",
+        "type": "object"
+      },
+      "HTTPValidationError": {
+        "properties": {
+          "detail": {
+            "items": {
+              "$ref": "#/components/schemas/ValidationError"
+            },
+            "title": "Detail",
+            "type": "array"
+          }
+        },
+        "title": "HTTPValidationError",
+        "type": "object"
+      },
+      "VVDRequest": {
+        "example": {
+          "filename": "VJ102DNB.A2022362.0154.021.2022362055600.nc",
+          "geo_filename": "VJ103DNB.A2022362.0154.021.2022362052511.nc",
+          "input_dir": "input",
+          "modgeo_filename": "VJ103MOD.A2022362.0154.002.2022362095104.nc",
+          "modraw_filename": "VJ102MOD.A2022362.0154.002.2022362115107.nc",
+          "output_dir": "output"
+        },
+        "properties": {
+          "dnb_filename": {
+            "title": "Dnb Filename",
+            "type": "string"
+          },
+          "filename": {
+            "title": "Filename",
+            "type": "string"
+          },
+          "gcp_bucket": {
+            "title": "Gcp Bucket",
+            "type": "string"
+          },
+          "geo_filename": {
+            "title": "Geo Filename",
+            "type": "string"
+          },
+          "input_dir": {
+            "title": "Input Dir",
+            "type": "string"
+          },
+          "modgeo_filename": {
+            "title": "Modgeo Filename",
+            "type": "string"
+          },
+          "modraw_filename": {
+            "title": "Modraw Filename",
+            "type": "string"
+          },
+          "output_dir": {
+            "title": "Output Dir",
+            "type": "string"
+          },
+          "phys_filename": {
+            "title": "Phys Filename",
+            "type": "string"
+          }
+        },
+        "required": [
+          "input_dir",
+          "output_dir"
+        ],
+        "title": "VVDRequest",
+        "type": "object"
+      },
+      "VVDResponse": {
+        "properties": {
+          "acquisition_time": {
+            "format": "date-time",
+            "title": "Acquisition Time",
+            "type": "string"
+          },
+          "average_moonlight": {
+            "title": "Average Moonlight",
+            "type": "number"
+          },
+          "filename": {
+            "title": "Filename",
+            "type": "string"
+          },
+          "frame_extents": {
+            "items": {
+              "items": {
+                "type": "number"
+              },
+              "type": "array"
+            },
+            "title": "Frame Extents",
+            "type": "array"
+          },
+          "gcp_bucket": {
+            "title": "Gcp Bucket",
+            "type": "string"
+          },
+          "model_version": {
+            "format": "date-time",
+            "title": "Model Version",
+            "type": "string"
+          },
+          "predictions": {
+            "items": {
+              "$ref": "#/components/schemas/FormattedPrediction"
+            },
+            "title": "Predictions",
+            "type": "array"
+          },
+          "satellite_name": {
+            "title": "Satellite Name",
+            "type": "string"
+          },
+          "status": {
+            "items": {
+              "type": "string"
+            },
+            "title": "Status",
+            "type": "array"
+          }
+        },
+        "required": [
+          "status",
+          "filename",
+          "acquisition_time",
+          "satellite_name",
+          "model_version",
+          "predictions",
+          "frame_extents",
+          "average_moonlight"
+        ],
+        "title": "VVDResponse",
+        "type": "object"
+      },
+      "ValidationError": {
+        "properties": {
+          "loc": {
+            "items": {
+              "anyOf": [
+                {
+                  "type": "string"
+                },
+                {
+                  "type": "integer"
+                }
+              ]
+            },
+            "title": "Location",
+            "type": "array"
+          },
+          "msg": {
+            "title": "Message",
+            "type": "string"
+          },
+          "type": {
+            "title": "Error Type",
+            "type": "string"
+          }
+        },
+        "required": [
+          "loc",
+          "msg",
+          "type"
+        ],
+        "title": "ValidationError",
+        "type": "object"
+      }
+    }
+  },
+  "info": {
+    "title": "FastAPI",
+    "version": "0.1.0"
+  },
+  "openapi": "3.0.2",
+  "paths": {
+    "/": {
+      "get": {
+        "operationId": "home__get",
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "title": "Response Home  Get",
+                  "type": "object"
+                }
+              }
+            },
+            "description": "Successful Response"
+          }
+        },
+        "summary": "Home"
+      }
+    },
+    "/detections": {
+      "post": {
+        "description": "Returns vessel detections in VIIRS imagery",
+        "operationId": "get_detections_detections_post",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/VVDRequest"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/VVDResponse"
+                }
+              }
+            },
+            "description": "Successful Response"
+          },
+          "422": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            },
+            "description": "Validation Error"
+          }
+        },
+        "summary": "Get Detections"
+      }
+    }
+  }
+}

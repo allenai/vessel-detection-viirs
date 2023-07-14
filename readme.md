@@ -87,8 +87,6 @@ There are many parameters that can be modified to control precision and recall a
   <img src="images/model_arch.png">
 </p>
 
-For details see docs/model_card.md
-
 ## Acknowledgements
 
 We are very grateful to NASA for making the raw satellite data freely accessible from earthdata: https://www.earthdata.nasa.gov/. Thanks to NOAA and NASA for launching the satellites. Thanks to https://sips.ssec.wisc.edu/#/ for creating cloud masks. Thanks to the Earth Observation Group at the Colorado School of Mines for extensive research on VIIRS and their work on vessel detection (https://www.mdpi.com/2072-4292/7/3/3020).

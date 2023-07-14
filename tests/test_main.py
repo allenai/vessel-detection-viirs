@@ -23,7 +23,7 @@ def api_request_cloud_files() -> requests.Response:
     requests.Response
 
     """
-    GCP_BUCKET = "skylight-ml-annotations"
+    GCP_BUCKET = "YOUR_GCP_BUCKET"
     SAMPLE_INPUT_DIR = "vessel-detection/viirs/tests/test_files/"
     SAMPLE_OUTPUT_DIR = "vessel-detection/viirs/tests/test_outputs/"
 

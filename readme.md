@@ -1,7 +1,7 @@
 This repository contains a computer vision model along with a containerized restful API (FastAPI) for serving streaming detections of vessels in near real time. See [docs/model_card.md](./docs/model_card.md) for information about the model and [docs/openapi.json](./docs/openapi.json) for the API specification. This model was built for [Skylight](https://www.skylight.global/), a product of AI2 that supports maritime transparency through actionable intelligence in order to help protect our oceans.
 
-<p float="left">
-  <img src="images/summary.png" >
+<p float="center">
+  <img src="images/summary.png" width=700 >
 </p>
 
 ---
@@ -19,27 +19,36 @@ Note that the model and API are designed to run in resource constrained environm
 
 ## Installation
 
+### Using the existing package
+
 Pull the latest package from [GitHub](https://github.com/allenai/vessel-detection-viirs/pkgs/container/vessel-detection-viirs)
 
 ```bash
-docker pull ghcr.io/vulcanskylight/vessel-detection-viirs
+docker pull ghcr.io/vulcanskylight/vessel-detection-viirs:latest
 ```
 
 Once the package is downloaded, start the service with:
 
 ```bash
-docker run -d -p 5555:5555 vvd-service
+docker run -d -p 5555:5555 -v ABS_PATH_TO_REPO/tests/test_files:/test_files/ ghcr.io/allenai/vessel-detection-viirs:latest
 ```
 
-You may override the default port by passing in your preferred port in the docker run command e.g. `-e VVD_PORT=PORT`
+Test the service by executing the example request in example/sample_request.py
 
-Or clone this repository and build the container with
+```bash
+python3 -m venv .venv
+source .venv/bin/activate
+pip install -r requirements/requirements-inference.txt
+python example/sample_request.py
+```
+
+### Build from source
 
 ```bash
 docker compose up
 ```
 
-The service will now be running on port 5555 (verify with `docker ps -a`).
+The service will now be running on port 5555 (verify with `docker ps -a`). You may override the port number (default=5555) by passing in your preferred port in the docker run command as an environment variable e.g. `-e VVD_PORT=PORT`. Set that environment variable in your shell as well in order to use the example requests.
 To query the API with an example request, install `requirements/requirements-inference.txt` on the host.
 
 ```bash

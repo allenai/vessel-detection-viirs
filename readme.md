@@ -1,6 +1,6 @@
 This repository contains a computer vision model along with a containerized restful API (FastAPI) for serving streaming detections of vessels in near real time. See [docs/model_card.md](./docs/model_card.md) for information about the model and [docs/openapi.json](./docs/openapi.json) for the API specification. This model was built for [Skylight](https://www.skylight.global/), a product of AI2 that supports maritime transparency through actionable intelligence in order to help protect our oceans.
 
-<p float="left">
+<p float="center">
   <img src="images/summary.png" width=700 >
 </p>
 

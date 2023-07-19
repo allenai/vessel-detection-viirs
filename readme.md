@@ -8,7 +8,7 @@ This repository contains a computer vision model along with a containerized rest
 
 # Getting started
 
-Note that the model and API are designed to run in resource constrained environments. The hardware requirements are a CPU and at least 4 GB of RAM. Note that a GPU is not needed including for fast inference.
+Note that the model and API are designed to run in resource constrained environments. The hardware requirements are a CPU and at least 4 GB of RAM. Note that a GPU is not needed including for fast inference. Results are returned in under a second if you are not uploading/downloading from the cloud.
 
 ## Prerequisites
 

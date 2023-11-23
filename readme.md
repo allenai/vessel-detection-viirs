@@ -24,7 +24,7 @@ Note that the model and API are designed to run in resource constrained environm
 Pull the latest package from [GitHub](https://github.com/allenai/vessel-detection-viirs/pkgs/container/vessel-detection-viirs)
 
 ```bash
-docker pull ghcr.io/vulcanskylight/vessel-detection-viirs:latest
+docker pull docker pull ghcr.io/allenai/vessel-detection-viirs:sha-d345c61
 ```
 
 Once the package is downloaded, start the service with:

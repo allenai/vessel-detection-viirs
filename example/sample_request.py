@@ -19,9 +19,9 @@ def sample_request() -> None:
     REQUEST_BODY = {
         "input_dir": SAMPLE_INPUT_DIR,
         "output_dir": SAMPLE_OUTPUT_DIR,
-        "dnb_filename": "VNP02DNB_NRT.A2023081.1836.002.2023081233758.nc",
-        "geo_filename": "VNP03DNB_NRT.A2023081.1836.002.2023081232003.nc",
-        "cloud_filename": "CLDMSK_L2_VIIRS_SNPP.A2023081.1836.001.nrt.nc",
+        "dnb_filename": "VJ102DNB_NRT_2023_310_VJ102DNB_NRT.A2023310.0606.021.2023310104322.nc",
+        "geo_filename": "VJ103DNB_NRT_2023_310_VJ103DNB_NRT.A2023310.0606.021.2023310093233.nc",
+
     }
 
     response = requests.post(VVD_ENDPOINT, json=REQUEST_BODY, timeout=TIMEOUT_SECONDS)

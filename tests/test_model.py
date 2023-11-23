@@ -1,3 +1,5 @@
+"""tests for the main model method
+"""
 import numpy as np
 
 from src import model
@@ -5,6 +7,7 @@ from src.utils import IMAGE_CHIP_SIZE, get_chips
 
 
 def create_single_detection_dataset() -> dict:
+    """"""
     x_pixels, y_pixels = (3216, 4064)
 
     dnb_array = np.zeros((x_pixels, y_pixels))

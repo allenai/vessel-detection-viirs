@@ -7,11 +7,11 @@ import requests
 
 PORT = os.getenv("VVD_PORT", default=5555)
 VVD_ENDPOINT = f"http://localhost:{PORT}/detections"
-SAMPLE_INPUT_DIR = "/test_files/"
-SAMPLE_OUTPUT_DIR = "/test_files/chips/"
+SAMPLE_INPUT_DIR = "/example/"
+SAMPLE_OUTPUT_DIR = "/example/chips/"
 TIMEOUT_SECONDS = 600
-
-
+DNB_FILENAME = "VJ102DNB_NRT_2023_310_VJ102DNB_NRT.A2023310.0606.021.2023310104322.nc"
+GEO_FILENAME = "VJ103DNB_NRT_2023_310_VJ103DNB_NRT.A2023310.0606.021.2023310093233.nc"
 def sample_request() -> None:
     """Sample request for files stored locally"""
     start = time.time()
@@ -19,9 +19,9 @@ def sample_request() -> None:
     REQUEST_BODY = {
         "input_dir": SAMPLE_INPUT_DIR,
         "output_dir": SAMPLE_OUTPUT_DIR,
-        "dnb_filename": "VNP02DNB_NRT.A2023081.1836.002.2023081233758.nc",
-        "geo_filename": "VNP03DNB_NRT.A2023081.1836.002.2023081232003.nc",
-        "cloud_filename": "CLDMSK_L2_VIIRS_SNPP.A2023081.1836.001.nrt.nc",
+        "dnb_filename": DNB_FILENAME,
+        "geo_filename": GEO_FILENAME
+
     }
 
     response = requests.post(VVD_ENDPOINT, json=REQUEST_BODY, timeout=TIMEOUT_SECONDS)

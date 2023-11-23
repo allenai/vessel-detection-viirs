@@ -15,7 +15,7 @@ Note that the model and API are designed to run in resource constrained environm
 - Python 3.10
 - Docker: https://docs.docker.com/get-docker/
 - Docker Compose: https://docs.docker.com/compose/install/ (note that Docker compose may already be installed depending on how you installed docker)
-- git-lfs: https://git-lfs.com/ Test files used for development are stored on GitHub with git-lfs.
+- git-lfs: https://git-lfs.com/ Test files used for development are stored on GitHub with git-lfs. Tu run the tests (pytest), please install git-lfs and retrieve the files in test_files with git-lfs.
 
 ## Installation
 
@@ -24,7 +24,7 @@ Note that the model and API are designed to run in resource constrained environm
 Pull the latest package from [GitHub](https://github.com/allenai/vessel-detection-viirs/pkgs/container/vessel-detection-viirs)
 
 ```bash
-docker pull ghcr.io/vulcanskylight/vessel-detection-viirs:latest
+docker pull ghcr.io/allenai/vessel-detection-viirs:sha-d345c61
 ```
 
 Once the package is downloaded, start the service with:
@@ -59,13 +59,22 @@ pip install -r requirements/requirements-inference.txt
 
 ## Usage
 
+Note that the sample request depends on sample data that is stored on GitHub in example/\*.nc
+
+Start the service with that directory available in the container. E.g.
+
+```bash
+docker run -d -p 5555:5555 -v ABS_PATH_TO_REPO/example:/example/ ghcr.io/allenai/vessel-detection-viirs:latest
+```
+
 ```bash
 $ python examples/sample_request.py
 ```
 
 ## Tests
 
-Unit and integration tests (see tests/) are run as part of CICD via GitHub actions. To manually run these tests, execute:
+Unit and integration tests (see tests/) are run as part of CICD via GitHub actions. Note that to run the tests, it is required to download the test files which are stored on GitHub via git-lfs.
+To manually run these tests (after installing git-lfs and downloading the files stored in tests/test_files/), execute:
 
 ```bash
 $ pytest tests -vv

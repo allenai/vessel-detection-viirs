@@ -1,3 +1,5 @@
+"""Runs a sample request for VIIRS detections from running server for images in cloud
+"""
 import json
 import os
 import time

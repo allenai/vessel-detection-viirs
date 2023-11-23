@@ -10,8 +10,8 @@ VVD_ENDPOINT = f"http://localhost:{PORT}/detections"
 SAMPLE_INPUT_DIR = "/example/"
 SAMPLE_OUTPUT_DIR = "/example/chips/"
 TIMEOUT_SECONDS = 600
-
-
+DNB_FILENAME = "VJ102DNB_NRT_2023_310_VJ102DNB_NRT.A2023310.0606.021.2023310104322.nc"
+GEO_FILENAME = "VJ103DNB_NRT_2023_310_VJ103DNB_NRT.A2023310.0606.021.2023310093233.nc"
 def sample_request() -> None:
     """Sample request for files stored locally"""
     start = time.time()
@@ -19,8 +19,8 @@ def sample_request() -> None:
     REQUEST_BODY = {
         "input_dir": SAMPLE_INPUT_DIR,
         "output_dir": SAMPLE_OUTPUT_DIR,
-        "dnb_filename": "VJ102DNB_NRT_2023_310_VJ102DNB_NRT.A2023310.0606.021.2023310104322.nc",
-        "geo_filename": "VJ103DNB_NRT_2023_310_VJ103DNB_NRT.A2023310.0606.021.2023310093233.nc",
+        "dnb_filename": DNB_FILENAME,
+        "geo_filename": GEO_FILENAME
 
     }
 

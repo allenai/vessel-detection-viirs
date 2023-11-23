@@ -7,8 +7,8 @@ import requests
 
 PORT = os.getenv("VVD_PORT", default=5555)
 VVD_ENDPOINT = f"http://localhost:{PORT}/detections"
-SAMPLE_INPUT_DIR = "/test_files/"
-SAMPLE_OUTPUT_DIR = "/test_files/chips/"
+SAMPLE_INPUT_DIR = "/example/"
+SAMPLE_OUTPUT_DIR = "/example/chips/"
 TIMEOUT_SECONDS = 600
 
 

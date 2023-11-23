@@ -98,7 +98,11 @@ There are many parameters that can be modified to control precision and recall a
 
 ## Acknowledgements
 
-We are very grateful to NASA for making the raw satellite data freely accessible from earthdata: https://www.earthdata.nasa.gov/. Thanks to NOAA and NASA for launching the satellites. Thanks to https://sips.ssec.wisc.edu/#/ for creating cloud masks. Thanks to the Earth Observation Group at the Colorado School of Mines for extensive research on VIIRS and their work on vessel detection (https://www.mdpi.com/2072-4292/7/3/3020).
+- NASA for making the raw satellite data freely accessible from [earthdata](https://www.earthdata.nasa.gov/.)
+- NOAA and NASA for launching and maintaining the satellites (Suomi-NPP, NOAA-20, NOAA-21).
+- [Defense Innovation Unit](https://www.diu.mil/) for funding this work
+- [SSEC](https://sips.ssec.wisc.edu/#/) for VIIRS Level 2 cloud and aerosol products
+- [Earth Observation Group](https://payneinstitute.mines.edu/eog-2/viirs/) for extensive research on VIIRS and their prior work on vessel detection.
 
 ## Contributing
 

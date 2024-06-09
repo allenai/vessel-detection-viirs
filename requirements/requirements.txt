@@ -28,7 +28,7 @@ google-crc32c==1.5.*
 google-resumable-media==2.5.*
 googleapis-common-protos==1.59.*
 html5lib==1.1.*
-idna==3.4.*
+idna==3.7
 imageio==2.31.*
 iniconfig==2.0.*
 Jinja2==3.1.*

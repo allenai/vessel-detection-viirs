@@ -6,7 +6,7 @@ Suomi NPP (NOAA/NASA Suomi National Polar-orbiting Partnership)
 |-------------------------------|-----------------------------------------------------------------------|----------|----------|
 | Day/Night Band (DNB) | [url](https://nrt3.modaps.eosdis.nasa.gov/archive/allData/5200/VNP02DNB_NRT) | [url](https://nrt3.modaps.eosdis.nasa.gov/archive/allData/5200/VJ102DNB_NRT) | [url](https://nrt3.modaps.eosdis.nasa.gov/archive/allData/5200/VJ202DNB_NRT/)
 | Terrain Corrected Geolocation (DNB) | [url](https://nrt3.modaps.eosdis.nasa.gov/archive/allData/5200/VNP03DNB_NRT)| [url](https://nrt3.modaps.eosdis.nasa.gov/archive/allData/5200/VJ103DNB_NRT)| [url]
-(https://nrt3.modaps.eosdis.nasa.gov/archive/allData/5200/VJ203DNB_NRT/)| Clear sky confidence | [url](https://sips-data.ssec.wisc.edu/nrt/CLDMSK_L2_VIIRS_SNPP_NRT) | [url](https://sips-data.ssec.wisc.edu/nrt/CLDMSK_L2_VIIRS_NOAA20_NRT)| TBD |
+(https://nrt3.modaps.eosdis.nasa.gov/archive/allData/5200/VJ203DNB_NRT/)| Clear sky confidence | [url](https://sips-data.ssec.wisc.edu/nrt/CLDMSK_L2_VIIRS_SNPP_NRT) | [url](https://sips-data.ssec.wisc.edu/nrt/CLDMSK_L2_VIIRS_NOAA20_NRT)| TBD 
 | Gas Flares Band | [url](https://nrt3.modaps.eosdis.nasa.gov/archive/allData/5200/VNP02MOD_NRT/) | [url](https://nrt3.modaps.eosdis.nasa.gov/archive/allData/5200/VJ102MOD_NRT/)| [url](https://nrt3.modaps.eosdis.nasa.gov/archive/allData/5200/VJ203MOD_NRT/)
 | Terrain Corrected Geolocation (MOD) | [url](https://nrt3.modaps.eosdis.nasa.gov/archive/allData/5200/VNP03MOD_NRT/)| [url](https://nrt3.modaps.eosdis.nasa.gov/archive/allData/5200/VJ103DNB_NRT/)| [url](https://nrt3.modaps.eosdis.nasa.gov/archive/allData/5200/VJ202MOD_NRT/)
 

@@ -2,13 +2,13 @@
 
 There are two required datasets for inference, the light intensity data (\*DNB_NRT) and supporting data including geolocation, moonlight illumination, and other files used during inference. In addition to these two data sources, there are several optional datasets that are used to improve the quality of the detections. The optional datasets are cloud masks (CLDMSK_NRT) and additional bands (MOD_NRT) used for gas flare identification and removal. The DNB and MOD datasets are provided in near real time through [earthdata](https://www.earthdata.nasa.gov/learn/find-data/near-real-time/viirs) and the cloud masks are provided in near real time through [sips-data](https://sips-data.ssec.wisc.edu/nrt/). The urls for each dataset and satellite is below. Note that downloads require a token, if using the API. Register for the API and create a token at [earthdata](https://urs.earthdata.nasa.gov/).
 Suomi NPP (NOAA/NASA Suomi National Polar-orbiting Partnership)
-| File | SUOMI-NPP | NOAA-20 |
-|-------------------------------|-----------------------------------------------------------------------|----------|
-| Day/Night Band (DNB) | [url](https://nrt3.modaps.eosdis.nasa.gov/archive/allData/5200/VNP02DNB_NRT) | [url](https://nrt3.modaps.eosdis.nasa.gov/archive/allData/5200/VJ102DNB_NRT) |
-| Terrain Corrected Geolocation (DNB) | [url](https://nrt3.modaps.eosdis.nasa.gov/archive/allData/5200/VNP03DNB_NRT)| [url](https://nrt3.modaps.eosdis.nasa.gov/archive/allData/5200/VJ103DNB_NRT)|
-| Clear sky confidence | [url](https://sips-data.ssec.wisc.edu/nrt/CLDMSK_L2_VIIRS_SNPP_NRT) | [url](https://sips-data.ssec.wisc.edu/nrt/CLDMSK_L2_VIIRS_NOAA20_NRT)|
-| Gas Flares Band | [url](https://nrt3.modaps.eosdis.nasa.gov/archive/allData/5200/VNP02MOD_NRT/) | [url](https://nrt3.modaps.eosdis.nasa.gov/archive/allData/5200/VJ102MOD_NRT/)|
-| Terrain Corrected Geolocation (MOD) | [url](https://nrt3.modaps.eosdis.nasa.gov/archive/allData/5200/VNP03MOD_NRT/)| [url](https://nrt3.modaps.eosdis.nasa.gov/archive/allData/5200/VJ103DNB_NRT/)|
+| File | SUOMI-NPP | NOAA-20 | NOAA-21 | 
+|-------------------------------|-----------------------------------------------------------------------|----------|----------|
+| Day/Night Band (DNB) | [url](https://nrt3.modaps.eosdis.nasa.gov/archive/allData/5200/VNP02DNB_NRT) | [url](https://nrt3.modaps.eosdis.nasa.gov/archive/allData/5200/VJ102DNB_NRT) | [url](https://nrt3.modaps.eosdis.nasa.gov/archive/allData/5200/VJ202DNB_NRT/)
+| Terrain Corrected Geolocation (DNB) | [url](https://nrt3.modaps.eosdis.nasa.gov/archive/allData/5200/VNP03DNB_NRT)| [url](https://nrt3.modaps.eosdis.nasa.gov/archive/allData/5200/VJ103DNB_NRT)| [url]
+(https://nrt3.modaps.eosdis.nasa.gov/archive/allData/5200/VJ203DNB_NRT/)| Clear sky confidence | [url](https://sips-data.ssec.wisc.edu/nrt/CLDMSK_L2_VIIRS_SNPP_NRT) | [url](https://sips-data.ssec.wisc.edu/nrt/CLDMSK_L2_VIIRS_NOAA20_NRT)| TBD |
+| Gas Flares Band | [url](https://nrt3.modaps.eosdis.nasa.gov/archive/allData/5200/VNP02MOD_NRT/) | [url](https://nrt3.modaps.eosdis.nasa.gov/archive/allData/5200/VJ102MOD_NRT/)| [url](https://nrt3.modaps.eosdis.nasa.gov/archive/allData/5200/VJ203MOD_NRT/)
+| Terrain Corrected Geolocation (MOD) | [url](https://nrt3.modaps.eosdis.nasa.gov/archive/allData/5200/VNP03MOD_NRT/)| [url](https://nrt3.modaps.eosdis.nasa.gov/archive/allData/5200/VJ103DNB_NRT/)| [url](https://nrt3.modaps.eosdis.nasa.gov/archive/allData/5200/VJ202MOD_NRT/)
 
 ## Downloading data
 

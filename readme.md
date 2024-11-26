@@ -68,7 +68,35 @@ Model parameters can be tuned in `src/config/config.yml`
 
 ## Architecture
 
+<<<<<<< HEAD
 ![Model Architecture](images/model_arch.png)
+=======
+## Development notes
+
+There are many parameters that can be modified to control precision and recall and tune the model to other desired use cases. See src/config/config.yml for the parameters that can be modified and how to do so.
+
+### Performance
+
+- Real-time latency is measured from the time that the light is emitted by a vessel and when we ultimately show the detected vessel to our users. In our plaftorm, we obvserve an average latency of 2 hours from a ship emitting light to when we surface that data to our users. The latency is determined primarily by the time required to downlink the data to NASA's servers. Our processing time is < 1 second.
+
+## Model architecture
+
+<p float="left">
+  <img src="images/model_arch.png">
+</p>
+
+## Acknowledgements
+
+- NASA for making the raw satellite data freely accessible from [earthdata](https://www.earthdata.nasa.gov/.)
+- NOAA and NASA for launching and maintaining the satellites (Suomi-NPP, NOAA-20, NOAA-21).
+- [Defense Innovation Unit](https://www.diu.mil/) for funding this work
+- [SSEC](https://sips.ssec.wisc.edu/#/) for VIIRS Level 2 cloud and aerosol products
+- [Earth Observation Group](https://payneinstitute.mines.edu/eog-2/viirs/) for extensive research on VIIRS and their prior work on vessel detection.
+
+## Contributing
+
+We are grateful for your feedback and contributions are appreciated. Please see CONTRIBUTING.md for details on contributing.
+>>>>>>> main
 
 ## Limitations
 
@@ -88,7 +116,7 @@ Apache 2.0
 
 ## Contact
 
-support@skylight.org
+eai@allenai.org
 
 ## Acknowledgements
 

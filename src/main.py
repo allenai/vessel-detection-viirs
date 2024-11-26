@@ -1,5 +1,6 @@
 """VIIRS Vessel Detection Service
 """
+
 from __future__ import annotations
 
 import logging.config
@@ -18,6 +19,7 @@ from typing_extensions import TypedDict
 import utils
 from monitoring import instrumentator
 from pipeline import VIIRSVesselDetection
+from custom_types import RoundedFloat
 
 app = FastAPI()
 instrumentator.instrument(app).expose(app)
@@ -26,20 +28,23 @@ logger = logging.getLogger(__name__)
 HOST = "0.0.0.0"  # nosec B104
 PORT = os.getenv("VVD_PORT", default=5555)
 VVD: VIIRSVesselDetection
-MODEL_VERSION = datetime.today()  # concatenate with git hash
+MODEL_VERSION = os.getenv("GIT_COMMIT_HASH", datetime.today())
 
 
 class FormattedPrediction(TypedDict):
     """Formatted prediction for a single vessel detection"""
 
-    latitude: float
-    longitude: float
+    latitude: RoundedFloat
+    longitude: RoundedFloat
+    x: int  # location in pixels of original image array, axis=0
+    y: int  # location in pixels of original image array, axis=1
     chip_path: str
-    orientation: float
+    orientation: RoundedFloat
     meters_per_pixel: int
-    moonlight_illumination: float
-    nanowatts: float
-    clear_sky_confidence: float
+    moonlight_illumination: RoundedFloat
+    clear_sky_confidence: RoundedFloat
+    scan_angle: tuple[RoundedFloat, RoundedFloat, RoundedFloat]  # pitch, yaw, roll rounded to 2 decimal places
+    radiance_nw: RoundedFloat
 
 
 class VVDResponse(BaseModel):
@@ -52,8 +57,8 @@ class VVDResponse(BaseModel):
     satellite_name: str
     model_version: datetime  # ISO 8601 format
     predictions: List[FormattedPrediction]
-    frame_extents: List[List[float]]  # [[lon, lat],...,]
-    average_moonlight: float
+    frame_extents: List[List[RoundedFloat]]  # [[lon, lat],...,]
+    average_moonlight: RoundedFloat
 
 
 class VVDRequest(BaseModel):
@@ -67,7 +72,7 @@ class VVDRequest(BaseModel):
     geo_filename: Optional[str] = None
     modraw_filename: Optional[str] = None
     modgeo_filename: Optional[str] = None
-    phys_filename: Optional[str] = None
+    cloud_maskname: Optional[str] = None
 
     class Config:
         """example configuration for a request where files are stored in cloud"""
@@ -94,6 +99,7 @@ async def vvd_init() -> None:
 
 @app.get("/")
 async def home() -> dict:
+    """Returns a simple message to indicate the service is running"""
     return {"message": "VIIRS Vessel Detection App"}
 
 
@@ -135,7 +141,6 @@ async def get_detections(info: VVDRequest, response: Response) -> VVDResponse:
         satellite_name = utils.get_provider_name(dnb_dataset)
         acquisition_time, end_time = utils.get_acquisition_time(dnb_dataset)
         chips_dict = utils.get_chips(image, ves_detections, dnb_dataset)
-
         if info.gcp_bucket is not None:
             chips_dict = utils.upload_image(
                 info.gcp_bucket, chips_dict, info.output_dir, dnb_path
@@ -147,13 +152,16 @@ async def get_detections(info: VVDRequest, response: Response) -> VVDResponse:
                 chip_features=ves_detections,
             )
 
-        average_moonlight = utils.get_average_moonlight(dnb_dataset)
+        average_moonlight = RoundedFloat(utils.get_average_moonlight(dnb_dataset), 2)
 
         frame_extents = utils.get_frame_extents(dnb_dataset)
 
     predictions = utils.format_detections(chips_dict)
-    elapsed_time = perf_counter() - start
-    logger.info(f"VVD {elapsed_time=}, found {len(chips_dict)} detections)")
+    time_s = round(perf_counter() - start)
+    n_ves = len(chips_dict)
+    logger.info(
+        f"In frame: {dnb_path}, vvd detected {n_ves} vessels in ({time_s} seconds)"
+    )
     response.headers["n_detections"] = str(len(chips_dict))
     response.headers["avg_moonlight"] = str(average_moonlight)
     response.headers["lightning_count"] = str(all_detections["lightning_count"])

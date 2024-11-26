@@ -20,3 +20,4 @@ tests/test_files/chips/
 tests/test_files/full_moon/
 tests/test_files/new_moon/
 src/feedback_images/
+src/feedback_model/

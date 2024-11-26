@@ -26,76 +26,61 @@ DETECTION_METRIC = Histogram(
 
 def vvd_model_moonlight() -> Callable[[Info], None]:
     """prometheus instrumentation for the vvd model for moonlight
-    Returns
-    -------
-    Callable[[Info], None]
-        _description_
+
     """
 
     def instrumentation(info: Info) -> None:
         if info.modified_handler == "/detections":
             n_detections = info.response.headers.get("avg_moonlight")
             if n_detections:
-                DETECTION_METRIC\
-                    .labels(type="viirs", detection="avg_moonlight", operator="avg")\
-                    .observe(float(n_detections))
+                DETECTION_METRIC.labels(
+                    type="viirs", detection="avg_moonlight", operator="avg"
+                ).observe(float(n_detections))
 
     return instrumentation
 
 
 def vvd_model_gas_flare_count() -> Callable[[Info], None]:
-    """
-    Returns
-    -------
-    Callable[[Info], None]
-        _description_
+    """ prometheus instrumentation for the vvd model for gas flare count
     """
 
     def instrumentation(info: Info) -> None:
         if info.modified_handler == "/detections":
             n_detections = info.response.headers.get("gas_flare_count")
             if n_detections:
-                DETECTION_METRIC\
-                    .labels(type="viirs", detection="gas_flare_count", operator="sum")\
-                    .observe(float(n_detections))
+                DETECTION_METRIC.labels(
+                    type="viirs", detection="gas_flare_count", operator="sum"
+                ).observe(float(n_detections))
 
     return instrumentation
 
 
 def vvd_model_lightning_count() -> Callable[[Info], None]:
-    """
-    Returns
-    -------
-    Callable[[Info], None]
-        _description_
+    """ prometheus instrumentation for the vvd model for lightning count
     """
 
     def instrumentation(info: Info) -> None:
         if info.modified_handler == "/detections":
             n_detections = info.response.headers.get("lightning_count")
             if n_detections:
-                DETECTION_METRIC\
-                    .labels(type="viirs", detection="lightning_count", operator="sum")\
-                    .observe(float(n_detections))
+                DETECTION_METRIC.labels(
+                    type="viirs", detection="lightning_count", operator="sum"
+                ).observe(float(n_detections))
 
     return instrumentation
 
 
 def vvd_model_detections_output() -> Callable[[Info], None]:
-    """
-    Returns
-    -------
-    Callable[[Info], None]
-        _description_
+    """instrumentation for the vvd model for detections output
     """
 
     def instrumentation(info: Info) -> None:
         if info.modified_handler == "/detections":
             n_detections = info.response.headers.get("n_detections")
             if n_detections:
-                DETECTION_METRIC\
-                    .labels(type="viirs", detection="vessels", operator="sum")\
-                    .observe(float(n_detections))
+                DETECTION_METRIC.labels(
+                    type="viirs", detection="vessels", operator="sum"
+                ).observe(float(n_detections))
 
     return instrumentation
 
@@ -138,18 +123,10 @@ instrumentator.add(
     )
 )
 
-instrumentator.add(
-    vvd_model_moonlight()
-)
+instrumentator.add(vvd_model_moonlight())
 
-instrumentator.add(
-    vvd_model_detections_output()
-)
+instrumentator.add(vvd_model_detections_output())
 
-instrumentator.add(
-    vvd_model_lightning_count()
-)
+instrumentator.add(vvd_model_lightning_count())
 
-instrumentator.add(
-    vvd_model_gas_flare_count()
-)
+instrumentator.add(vvd_model_gas_flare_count())

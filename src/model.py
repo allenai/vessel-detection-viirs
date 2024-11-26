@@ -1,12 +1,13 @@
 """Main VVD model module"""
 import logging.config
 import os
-from typing import Dict, Tuple
+from typing import Dict, List, Tuple, Union
 
 import cv2
 import numpy as np
 import yaml
 from skimage.measure import label, regionprops
+
 from utils import (
     clear_sky_mask,
     land_water_mask,
@@ -26,12 +27,14 @@ CONFIG_PATH = os.path.join(
 with open(CONFIG_PATH, "r") as file:
     config = yaml.safe_load(file)["model"]
 
+Detection = Dict[str, Union[List[int], Tuple[int, int, int, int], int, float]]
 
 STRUCTURING_ELEMENT_SIZE = (config["KERNEL_DIM_1"], config["KERNEL_DIM_2"])
 IMG_MAX_VALUE = config["IMG_MAX_VALUE"]
 BLOCK_SIZE = config["BLOCK_SIZE"]
 ADAPTIVE_CONSTANT = config["ADAPTIVE_CONSTANT"]
 CLIP_MAX = config["CLIP_MAX"]
+MAX_REGIONS_COMPUTE = config["MAX_REGIONS_COMPUTE"]
 OUTLIER_THRESHOLD_NW = config["OUTLIER_THRESHOLD_NW"]
 MOONLIGHT_ILLUMINATION_PERCENT = config["MOONLIGHT_ILLUMINATION_PERCENT"]
 VESSEL_CONNECTIVITY = config["VESSEL_CONNECTIVITY"]
@@ -70,9 +73,13 @@ def vvd_cv_model(dnb_dataset: Dict) -> Tuple[dict, np.ndarray]:
                 clear_sky_confidence_array = np.zeros(dnb_observations.shape)
                 cloud_illumination = CLIP_MAX
 
-            dnb_observations, cld_mask, cloudy_observations = clear_sky_mask(
-                dnb_observations, clear_sky_confidence_array
-            )
+            # only do the masking if there was good cloud data
+            if not np.array_equal(
+                dnb_dataset["cloud_mask"], np.zeros_like(dnb_dataset["cloud_mask"])
+            ):
+                dnb_observations, _, _ = clear_sky_mask(
+                    dnb_observations, clear_sky_confidence_array
+                )
 
         else:
             cloud_illumination = 0
@@ -89,7 +96,9 @@ def vvd_cv_model(dnb_dataset: Dict) -> Tuple[dict, np.ndarray]:
     return vessel_detections, formatted_image
 
 
-def components_to_detections(label_im: np.ndarray) -> dict:
+def components_to_detections(
+    label_im: np.ndarray,
+) -> Dict[int, Detection]:
     """image to vessel coordinates
 
     Parameters
@@ -104,7 +113,13 @@ def components_to_detections(label_im: np.ndarray) -> dict:
     regions = regionprops(label_im)
 
     x_pixels, y_pixels = label_im.shape
-    detections = {}
+    detections: Dict[int, Detection] = {}
+
+    if len(regions) > MAX_REGIONS_COMPUTE:
+        logger.warning(
+            f"Too many regions: {len(regions)}. Skipping detections for this image."
+        )
+        return detections
     for idx, reg in enumerate(regions):
         x0, y0 = reg.centroid
         x0 = max(0, x0)  # avoid negatives in chip generation

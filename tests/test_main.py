@@ -23,7 +23,7 @@ def api_request_cloud_files() -> requests.Response:
     requests.Response
 
     """
-    GCP_BUCKET = "YOUR_GCP_BUCKET"
+    GCP_BUCKET = "REPLACE_WITH_YOUR_BUCKET"
     SAMPLE_INPUT_DIR = "vessel-detection/viirs/tests/test_files/"
     SAMPLE_OUTPUT_DIR = "vessel-detection/viirs/tests/test_outputs/"
 
@@ -107,11 +107,11 @@ class TestApiLocalFiles(unittest.TestCase):
         """The frame extents should be present in the response object."""
 
         FRAME_EXTENTS = [
-            [85.80496978759766, 28.292612075805664],
-            [115.91454315185547, 23.634376525878906],
-            [109.68016815185547, 3.395270824432373],
-            [82.32111358642578, 7.638208389282227],
-            [85.80496978759766, 28.292612075805664],
+            [85.8, 28.29],
+            [115.91, 23.63],
+            [109.68, 3.4],
+            [82.32, 7.64],
+            [85.8, 28.29],
         ]
         assert self.response.json()["frame_extents"] == FRAME_EXTENTS
 

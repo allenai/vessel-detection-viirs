@@ -1,5 +1,6 @@
 """ preprocessor.py
 """
+
 from __future__ import annotations
 
 import logging.config
@@ -10,13 +11,21 @@ from typing import Optional
 import cv2
 import netCDF4 as nc
 import numpy as np
+import yaml
 
 logging.config.fileConfig(
     os.path.join(os.path.dirname(os.path.realpath(__file__)), "logging.conf"),
     disable_existing_loggers=False,
 )
 logger = logging.getLogger(__name__)
+CONFIG_PATH = os.path.join(
+    os.path.dirname(os.path.realpath(__file__)), "config", "config.yml"
+)
 
+with open(CONFIG_PATH, "r") as file:
+    config = yaml.safe_load(file)["postprocessor"]
+
+N_LINES_PER_SCAN = config["N_LINES_PER_SCAN"]
 DNB_BASE_PATH = "/observation_data"
 DNB_OBERVATIONS_PATH = f"{DNB_BASE_PATH}/DNB_observations"
 DNB_QUALITY_PATH = f"{DNB_BASE_PATH}/DNB_quality_flags"
@@ -35,16 +44,30 @@ MOD_LAT = f"{GEO_BASE_PATH}/latitude"
 MOD_LON = f"{GEO_BASE_PATH}/longitude"
 MOD_SOLAR = f"{GEO_BASE_PATH}/solar_zenith"
 
+NAV_BASE_PATH = "/navigation_data"
+SCAN_ANGLE_PATH = f"{NAV_BASE_PATH}/att_ang_mid"  # pitch, yaw roll
+
 
 def extract_data(
     dnb_file: Path,
     geo_file: Path,
-    phys_file: Optional[Path] = None,
+    cloud_mask: Optional[Path] = None,
     modraw_path: Optional[Path] = None,
     modgeo_path: Optional[Path] = None,
 ) -> dict:
     """extracts data from nc file and builds dictionary of numpy arrays for each layer
 
+    Note on the resizing of the scan line data:
+    Scan Angle:
+    att_ang_mid	Attitude angles at mid-time	float32(number_of_scans, vector_elements)
+                    SDS Attributes:
+                    Attribute Name	Format		Example
+                    --------------	------		-------
+                    long_name	string		"Attitude angles (roll, pitch, yaw) at EV mid-times"
+                    units		string		"degrees"
+                    _FillValue	float32		-999.9
+                    valid_min	float32		-180.0
+                    valid_max	float32		180.0
 
     Parameters
     ----------
@@ -52,7 +75,7 @@ def extract_data(
         _description_
     geo_file : Path
         _description_
-    phys_file : Path, optional
+    cloud_mask : Path, optional
         cloud mask path, by default Path("not_available")
 
     Returns
@@ -66,21 +89,32 @@ def extract_data(
     longitude_array, _ = get_layer(geo_file, LONGITUDE_PATH)
     land_sea_array, _ = get_layer(geo_file, LAND_WATER_MASK_PATH)
     moonlight_array, _ = get_layer(geo_file, MOONLIGHT_PATH)
+    scan_angle_array, _ = get_layer(geo_file, SCAN_ANGLE_PATH)
 
-    if phys_file:
+    scan_angle = np.repeat(scan_angle_array, N_LINES_PER_SCAN).reshape(
+        -1, scan_angle_array.shape[1]
+    )  # reshape to match dimensionality of other pixel based arrays
+    if cloud_mask:
         try:
-            cloud_array_raw, _ = get_layer(phys_file, CLOUD_PATH)
+            cloud_array_raw, _ = get_layer(cloud_mask, CLOUD_PATH)
             height, width = dnb_array.shape
             # Note that cloud array needs to be resized to dimensions of DNB data
             resized_cloud_array = cv2.resize(
                 cloud_array_raw, (width, height), interpolation=cv2.INTER_AREA
             )
         except Exception:
-            logger.exception("Exception reading cloud mask, defaulting to zero array")
+            logger.exception(
+                "Unable to read cloud data, creating zerod array, assuming frame is all clouds",
+                exc_info=True,
+            )
             resized_cloud_array = np.zeros(
                 dnb_array.shape
             )  # == this is the equivalent of 100% cloud cover
     else:
+        logger.warning(
+            "Cloud data not provided, creating zerod array, assuming frame is all clouds",
+            exc_info=True,
+        )
         resized_cloud_array = np.zeros(
             dnb_array.shape
         )  # == this is the equivalent of 100% cloud cover
@@ -111,6 +145,7 @@ def extract_data(
         "moonlight": moonlight_array,
         "cloud_mask": resized_cloud_array,
         "m10_band": m10_data,
+        "scan_angle": scan_angle,
     }
 
 

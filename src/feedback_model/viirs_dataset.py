@@ -1,4 +1,11 @@
 """ VIIRS Vessel Dataset
+
+Default channels
+0: dnb_observations
+1: dnb_dataset["land_sea_mask"]
+2: dnb_dataset["moonlight"]
+3: dnb_dataset["cloud_mask"]
+
 """
 from pathlib import Path
 from typing import Tuple
@@ -29,6 +36,8 @@ class VIIRSVesselDataset(Dataset):
         self.images = list(Path(root_dir).rglob("*.npy"))
         self.class_map = CLASS_LABELS
         self.targets = [self.class_map[img_name.parts[-2]] for img_name in self.images]
+        # self.channels = (0, 1, 2, 3)
+        self.channels = (0, 1)  # just dnb_observations and land_sea_mask
 
     def __len__(self) -> int:
         """returns length of dataset
@@ -40,7 +49,10 @@ class VIIRSVesselDataset(Dataset):
         """
         return len(self.images)
 
-    def __getitem__(self, idx: int) -> Tuple[np.ndarray, torch.tensor]:
+    def __getitem__(
+        self,
+        idx: int,
+    ) -> Tuple[np.ndarray, torch.tensor]:
         """gets item from dataset
 
         Parameters
@@ -53,6 +65,9 @@ class VIIRSVesselDataset(Dataset):
         """
         img_name = self.images[idx]
         self.image = np.load(img_name.resolve()).astype(np.float32)
+
+        self.image = self.image[self.channels, :, :]
+
         label = img_name.parts[-2]
         self.class_id = torch.tensor(self.class_map[label])
         if self.transform:

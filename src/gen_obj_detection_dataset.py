@@ -12,70 +12,98 @@ Note that to run this script you will need to have a valid Earthdata token store
 an environment variable. See the README for more details.
 
 """
+
 from __future__ import absolute_import, division, print_function, unicode_literals
 
 import logging.config
 import os
-import os.path
-from datetime import date, datetime
+from datetime import datetime
 from itertools import repeat
 from multiprocessing import Pool
 from pathlib import Path
-from typing import List, Tuple
 
+import click
 import numpy as np
+from skyfield.almanac import find_discrete, phases
+from skyfield.api import load
 
 import utils
 from utils import viirs_annotate_pipeline
 
+# Initialize logging
 logging.config.fileConfig(
     os.path.join(os.path.dirname(os.path.realpath(__file__)), "logging.conf"),
     disable_existing_loggers=False,
 )
-
 logger = logging.getLogger(__name__)
 TOKEN = f"Bearer {os.environ.get('EARTHDATA_TOKEN')}"
 
-YEAR = 2022
 DAYS_IN_YEAR = 365
-NUMBER_OF_DAYS = 1  # in the random sample
-N_CORES = 2
-
-FULL_MOONS_2022 = [
-    (YEAR, 1, 17),
-    (YEAR, 2, 16),
-    (YEAR, 3, 18),
-    (YEAR, 4, 16),
-    (YEAR, 5, 16),
-    (YEAR, 6, 14),
-    (YEAR, 7, 13),
-    (YEAR, 8, 11),
-    (YEAR, 9, 10),
-    (YEAR, 10, 9),
-    (YEAR, 11, 8),
-    (YEAR, 12, 7),
-]
+NUMBER_OF_DAYS = 10  # Number of days to randomly sample from a given year.
 
 
-def random_sample_days(days: List[str], n_days: int) -> List:
+def full_moons_in_doy(year: int) -> list[int]:
+    """
+    Returns a list of Days of Year (DOY) for each full moon in the specified year.
+
+    Args:
+    year (int): The year for which to calculate full moon DOYs.
+
+    Returns:
+    list of int: DOYs for each full moon in the specified year.
+    """
+    # Load ephemeris data for planetary and lunar positions
+    ts = load.timescale()
+    eph = load("de421.bsp")
+
+    # Start and end times for the year
+    t0 = ts.utc(year, 1, 1)
+    t1 = ts.utc(year + 1, 1, 1)
+
+    # Find times of full moons
+    times, _ = find_discrete(t0, t1, phases(eph, "moon"))
+
+    # Convert times to DOY
+    full_moon_doy = [t.utc_datetime().timetuple().tm_yday for t in times]
+
+    return full_moon_doy
+
+
+# Example usage
+# print(full_moons_in_doy(2023))
+
+
+def list_all_days(year: int) -> list[str]:
+    """
+    Generates a list of all days in the year as strings.
+
+    Parameters:
+    year: int - The year for which to generate the day list.
+
+    Returns:
+    list[str] - A list of all days in the year, formatted as strings.
+    """
+    return [str(day) for day in range(1, DAYS_IN_YEAR + 1)]
+
+
+def random_sample_days(days: list[str], n_days: int) -> list:
     """Generates a random sample of n_days from a list of days
 
     Parameters
     ----------
-    days : List[str]
+    days : list[str]
     n_days : int
 
     Returns
     -------
-    List
+    list
     """
     return np.random.choice(a=days, size=n_days, replace=False)
 
 
-def get_dark_days(full_moons: List[Tuple[int, int, int]]) -> List[str]:
+def get_dark_days(year: int) -> list[str]:
     """Defines a period of darkness around new moon"""
-
-    FULL_MOONS_DOY = [date(*full_moon).timetuple().tm_yday for full_moon in full_moons]
+    FULL_MOONS_DOY = full_moons_in_doy(year)
     start = np.array(FULL_MOONS_DOY) - 7
     end = np.array(FULL_MOONS_DOY) + 8
     bright_times = [[beg, end] for beg, end in zip(start, end)]
@@ -159,37 +187,56 @@ def download_and_detect_one_frame(
             logger.exception(f"Error removing {dnb_path}")
 
 
-def generate_annotated_data() -> None:
-    """Runs the inference pipeline against a random sample"""
-    # datetime object containing current date and time
+def get_default_cores() -> int:
+    """Calculate the default number of cores: total cores minus 2, but at least 1."""
+    total_cores = os.cpu_count() or 4  # Fallback to 4 if os.cpu_count() returns None
+    return max(1, total_cores - 2)
 
-    dt_string = datetime.now().strftime("%d-%m-%Y-%H-%M-%S")
 
-    dataset_dir = Path(f"viirs-dataset-{dt_string}").resolve()
-    images_dir = os.path.join(dataset_dir, "images")
-    annotation_dir = os.path.join(dataset_dir, "annotations")
-    Path(images_dir).mkdir(parents=True, exist_ok=True)
-    Path(annotation_dir).mkdir(parents=True, exist_ok=True)
+@click.command()
+@click.option(
+    "--all-days", is_flag=True, help="Process data for every day of the specified year."
+)
+@click.option(
+    "--year",
+    default=2023,
+    help="The year for which to process the data.",
+    show_default=True,
+)
+def main(all_days: bool, year: int) -> None:
+    def generate_annotated_data(all_days: bool) -> None:
+        dt_string = datetime.now().strftime("%d-%m-%Y-%H-%M-%S")
+        dataset_dir = Path(f"viirs-dataset-{dt_string}").resolve()
+        images_dir = os.path.join(dataset_dir, "images")
+        annotation_dir = os.path.join(dataset_dir, "annotations")
+        Path(images_dir).mkdir(parents=True, exist_ok=True)
+        Path(annotation_dir).mkdir(parents=True, exist_ok=True)
 
-    with Pool(N_CORES) as par_pool:
-        dark_days = random_sample_days(get_dark_days(FULL_MOONS_2022), NUMBER_OF_DAYS)
-        logger.debug(f"Downloading days: {dark_days}")
+        days = (
+            list_all_days(year)
+            if all_days
+            else random_sample_days(get_dark_days(year), NUMBER_OF_DAYS)
+        )
+        logger.debug(f"Processing days: {days}")
 
-        for product_name in ["VNP02DNB", "VJ102DNB"]:
-            for day in dark_days:
-                times = utils.get_all_times_from_date()
-                download_and_detect_args = zip(
-                    repeat(product_name),
-                    repeat(YEAR),
-                    repeat(day),
-                    times,
-                    repeat(images_dir),
-                    repeat(annotation_dir),
-                )
-                par_pool.starmap(
-                    download_and_detect_one_frame, download_and_detect_args
-                )
+        with Pool(40) as par_pool:
+            for product_name in ["VNP02DNB", "VJ102DNB"]:
+                for day in days:
+                    times = utils.get_all_times_from_date()
+                    download_and_detect_args = zip(
+                        repeat(product_name),
+                        repeat(year),
+                        repeat(day),
+                        times,
+                        repeat(images_dir),
+                        repeat(annotation_dir),
+                    )
+                    par_pool.starmap(
+                        download_and_detect_one_frame, download_and_detect_args
+                    )
+
+    generate_annotated_data(all_days)
 
 
 if __name__ == "__main__":
-    generate_annotated_data()
+    main()

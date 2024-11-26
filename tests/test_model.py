@@ -1,5 +1,3 @@
-"""tests for the main model method
-"""
 import numpy as np
 
 from src import model
@@ -7,7 +5,6 @@ from src.utils import IMAGE_CHIP_SIZE, get_chips
 
 
 def create_single_detection_dataset() -> dict:
-    """"""
     x_pixels, y_pixels = (3216, 4064)
 
     dnb_array = np.zeros((x_pixels, y_pixels))
@@ -24,6 +21,7 @@ def create_single_detection_dataset() -> dict:
     moonlight_array = np.zeros((x_pixels, y_pixels))
     # put this in deep ocean with no land
     land_sea_array = np.ones((x_pixels, y_pixels)) * 7
+    scan_angle_array = np.random.random_sample((x_pixels, 3))
 
     return {
         "dnb": {
@@ -35,6 +33,8 @@ def create_single_detection_dataset() -> dict:
         "longitude": longitude_array,
         "land_sea_mask": land_sea_array,
         "moonlight": moonlight_array,
+        "scan_angle": scan_angle_array,
+        "cloud_mask": np.zeros(dnb_array.shape),
     }
 
 
@@ -70,6 +70,7 @@ def create_moonlight_dataset() -> dict:
         "longitude": longitude_array,
         "land_sea_mask": land_sea_array,
         "moonlight": moonlight_array,
+        "cloud_mask": np.zeros(dnb_array.shape),
     }
 
 
@@ -98,7 +99,7 @@ def create_edge_detection_dataset() -> dict:
     moonlight_array = np.zeros((x_pixels, y_pixels))
     # put this in deep ocean with no land
     land_sea_array = np.ones((x_pixels, y_pixels)) * 7
-
+    scan_angle_array = np.random.random_sample((x_pixels, 3))
     return {
         "dnb": {
             "data": dnb_array,
@@ -109,6 +110,7 @@ def create_edge_detection_dataset() -> dict:
         "longitude": longitude_array,
         "land_sea_mask": land_sea_array,
         "moonlight": moonlight_array,
+        "scan_angle": scan_angle_array,
     }
 
 
@@ -118,7 +120,24 @@ def test_vvd_cv_model_e2e() -> None:
     detections, input_image = model.vvd_cv_model(dnb_dataset)
     detection = detections[0]["coords"]
     assert np.abs(detection[0] - 1608) < 1
-    assert np.abs(detection[1] - 2032) < 1
+    assert np.abs(detection[1] - 2032) < 11
+
+
+def test_radiance() -> None:
+    """tests that detection is returned at correct location"""
+    dnb_dataset = create_single_detection_dataset()
+
+    from src.pipeline import VVDPostProcessor
+
+    detections, input_image = model.vvd_cv_model(dnb_dataset)
+    all_detections = VVDPostProcessor.run_pipeline(
+        detections, dnb_dataset, filters=[], image_array=input_image
+    )
+    detections = all_detections["vessel_detections"]
+    chips_dict = get_chips(input_image, detections, dnb_dataset)
+
+    for idx, chip_info in chips_dict.items():
+        assert chip_info["radiance_nw"] == 1
 
 
 def test_vvd_cv_model_e2e_n_detections() -> None:

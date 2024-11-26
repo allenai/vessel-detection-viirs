@@ -1,494 +1,3490 @@
 {
-  "acquisition_time": "2023-11-06T06:06:00+00:00",
-  "average_moonlight": 41.03747558593751,
-  "filename": "VJ102DNB_NRT_2023_310_VJ102DNB_NRT.A2023310.0606.021.2023310104322.nc",
+  "acquisition_time": "2023-10-27T11:36:00+00:00",
+  "average_moonlight": -64.623,
+  "filename": "VNP02DNB_NRT.A2023300.1136.002.2023300154339.nc",
   "frame_extents": [
     [
-      -83.96856689453125,
-      1.4819698333740234
+      -163.69,
+      46.75
     ],
     [
-      -51.53867721557617,
-      -3.4533300399780273
+      -125.75,
+      40.98
     ],
     [
-      -54.48891830444336,
-      -23.618480682373047
+      -135.59,
+      21.41
     ],
     [
-      -89.72007751464844,
-      -18.79341697692871
+      -165.32,
+      25.97
     ],
     [
-      -83.96856689453125,
-      1.4819698333740234
+      -163.69,
+      46.75
     ]
   ],
   "gcp_bucket": null,
-  "model_version": "2023-11-23T04:51:10.984813",
+  "model_version": "2024-11-15T15:59:36.192495",
   "predictions": [
     {
-      "chip_path": "/example/chips/-16.329788208007812_-79.81206512451172.jpeg",
+      "chip_path": "tests/test_files/chips/43.136_-154.004.jpeg",
       "clear_sky_confidence": 0.0,
-      "latitude": -16.329788208007812,
-      "longitude": -79.81206512451172,
+      "latitude": 43.14,
+      "longitude": -154.004,
       "meters_per_pixel": 86,
-      "moonlight_illumination": 41.040000915527344,
-      "nanowatts": 239.61000061035156,
-      "orientation": 345.72115795089985
+      "moonlight_illumination": 97.0,
+      "nanowatts": 8.25,
+      "orientation": 84.0,
+      "radiance_nw": 8.25,
+      "scan_angle": [
+        0.005,
+        0.005,
+        0.005
+      ],
+      "x": 521,
+      "y": 1032
     },
     {
-      "chip_path": "/example/chips/-16.584426879882812_-80.19715881347656.jpeg",
+      "chip_path": "tests/test_files/chips/41.717_-153.882.jpeg",
       "clear_sky_confidence": 0.0,
-      "latitude": -16.584426879882812,
-      "longitude": -80.19715881347656,
+      "latitude": 41.717,
+      "longitude": -153.882,
       "meters_per_pixel": 86,
-      "moonlight_illumination": 41.040000915527344,
-      "nanowatts": 886.9299926757812,
-      "orientation": 345.60232174608973
+      "moonlight_illumination": 97.0,
+      "nanowatts": 11.03,
+      "orientation": 84.0,
+      "radiance_nw": 11.03,
+      "scan_angle": [
+        -0.007,
+        -0.007,
+        -0.007
+      ],
+      "x": 734,
+      "y": 1076
     },
     {
-      "chip_path": "/example/chips/-17.271718978881836_-78.94698333740234.jpeg",
+      "chip_path": "tests/test_files/chips/40.787_-155.127.jpeg",
       "clear_sky_confidence": 0.0,
-      "latitude": -17.271718978881836,
-      "longitude": -78.94698333740234,
+      "latitude": 40.787,
+      "longitude": -155.127,
       "meters_per_pixel": 86,
-      "moonlight_illumination": 41.040000915527344,
-      "nanowatts": 143.91000366210938,
-      "orientation": 344.51637632553275
+      "moonlight_illumination": 97.0,
+      "nanowatts": 10.79,
+      "orientation": 85.0,
+      "radiance_nw": 10.79,
+      "scan_angle": [
+        0.005,
+        0.005,
+        0.005
+      ],
+      "x": 889,
+      "y": 959
     },
     {
-      "chip_path": "/example/chips/-17.276168823242188_-78.94778442382812.jpeg",
+      "chip_path": "tests/test_files/chips/40.639_-154.28.jpeg",
       "clear_sky_confidence": 0.0,
-      "latitude": -17.276168823242188,
-      "longitude": -78.94778442382812,
+      "latitude": 40.639,
+      "longitude": -154.28,
       "meters_per_pixel": 86,
-      "moonlight_illumination": 41.040000915527344,
-      "nanowatts": 84.80999755859375,
-      "orientation": 344.52080990779405
+      "moonlight_illumination": 97.0,
+      "nanowatts": 16.47,
+      "orientation": 84.0,
+      "radiance_nw": 16.47,
+      "scan_angle": [
+        0.005,
+        0.005,
+        0.005
+      ],
+      "x": 902,
+      "y": 1057
     },
     {
-      "chip_path": "/example/chips/-17.328941345214844_-79.11786651611328.jpeg",
+      "chip_path": "tests/test_files/chips/37.588_-141.574.jpeg",
       "clear_sky_confidence": 0.0,
-      "latitude": -17.328941345214844,
-      "longitude": -79.11786651611328,
+      "latitude": 37.588,
+      "longitude": -141.574,
       "meters_per_pixel": 86,
-      "moonlight_illumination": 41.040000915527344,
-      "nanowatts": 104.79000091552734,
-      "orientation": 345.9309775709677
+      "moonlight_illumination": 97.0,
+      "nanowatts": 8.17,
+      "orientation": 76.0,
+      "radiance_nw": 8.17,
+      "scan_angle": [
+        -0.013,
+        0.005,
+        0.005
+      ],
+      "x": 1093,
+      "y": 2579
     },
     {
-      "chip_path": "/example/chips/-17.202096939086914_-80.4629898071289.jpeg",
+      "chip_path": "tests/test_files/chips/37.014_-141.259.jpeg",
       "clear_sky_confidence": 0.0,
-      "latitude": -17.202096939086914,
-      "longitude": -80.4629898071289,
+      "latitude": 37.014,
+      "longitude": -141.259,
       "meters_per_pixel": 86,
-      "moonlight_illumination": 41.040000915527344,
-      "nanowatts": 29.90999984741211,
-      "orientation": 343.80483759511964
+      "moonlight_illumination": 97.0,
+      "nanowatts": 15.92,
+      "orientation": 76.0,
+      "radiance_nw": 15.92,
+      "scan_angle": [
+        -0.006,
+        -0.006,
+        -0.006
+      ],
+      "x": 1167,
+      "y": 2639
     },
     {
-      "chip_path": "/example/chips/-17.204723358154297_-80.44886779785156.jpeg",
+      "chip_path": "tests/test_files/chips/37.054_-141.969.jpeg",
       "clear_sky_confidence": 0.0,
-      "latitude": -17.204723358154297,
-      "longitude": -80.44886779785156,
+      "latitude": 37.054,
+      "longitude": -141.969,
       "meters_per_pixel": 86,
-      "moonlight_illumination": 41.040000915527344,
-      "nanowatts": 48.61000061035156,
-      "orientation": 343.8126585248751
+      "moonlight_illumination": 97.0,
+      "nanowatts": 9.1,
+      "orientation": 76.0,
+      "radiance_nw": 9.1,
+      "scan_angle": [
+        -0.007,
+        -0.007,
+        -0.007
+      ],
+      "x": 1182,
+      "y": 2557
     },
     {
-      "chip_path": "/example/chips/-17.41285514831543_-79.32799530029297.jpeg",
+      "chip_path": "tests/test_files/chips/36.895_-142.101.jpeg",
       "clear_sky_confidence": 0.0,
-      "latitude": -17.41285514831543,
-      "longitude": -79.32799530029297,
+      "latitude": 36.895,
+      "longitude": -142.101,
       "meters_per_pixel": 86,
-      "moonlight_illumination": 41.040000915527344,
-      "nanowatts": 98.01000213623047,
-      "orientation": 344.194152307512
+      "moonlight_illumination": 97.0,
+      "nanowatts": 6.95,
+      "orientation": 76.0,
+      "radiance_nw": 6.95,
+      "scan_angle": [
+        0.005,
+        0.005,
+        0.005
+      ],
+      "x": 1209,
+      "y": 2549
     },
     {
-      "chip_path": "/example/chips/-17.44253158569336_-79.17034912109375.jpeg",
+      "chip_path": "tests/test_files/chips/35.338_-141.634.jpeg",
       "clear_sky_confidence": 0.0,
-      "latitude": -17.44253158569336,
-      "longitude": -79.17034912109375,
+      "latitude": 35.338,
+      "longitude": -141.634,
       "meters_per_pixel": 86,
-      "moonlight_illumination": 41.040000915527344,
-      "nanowatts": 44.279998779296875,
-      "orientation": 344.26095358647603
+      "moonlight_illumination": 97.0,
+      "nanowatts": 7.63,
+      "orientation": 76.0,
+      "radiance_nw": 7.63,
+      "scan_angle": [
+        -0.006,
+        -0.006,
+        -0.006
+      ],
+      "x": 1422,
+      "y": 2669
     },
     {
-      "chip_path": "/example/chips/-17.200950622558594_-80.5069580078125.jpeg",
+      "chip_path": "tests/test_files/chips/35.039_-140.562.jpeg",
       "clear_sky_confidence": 0.0,
-      "latitude": -17.200950622558594,
-      "longitude": -80.5069580078125,
+      "latitude": 35.039,
+      "longitude": -140.562,
       "meters_per_pixel": 86,
-      "moonlight_illumination": 41.040000915527344,
-      "nanowatts": 427.05999755859375,
-      "orientation": 343.78948951752983
+      "moonlight_illumination": 97.0,
+      "nanowatts": 8.69,
+      "orientation": 75.0,
+      "radiance_nw": 8.69,
+      "scan_angle": [
+        0.005,
+        0.005,
+        0.005
+      ],
+      "x": 1433,
+      "y": 2808
     },
     {
-      "chip_path": "/example/chips/-17.204011917114258_-80.50733947753906.jpeg",
+      "chip_path": "tests/test_files/chips/34.992_-140.377.jpeg",
       "clear_sky_confidence": 0.0,
-      "latitude": -17.204011917114258,
-      "longitude": -80.50733947753906,
+      "latitude": 34.992,
+      "longitude": -140.377,
       "meters_per_pixel": 86,
-      "moonlight_illumination": 41.040000915527344,
-      "nanowatts": 365.5199890136719,
-      "orientation": 343.7941377736734
+      "moonlight_illumination": 97.0,
+      "nanowatts": 8.85,
+      "orientation": 75.0,
+      "radiance_nw": 8.85,
+      "scan_angle": [
+        0.005,
+        0.005,
+        -0.006
+      ],
+      "x": 1434,
+      "y": 2832
     },
     {
-      "chip_path": "/example/chips/-17.625743865966797_-78.76102447509766.jpeg",
+      "chip_path": "tests/test_files/chips/35.133_-141.569.jpeg",
       "clear_sky_confidence": 0.0,
-      "latitude": -17.625743865966797,
-      "longitude": -78.76102447509766,
+      "latitude": 35.133,
+      "longitude": -141.569,
       "meters_per_pixel": 86,
-      "moonlight_illumination": 41.04999923706055,
-      "nanowatts": 21.59000015258789,
-      "orientation": 344.69742960909156
+      "moonlight_illumination": 97.0,
+      "nanowatts": 9.73,
+      "orientation": 76.0,
+      "radiance_nw": 9.73,
+      "scan_angle": [
+        0.004,
+        0.004,
+        -0.006
+      ],
+      "x": 1450,
+      "y": 2686
     },
     {
-      "chip_path": "/example/chips/-17.33180046081543_-80.38783264160156.jpeg",
+      "chip_path": "tests/test_files/chips/35.121_-141.581.jpeg",
       "clear_sky_confidence": 0.0,
-      "latitude": -17.33180046081543,
-      "longitude": -80.38783264160156,
+      "latitude": 35.121,
+      "longitude": -141.581,
       "meters_per_pixel": 86,
-      "moonlight_illumination": 41.040000915527344,
-      "nanowatts": 38.619998931884766,
-      "orientation": 344.1674075976247
+      "moonlight_illumination": 97.0,
+      "nanowatts": 6.69,
+      "orientation": 76.0,
+      "radiance_nw": 6.69,
+      "scan_angle": [
+        -0.006,
+        -0.006,
+        -0.006
+      ],
+      "x": 1452,
+      "y": 2685
     },
     {
-      "chip_path": "/example/chips/-17.46282386779785_-79.69107818603516.jpeg",
+      "chip_path": "tests/test_files/chips/34.845_-143.669.jpeg",
       "clear_sky_confidence": 0.0,
-      "latitude": -17.46282386779785,
-      "longitude": -79.69107818603516,
+      "latitude": 34.845,
+      "longitude": -143.669,
       "meters_per_pixel": 86,
-      "moonlight_illumination": 41.040000915527344,
-      "nanowatts": 76.33000183105469,
-      "orientation": 344.40790012712466
+      "moonlight_illumination": 97.0,
+      "nanowatts": 9.61,
+      "orientation": 77.0,
+      "radiance_nw": 9.61,
+      "scan_angle": [
+        -0.014,
+        -0.014,
+        -0.014
+      ],
+      "x": 1552,
+      "y": 2453
     },
     {
-      "chip_path": "/example/chips/-17.465856552124023_-79.69202423095703.jpeg",
+      "chip_path": "tests/test_files/chips/33.861_-139.775.jpeg",
       "clear_sky_confidence": 0.0,
-      "latitude": -17.465856552124023,
-      "longitude": -79.69202423095703,
+      "latitude": 33.861,
+      "longitude": -139.775,
       "meters_per_pixel": 86,
-      "moonlight_illumination": 41.040000915527344,
-      "nanowatts": 79.13999938964844,
-      "orientation": 344.41074447711793
+      "moonlight_illumination": 97.0,
+      "nanowatts": 10.58,
+      "orientation": 75.0,
+      "radiance_nw": 10.58,
+      "scan_angle": [
+        -0.006,
+        -0.006,
+        -0.006
+      ],
+      "x": 1579,
+      "y": 2955
     },
     {
-      "chip_path": "/example/chips/-17.45999526977539_-79.76749420166016.jpeg",
+      "chip_path": "tests/test_files/chips/33.826_-139.892.jpeg",
       "clear_sky_confidence": 0.0,
-      "latitude": -17.45999526977539,
-      "longitude": -79.76749420166016,
+      "latitude": 33.826,
+      "longitude": -139.892,
       "meters_per_pixel": 86,
-      "moonlight_illumination": 41.040000915527344,
-      "nanowatts": 70.6500015258789,
-      "orientation": 344.3784315631493
+      "moonlight_illumination": 97.0,
+      "nanowatts": 9.76,
+      "orientation": 75.0,
+      "radiance_nw": 9.76,
+      "scan_angle": [
+        -0.015,
+        -0.015,
+        -0.015
+      ],
+      "x": 1588,
+      "y": 2943
     },
     {
-      "chip_path": "/example/chips/-17.379749298095703_-80.26939392089844.jpeg",
+      "chip_path": "tests/test_files/chips/34.594_-144.236.jpeg",
       "clear_sky_confidence": 0.0,
-      "latitude": -17.379749298095703,
-      "longitude": -80.26939392089844,
+      "latitude": 34.594,
+      "longitude": -144.236,
       "meters_per_pixel": 86,
-      "moonlight_illumination": 41.040000915527344,
-      "nanowatts": 46.560001373291016,
-      "orientation": 344.2194170916997
+      "moonlight_illumination": 97.0,
+      "nanowatts": 14.65,
+      "orientation": 78.0,
+      "radiance_nw": 14.65,
+      "scan_angle": [
+        -0.014,
+        -0.014,
+        -0.014
+      ],
+      "x": 1604,
+      "y": 2397
     },
     {
-      "chip_path": "/example/chips/-17.388038635253906_-80.3352279663086.jpeg",
+      "chip_path": "tests/test_files/chips/34.358_-144.255.jpeg",
       "clear_sky_confidence": 0.0,
-      "latitude": -17.388038635253906,
-      "longitude": -80.3352279663086,
+      "latitude": 34.358,
+      "longitude": -144.255,
       "meters_per_pixel": 86,
-      "moonlight_illumination": 41.040000915527344,
-      "nanowatts": 953.8599853515625,
-      "orientation": 345.75292090204294
+      "moonlight_illumination": 97.0,
+      "nanowatts": 10.92,
+      "orientation": 78.0,
+      "radiance_nw": 10.92,
+      "scan_angle": [
+        0.005,
+        0.005,
+        0.005
+      ],
+      "x": 1639,
+      "y": 2404
     },
     {
-      "chip_path": "/example/chips/-17.39635467529297_-80.40174102783203.jpeg",
+      "chip_path": "tests/test_files/chips/34.086_-144.373.jpeg",
       "clear_sky_confidence": 0.0,
-      "latitude": -17.39635467529297,
-      "longitude": -80.40174102783203,
+      "latitude": 34.086,
+      "longitude": -144.373,
       "meters_per_pixel": 86,
-      "moonlight_illumination": 41.040000915527344,
-      "nanowatts": 40.900001525878906,
-      "orientation": 345.7289281327065
+      "moonlight_illumination": 97.0,
+      "nanowatts": 11.86,
+      "orientation": 77.0,
+      "radiance_nw": 11.86,
+      "scan_angle": [
+        -0.013,
+        -0.013,
+        -0.013
+      ],
+      "x": 1682,
+      "y": 2401
     },
     {
-      "chip_path": "/example/chips/-17.487178802490234_-80.10687255859375.jpeg",
+      "chip_path": "tests/test_files/chips/33.885_-145.736.jpeg",
       "clear_sky_confidence": 0.0,
-      "latitude": -17.487178802490234,
-      "longitude": -80.10687255859375,
+      "latitude": 33.885,
+      "longitude": -145.736,
       "meters_per_pixel": 86,
-      "moonlight_illumination": 41.040000915527344,
-      "nanowatts": 14.0,
-      "orientation": 344.1586518460876
+      "moonlight_illumination": 97.0,
+      "nanowatts": 12.37,
+      "orientation": 78.0,
+      "radiance_nw": 12.37,
+      "scan_angle": [
+        -0.014,
+        -0.014,
+        -0.014
+      ],
+      "x": 1747,
+      "y": 2248
     },
     {
-      "chip_path": "/example/chips/-17.451644897460938_-80.39041900634766.jpeg",
+      "chip_path": "tests/test_files/chips/33.861_-145.717.jpeg",
       "clear_sky_confidence": 0.0,
-      "latitude": -17.451644897460938,
-      "longitude": -80.39041900634766,
+      "latitude": 33.861,
+      "longitude": -145.717,
       "meters_per_pixel": 86,
-      "moonlight_illumination": 41.040000915527344,
-      "nanowatts": 527.27001953125,
-      "orientation": 344.04739196390665
+      "moonlight_illumination": 97.0,
+      "nanowatts": 10.03,
+      "orientation": 78.0,
+      "radiance_nw": 10.03,
+      "scan_angle": [
+        0.005,
+        0.005,
+        0.005
+      ],
+      "x": 1750,
+      "y": 2251
     },
     {
-      "chip_path": "/example/chips/-17.8555850982666_-78.53720092773438.jpeg",
+      "chip_path": "tests/test_files/chips/32.478_-145.417.jpeg",
       "clear_sky_confidence": 0.0,
-      "latitude": -17.8555850982666,
-      "longitude": -78.53720092773438,
+      "latitude": 32.478,
+      "longitude": -145.417,
       "meters_per_pixel": 86,
-      "moonlight_illumination": 41.04999923706055,
-      "nanowatts": 78.02999877929688,
-      "orientation": 346.3014072099928
+      "moonlight_illumination": 97.0,
+      "nanowatts": 10.8,
+      "orientation": 78.0,
+      "radiance_nw": 10.8,
+      "scan_angle": [
+        0.005,
+        0.005,
+        0.005
+      ],
+      "x": 1945,
+      "y": 2339
     },
     {
-      "chip_path": "/example/chips/-17.59218406677246_-80.12737274169922.jpeg",
+      "chip_path": "tests/test_files/chips/31.156_-144.448.jpeg",
       "clear_sky_confidence": 0.0,
-      "latitude": -17.59218406677246,
-      "longitude": -80.12737274169922,
+      "latitude": 31.156,
+      "longitude": -144.448,
       "meters_per_pixel": 86,
-      "moonlight_illumination": 41.040000915527344,
-      "nanowatts": 39.9900016784668,
-      "orientation": 344.26628798006954
+      "moonlight_illumination": 97.0,
+      "nanowatts": 10.34,
+      "orientation": 77.0,
+      "radiance_nw": 10.34,
+      "scan_angle": [
+        -0.014,
+        -0.014,
+        -0.014
+      ],
+      "x": 2113,
+      "y": 2508
     },
     {
-      "chip_path": "/example/chips/-17.597665786743164_-80.13578033447266.jpeg",
+      "chip_path": "tests/test_files/chips/31.152_-144.465.jpeg",
       "clear_sky_confidence": 0.0,
-      "latitude": -17.597665786743164,
-      "longitude": -80.13578033447266,
+      "latitude": 31.152,
+      "longitude": -144.465,
       "meters_per_pixel": 86,
-      "moonlight_illumination": 41.040000915527344,
-      "nanowatts": 84.41000366210938,
-      "orientation": 344.2659896680504
+      "moonlight_illumination": 97.0,
+      "nanowatts": 13.81,
+      "orientation": 77.0,
+      "radiance_nw": 13.81,
+      "scan_angle": [
+        -0.014,
+        -0.014,
+        -0.014
+      ],
+      "x": 2114,
+      "y": 2506
     },
     {
-      "chip_path": "/example/chips/-17.60093879699707_-80.13689422607422.jpeg",
+      "chip_path": "tests/test_files/chips/31.144_-144.459.jpeg",
       "clear_sky_confidence": 0.0,
-      "latitude": -17.60093879699707,
-      "longitude": -80.13689422607422,
+      "latitude": 31.144,
+      "longitude": -144.459,
       "meters_per_pixel": 86,
-      "moonlight_illumination": 41.040000915527344,
-      "nanowatts": 32.16999816894531,
-      "orientation": 344.2688632420481
+      "moonlight_illumination": 97.0,
+      "nanowatts": 9.8,
+      "orientation": 77.0,
+      "radiance_nw": 9.8,
+      "scan_angle": [
+        -0.014,
+        -0.014,
+        -0.014
+      ],
+      "x": 2115,
+      "y": 2507
     },
     {
-      "chip_path": "/example/chips/-17.806188583374023_-79.06849670410156.jpeg",
+      "chip_path": "tests/test_files/chips/30.754_-143.815.jpeg",
       "clear_sky_confidence": 0.0,
-      "latitude": -17.806188583374023,
-      "longitude": -79.06849670410156,
+      "latitude": 30.754,
+      "longitude": -143.815,
       "meters_per_pixel": 86,
-      "moonlight_illumination": 41.04999923706055,
-      "nanowatts": 23.360000610351562,
-      "orientation": 344.57964475940634
+      "moonlight_illumination": 97.0,
+      "nanowatts": 9.52,
+      "orientation": 77.0,
+      "radiance_nw": 9.52,
+      "scan_angle": [
+        0.005,
+        0.005,
+        -0.005
+      ],
+      "x": 2154,
+      "y": 2601
     },
     {
-      "chip_path": "/example/chips/-17.883058547973633_-78.64361572265625.jpeg",
+      "chip_path": "tests/test_files/chips/30.743_-143.834.jpeg",
       "clear_sky_confidence": 0.0,
-      "latitude": -17.883058547973633,
-      "longitude": -78.64361572265625,
+      "latitude": 30.743,
+      "longitude": -143.834,
       "meters_per_pixel": 86,
-      "moonlight_illumination": 41.04999923706055,
-      "nanowatts": 182.25999450683594,
-      "orientation": 344.71603413362897
+      "moonlight_illumination": 97.0,
+      "nanowatts": 16.9,
+      "orientation": 77.0,
+      "radiance_nw": 16.9,
+      "scan_angle": [
+        -0.005,
+        -0.005,
+        -0.005
+      ],
+      "x": 2156,
+      "y": 2599
     },
     {
-      "chip_path": "/example/chips/-17.58824920654297_-80.31940460205078.jpeg",
+      "chip_path": "tests/test_files/chips/30.735_-143.828.jpeg",
       "clear_sky_confidence": 0.0,
-      "latitude": -17.58824920654297,
-      "longitude": -80.31940460205078,
+      "latitude": 30.735,
+      "longitude": -143.828,
       "meters_per_pixel": 86,
-      "moonlight_illumination": 41.040000915527344,
-      "nanowatts": 99.19999694824219,
-      "orientation": 344.1987196871376
+      "moonlight_illumination": 97.0,
+      "nanowatts": 11.01,
+      "orientation": 77.0,
+      "radiance_nw": 11.01,
+      "scan_angle": [
+        -0.005,
+        -0.005,
+        -0.005
+      ],
+      "x": 2157,
+      "y": 2600
     },
     {
-      "chip_path": "/example/chips/-17.5740966796875_-80.53997802734375.jpeg",
+      "chip_path": "tests/test_files/chips/30.62_-143.865.jpeg",
       "clear_sky_confidence": 0.0,
-      "latitude": -17.5740966796875,
-      "longitude": -80.53997802734375,
+      "latitude": 30.62,
+      "longitude": -143.865,
       "meters_per_pixel": 86,
-      "moonlight_illumination": 41.040000915527344,
-      "nanowatts": 119.20999908447266,
-      "orientation": 345.42124761110284
+      "moonlight_illumination": 97.0,
+      "nanowatts": 23.04,
+      "orientation": 77.0,
+      "radiance_nw": 23.04,
+      "scan_angle": [
+        -0.005,
+        -0.005,
+        -0.005
+      ],
+      "x": 2175,
+      "y": 2600
     },
     {
-      "chip_path": "/example/chips/-17.5404109954834_-80.78968048095703.jpeg",
+      "chip_path": "tests/test_files/chips/31.344_-148.231.jpeg",
       "clear_sky_confidence": 0.0,
-      "latitude": -17.5404109954834,
-      "longitude": -80.78968048095703,
+      "latitude": 31.344,
+      "longitude": -148.231,
       "meters_per_pixel": 86,
-      "moonlight_illumination": 41.040000915527344,
-      "nanowatts": 170.85000610351562,
-      "orientation": 345.34162302086094
+      "moonlight_illumination": 97.0,
+      "nanowatts": 9.83,
+      "orientation": 80.0,
+      "radiance_nw": 9.83,
+      "scan_angle": [
+        -0.014,
+        0.004,
+        0.004
+      ],
+      "x": 2181,
+      "y": 2037
     },
     {
-      "chip_path": "/example/chips/-17.58759117126465_-80.54281616210938.jpeg",
+      "chip_path": "tests/test_files/chips/30.552_-144.108.jpeg",
       "clear_sky_confidence": 0.0,
-      "latitude": -17.58759117126465,
-      "longitude": -80.54281616210938,
+      "latitude": 30.552,
+      "longitude": -144.108,
       "meters_per_pixel": 86,
-      "moonlight_illumination": 41.040000915527344,
-      "nanowatts": 9.819999694824219,
-      "orientation": 345.4173754682441
+      "moonlight_illumination": 97.0,
+      "nanowatts": 12.7,
+      "orientation": 77.0,
+      "radiance_nw": 12.7,
+      "scan_angle": [
+        -0.014,
+        -0.014,
+        -0.014
+      ],
+      "x": 2192,
+      "y": 2574
     },
     {
-      "chip_path": "/example/chips/-17.72487449645996_-80.20621490478516.jpeg",
+      "chip_path": "tests/test_files/chips/30.548_-144.085.jpeg",
       "clear_sky_confidence": 0.0,
-      "latitude": -17.72487449645996,
-      "longitude": -80.20621490478516,
+      "latitude": 30.548,
+      "longitude": -144.085,
       "meters_per_pixel": 86,
-      "moonlight_illumination": 41.040000915527344,
-      "nanowatts": 30.229999542236328,
-      "orientation": 345.5250502953854
+      "moonlight_illumination": 97.0,
+      "nanowatts": 15.05,
+      "orientation": 77.0,
+      "radiance_nw": 15.05,
+      "scan_angle": [
+        -0.014,
+        -0.014,
+        -0.014
+      ],
+      "x": 2192,
+      "y": 2577
     },
     {
-      "chip_path": "/example/chips/-17.6248722076416_-80.7727279663086.jpeg",
+      "chip_path": "tests/test_files/chips/30.497_-143.863.jpeg",
       "clear_sky_confidence": 0.0,
-      "latitude": -17.6248722076416,
-      "longitude": -80.7727279663086,
+      "latitude": 30.497,
+      "longitude": -143.863,
       "meters_per_pixel": 86,
-      "moonlight_illumination": 41.040000915527344,
-      "nanowatts": 543.1300048828125,
-      "orientation": 345.32845287782885
+      "moonlight_illumination": 97.0,
+      "nanowatts": 14.39,
+      "orientation": 77.0,
+      "radiance_nw": 14.39,
+      "scan_angle": [
+        -0.014,
+        -0.014,
+        -0.014
+      ],
+      "x": 2193,
+      "y": 2606
     },
     {
-      "chip_path": "/example/chips/-17.634868621826172_-80.90150451660156.jpeg",
+      "chip_path": "tests/test_files/chips/31.235_-148.142.jpeg",
       "clear_sky_confidence": 0.0,
-      "latitude": -17.634868621826172,
-      "longitude": -80.90150451660156,
+      "latitude": 31.235,
+      "longitude": -148.142,
       "meters_per_pixel": 86,
-      "moonlight_illumination": 41.040000915527344,
-      "nanowatts": 12.010000228881836,
-      "orientation": 345.2783509899575
+      "moonlight_illumination": 97.0,
+      "nanowatts": 11.38,
+      "orientation": 79.0,
+      "radiance_nw": 11.38,
+      "scan_angle": [
+        -0.014,
+        -0.014,
+        -0.014
+      ],
+      "x": 2195,
+      "y": 2052
     },
     {
-      "chip_path": "/example/chips/-17.642854690551758_-80.89610290527344.jpeg",
+      "chip_path": "tests/test_files/chips/31.227_-148.136.jpeg",
       "clear_sky_confidence": 0.0,
-      "latitude": -17.642854690551758,
-      "longitude": -80.89610290527344,
+      "latitude": 31.227,
+      "longitude": -148.136,
       "meters_per_pixel": 86,
-      "moonlight_illumination": 41.040000915527344,
-      "nanowatts": 32.869998931884766,
-      "orientation": 345.27811488373425
+      "moonlight_illumination": 97.0,
+      "nanowatts": 10.39,
+      "orientation": 80.0,
+      "radiance_nw": 10.39,
+      "scan_angle": [
+        -0.014,
+        -0.014,
+        -0.014
+      ],
+      "x": 2196,
+      "y": 2053
     },
     {
-      "chip_path": "/example/chips/-17.648244857788086_-80.90435791015625.jpeg",
+      "chip_path": "tests/test_files/chips/30.577_-144.389.jpeg",
       "clear_sky_confidence": 0.0,
-      "latitude": -17.648244857788086,
-      "longitude": -80.90435791015625,
+      "latitude": 30.577,
+      "longitude": -144.389,
       "meters_per_pixel": 86,
-      "moonlight_illumination": 41.040000915527344,
-      "nanowatts": 26.350000381469727,
-      "orientation": 345.2745344154185
+      "moonlight_illumination": 97.0,
+      "nanowatts": 7.76,
+      "orientation": 77.0,
+      "radiance_nw": 7.76,
+      "scan_angle": [
+        -0.014,
+        -0.014,
+        -0.014
+      ],
+      "x": 2196,
+      "y": 2538
     },
     {
-      "chip_path": "/example/chips/-17.652124404907227_-80.88389587402344.jpeg",
+      "chip_path": "tests/test_files/chips/31.216_-148.154.jpeg",
       "clear_sky_confidence": 0.0,
-      "latitude": -17.652124404907227,
-      "longitude": -80.88389587402344,
+      "latitude": 31.216,
+      "longitude": -148.154,
       "meters_per_pixel": 86,
-      "moonlight_illumination": 41.040000915527344,
-      "nanowatts": 14.229999542236328,
-      "orientation": 345.2801819601594
+      "moonlight_illumination": 97.0,
+      "nanowatts": 9.41,
+      "orientation": 80.0,
+      "radiance_nw": 9.41,
+      "scan_angle": [
+        0.004,
+        0.004,
+        0.004
+      ],
+      "x": 2198,
+      "y": 2051
     },
     {
-      "chip_path": "/example/chips/-17.661619186401367_-80.9072036743164.jpeg",
+      "chip_path": "tests/test_files/chips/31.008_-148.039.jpeg",
       "clear_sky_confidence": 0.0,
-      "latitude": -17.661619186401367,
-      "longitude": -80.9072036743164,
+      "latitude": 31.008,
+      "longitude": -148.039,
       "meters_per_pixel": 86,
-      "moonlight_illumination": 41.040000915527344,
-      "nanowatts": 11.550000190734863,
-      "orientation": 343.7297375507306
+      "moonlight_illumination": 97.0,
+      "nanowatts": 8.32,
+      "orientation": 79.0,
+      "radiance_nw": 8.32,
+      "scan_angle": [
+        -0.013,
+        -0.013,
+        -0.013
+      ],
+      "x": 2226,
+      "y": 2073
     },
     {
-      "chip_path": "/example/chips/-18.084644317626953_-78.9260025024414.jpeg",
+      "chip_path": "tests/test_files/chips/30.821_-149.017.jpeg",
       "clear_sky_confidence": 0.0,
-      "latitude": -18.084644317626953,
-      "longitude": -78.9260025024414,
+      "latitude": 30.821,
+      "longitude": -149.017,
       "meters_per_pixel": 86,
-      "moonlight_illumination": 41.04999923706055,
-      "nanowatts": 44.43000030517578,
-      "orientation": 345.97703905852694
+      "moonlight_illumination": 97.0,
+      "nanowatts": 13.24,
+      "orientation": 80.0,
+      "radiance_nw": 13.24,
+      "scan_angle": [
+        -0.014,
+        -0.014,
+        -0.014
+      ],
+      "x": 2276,
+      "y": 1957
     },
     {
-      "chip_path": "/example/chips/-18.108287811279297_-78.8344955444336.jpeg",
+      "chip_path": "tests/test_files/chips/30.717_-149.45.jpeg",
       "clear_sky_confidence": 0.0,
-      "latitude": -18.108287811279297,
-      "longitude": -78.8344955444336,
+      "latitude": 30.717,
+      "longitude": -149.45,
       "meters_per_pixel": 86,
-      "moonlight_illumination": 41.04999923706055,
-      "nanowatts": 26.40999984741211,
-      "orientation": 346.00457881069383
+      "moonlight_illumination": 97.0,
+      "nanowatts": 10.0,
+      "orientation": 80.0,
+      "radiance_nw": 10.0,
+      "scan_angle": [
+        -0.004,
+        -0.004,
+        -0.004
+      ],
+      "x": 2301,
+      "y": 1906
     },
     {
-      "chip_path": "/example/chips/-17.801240921020508_-80.63949584960938.jpeg",
+      "chip_path": "tests/test_files/chips/30.184_-146.246.jpeg",
       "clear_sky_confidence": 0.0,
-      "latitude": -17.801240921020508,
-      "longitude": -80.63949584960938,
+      "latitude": 30.184,
+      "longitude": -146.246,
       "meters_per_pixel": 86,
-      "moonlight_illumination": 41.040000915527344,
-      "nanowatts": 16.059999465942383,
-      "orientation": 345.37255938489614
+      "moonlight_illumination": 97.0,
+      "nanowatts": 10.05,
+      "orientation": 78.0,
+      "radiance_nw": 10.05,
+      "scan_angle": [
+        -0.004,
+        -0.004,
+        -0.004
+      ],
+      "x": 2303,
+      "y": 2324
     },
     {
-      "chip_path": "/example/chips/-17.819835662841797_-80.54084777832031.jpeg",
+      "chip_path": "tests/test_files/chips/30.128_-146.393.jpeg",
       "clear_sky_confidence": 0.0,
-      "latitude": -17.819835662841797,
-      "longitude": -80.54084777832031,
+      "latitude": 30.128,
+      "longitude": -146.393,
       "meters_per_pixel": 86,
-      "moonlight_illumination": 41.040000915527344,
-      "nanowatts": 38.77000045776367,
-      "orientation": 345.421806633702
+      "moonlight_illumination": 97.0,
+      "nanowatts": 13.82,
+      "orientation": 79.0,
+      "radiance_nw": 13.82,
+      "scan_angle": [
+        -0.004,
+        -0.004,
+        -0.004
+      ],
+      "x": 2315,
+      "y": 2308
     },
     {
-      "chip_path": "/example/chips/-17.923784255981445_-80.26982116699219.jpeg",
+      "chip_path": "tests/test_files/chips/30.155_-146.714.jpeg",
       "clear_sky_confidence": 0.0,
-      "latitude": -17.923784255981445,
-      "longitude": -80.26982116699219,
+      "latitude": 30.155,
+      "longitude": -146.714,
       "meters_per_pixel": 86,
-      "moonlight_illumination": 41.040000915527344,
-      "nanowatts": 36.099998474121094,
-      "orientation": 344.0735509984601
+      "moonlight_illumination": 97.0,
+      "nanowatts": 12.84,
+      "orientation": 79.0,
+      "radiance_nw": 12.84,
+      "scan_angle": [
+        -0.004,
+        -0.004,
+        -0.004
+      ],
+      "x": 2319,
+      "y": 2267
     },
     {
-      "chip_path": "/example/chips/-17.888338088989258_-80.6061019897461.jpeg",
+      "chip_path": "tests/test_files/chips/30.02_-145.943.jpeg",
       "clear_sky_confidence": 0.0,
-      "latitude": -17.888338088989258,
-      "longitude": -80.6061019897461,
+      "latitude": 30.02,
+      "longitude": -145.943,
       "meters_per_pixel": 86,
-      "moonlight_illumination": 41.040000915527344,
-      "nanowatts": 93.6500015258789,
-      "orientation": 345.61975566164585
+      "moonlight_illumination": 97.0,
+      "nanowatts": 16.3,
+      "orientation": 78.0,
+      "radiance_nw": 16.3,
+      "scan_angle": [
+        -0.004,
+        -0.004,
+        -0.004
+      ],
+      "x": 2319,
+      "y": 2367
     },
     {
-      "chip_path": "/example/chips/-18.42134666442871_-77.92567443847656.jpeg",
+      "chip_path": "tests/test_files/chips/30.151_-146.714.jpeg",
       "clear_sky_confidence": 0.0,
-      "latitude": -18.42134666442871,
-      "longitude": -77.92567443847656,
+      "latitude": 30.151,
+      "longitude": -146.714,
       "meters_per_pixel": 86,
-      "moonlight_illumination": 41.04999923706055,
-      "nanowatts": 294.3399963378906,
-      "orientation": 346.471542118188
+      "moonlight_illumination": 97.0,
+      "nanowatts": 8.89,
+      "orientation": 79.0,
+      "radiance_nw": 8.89,
+      "scan_angle": [
+        -0.014,
+        -0.014,
+        -0.014
+      ],
+      "x": 2320,
+      "y": 2268
     },
     {
-      "chip_path": "/example/chips/-18.429346084594727_-77.91987609863281.jpeg",
+      "chip_path": "tests/test_files/chips/30.098_-146.726.jpeg",
       "clear_sky_confidence": 0.0,
-      "latitude": -18.429346084594727,
-      "longitude": -77.91987609863281,
+      "latitude": 30.098,
+      "longitude": -146.726,
       "meters_per_pixel": 86,
-      "moonlight_illumination": 41.04999923706055,
-      "nanowatts": 48.09000015258789,
-      "orientation": 344.9544963069875
+      "moonlight_illumination": 97.0,
+      "nanowatts": 7.5,
+      "orientation": 79.0,
+      "radiance_nw": 7.5,
+      "scan_angle": [
+        0.004,
+        0.004,
+        0.004
+      ],
+      "x": 2328,
+      "y": 2268
+    },
+    {
+      "chip_path": "tests/test_files/chips/30.153_-149.124.jpeg",
+      "clear_sky_confidence": 0.0,
+      "latitude": 30.153,
+      "longitude": -149.124,
+      "meters_per_pixel": 86,
+      "moonlight_illumination": 97.0,
+      "nanowatts": 8.72,
+      "orientation": 80.0,
+      "radiance_nw": 8.72,
+      "scan_angle": [
+        0.004,
+        0.004,
+        0.004
+      ],
+      "x": 2377,
+      "y": 1966
+    },
+    {
+      "chip_path": "tests/test_files/chips/30.0_-149.184.jpeg",
+      "clear_sky_confidence": 0.0,
+      "latitude": 30.0,
+      "longitude": -149.184,
+      "meters_per_pixel": 86,
+      "moonlight_illumination": 97.0,
+      "nanowatts": 16.18,
+      "orientation": 80.0,
+      "radiance_nw": 16.18,
+      "scan_angle": [
+        -0.015,
+        -0.015,
+        -0.015
+      ],
+      "x": 2401,
+      "y": 1964
+    },
+    {
+      "chip_path": "tests/test_files/chips/29.909_-149.211.jpeg",
+      "clear_sky_confidence": 0.0,
+      "latitude": 29.909,
+      "longitude": -149.211,
+      "meters_per_pixel": 86,
+      "moonlight_illumination": 97.0,
+      "nanowatts": 10.45,
+      "orientation": 80.0,
+      "radiance_nw": 10.45,
+      "scan_angle": [
+        -0.004,
+        -0.004,
+        -0.004
+      ],
+      "x": 2415,
+      "y": 1963
+    },
+    {
+      "chip_path": "tests/test_files/chips/29.253_-147.045.jpeg",
+      "clear_sky_confidence": 0.0,
+      "latitude": 29.253,
+      "longitude": -147.045,
+      "meters_per_pixel": 86,
+      "moonlight_illumination": 97.0,
+      "nanowatts": 5.78,
+      "orientation": 79.0,
+      "radiance_nw": 5.78,
+      "scan_angle": [
+        -0.004,
+        -0.004,
+        -0.004
+      ],
+      "x": 2460,
+      "y": 2259
+    },
+    {
+      "chip_path": "tests/test_files/chips/29.683_-149.78.jpeg",
+      "clear_sky_confidence": 0.0,
+      "latitude": 29.683,
+      "longitude": -149.78,
+      "meters_per_pixel": 86,
+      "moonlight_illumination": 97.0,
+      "nanowatts": 7.72,
+      "orientation": 80.0,
+      "radiance_nw": 7.72,
+      "scan_angle": [
+        -0.004,
+        -0.004,
+        -0.004
+      ],
+      "x": 2461,
+      "y": 1899
+    },
+    {
+      "chip_path": "tests/test_files/chips/29.653_-149.581.jpeg",
+      "clear_sky_confidence": 0.0,
+      "latitude": 29.653,
+      "longitude": -149.581,
+      "meters_per_pixel": 86,
+      "moonlight_illumination": 97.0,
+      "nanowatts": 5.39,
+      "orientation": 80.0,
+      "radiance_nw": 5.39,
+      "scan_angle": [
+        -0.004,
+        -0.004,
+        -0.004
+      ],
+      "x": 2461,
+      "y": 1925
+    },
+    {
+      "chip_path": "tests/test_files/chips/29.047_-147.262.jpeg",
+      "clear_sky_confidence": 0.0,
+      "latitude": 29.047,
+      "longitude": -147.262,
+      "meters_per_pixel": 86,
+      "moonlight_illumination": 97.0,
+      "nanowatts": 11.0,
+      "orientation": 79.0,
+      "radiance_nw": 11.0,
+      "scan_angle": [
+        -0.015,
+        -0.015,
+        -0.015
+      ],
+      "x": 2496,
+      "y": 2240
+    },
+    {
+      "chip_path": "tests/test_files/chips/28.561_-145.593.jpeg",
+      "clear_sky_confidence": 0.0,
+      "latitude": 28.561,
+      "longitude": -145.593,
+      "meters_per_pixel": 86,
+      "moonlight_illumination": 97.0,
+      "nanowatts": 9.26,
+      "orientation": 78.0,
+      "radiance_nw": 9.26,
+      "scan_angle": [
+        -0.004,
+        -0.004,
+        -0.004
+      ],
+      "x": 2524,
+      "y": 2466
+    },
+    {
+      "chip_path": "tests/test_files/chips/28.189_-143.767.jpeg",
+      "clear_sky_confidence": 0.0,
+      "latitude": 28.189,
+      "longitude": -143.767,
+      "meters_per_pixel": 86,
+      "moonlight_illumination": 97.0,
+      "nanowatts": 10.79,
+      "orientation": 77.0,
+      "radiance_nw": 10.79,
+      "scan_angle": [
+        -0.015,
+        -0.015,
+        -0.015
+      ],
+      "x": 2528,
+      "y": 2712
+    },
+    {
+      "chip_path": "tests/test_files/chips/28.626_-146.486.jpeg",
+      "clear_sky_confidence": 0.0,
+      "latitude": 28.626,
+      "longitude": -146.486,
+      "meters_per_pixel": 86,
+      "moonlight_illumination": 97.0,
+      "nanowatts": 12.94,
+      "orientation": 79.0,
+      "radiance_nw": 12.94,
+      "scan_angle": [
+        0.004,
+        0.004,
+        -0.004
+      ],
+      "x": 2538,
+      "y": 2352
+    },
+    {
+      "chip_path": "tests/test_files/chips/28.45_-145.695.jpeg",
+      "clear_sky_confidence": 0.0,
+      "latitude": 28.45,
+      "longitude": -145.695,
+      "meters_per_pixel": 86,
+      "moonlight_illumination": 97.0,
+      "nanowatts": 12.4,
+      "orientation": 78.0,
+      "radiance_nw": 12.4,
+      "scan_angle": [
+        -0.004,
+        -0.004,
+        -0.004
+      ],
+      "x": 2543,
+      "y": 2457
+    },
+    {
+      "chip_path": "tests/test_files/chips/28.571_-146.513.jpeg",
+      "clear_sky_confidence": 0.0,
+      "latitude": 28.571,
+      "longitude": -146.513,
+      "meters_per_pixel": 86,
+      "moonlight_illumination": 97.0,
+      "nanowatts": 11.18,
+      "orientation": 79.0,
+      "radiance_nw": 11.18,
+      "scan_angle": [
+        -0.015,
+        -0.015,
+        -0.015
+      ],
+      "x": 2547,
+      "y": 2351
+    },
+    {
+      "chip_path": "tests/test_files/chips/28.473_-146.045.jpeg",
+      "clear_sky_confidence": 0.0,
+      "latitude": 28.473,
+      "longitude": -146.045,
+      "meters_per_pixel": 86,
+      "moonlight_illumination": 97.0,
+      "nanowatts": 9.03,
+      "orientation": 79.0,
+      "radiance_nw": 9.03,
+      "scan_angle": [
+        -0.015,
+        0.004,
+        0.004
+      ],
+      "x": 2549,
+      "y": 2413
+    },
+    {
+      "chip_path": "tests/test_files/chips/29.28_-151.305.jpeg",
+      "clear_sky_confidence": 0.0,
+      "latitude": 29.28,
+      "longitude": -151.305,
+      "meters_per_pixel": 86,
+      "moonlight_illumination": 97.0,
+      "nanowatts": 12.11,
+      "orientation": 81.0,
+      "radiance_nw": 12.11,
+      "scan_angle": [
+        0.004,
+        0.004,
+        0.004
+      ],
+      "x": 2553,
+      "y": 1721
+    },
+    {
+      "chip_path": "tests/test_files/chips/28.977_-149.406.jpeg",
+      "clear_sky_confidence": 0.0,
+      "latitude": 28.977,
+      "longitude": -149.406,
+      "meters_per_pixel": 86,
+      "moonlight_illumination": 97.0,
+      "nanowatts": 8.11,
+      "orientation": 80.0,
+      "radiance_nw": 8.11,
+      "scan_angle": [
+        -0.004,
+        -0.004,
+        -0.004
+      ],
+      "x": 2557,
+      "y": 1970
+    },
+    {
+      "chip_path": "tests/test_files/chips/29.071_-151.254.jpeg",
+      "clear_sky_confidence": 0.0,
+      "latitude": 29.071,
+      "longitude": -151.254,
+      "meters_per_pixel": 86,
+      "moonlight_illumination": 97.0,
+      "nanowatts": 12.76,
+      "orientation": 81.0,
+      "radiance_nw": 12.76,
+      "scan_angle": [
+        0.004,
+        0.004,
+        0.004
+      ],
+      "x": 2583,
+      "y": 1734
+    },
+    {
+      "chip_path": "tests/test_files/chips/29.0_-150.749.jpeg",
+      "clear_sky_confidence": 0.0,
+      "latitude": 29.0,
+      "longitude": -150.749,
+      "meters_per_pixel": 86,
+      "moonlight_illumination": 97.0,
+      "nanowatts": 12.81,
+      "orientation": 81.0,
+      "radiance_nw": 12.81,
+      "scan_angle": [
+        0.004,
+        0.004,
+        0.004
+      ],
+      "x": 2583,
+      "y": 1800
+    },
+    {
+      "chip_path": "tests/test_files/chips/28.258_-146.454.jpeg",
+      "clear_sky_confidence": 0.0,
+      "latitude": 28.258,
+      "longitude": -146.454,
+      "meters_per_pixel": 86,
+      "moonlight_illumination": 97.0,
+      "nanowatts": 10.83,
+      "orientation": 79.0,
+      "radiance_nw": 10.83,
+      "scan_angle": [
+        -0.004,
+        -0.004,
+        -0.004
+      ],
+      "x": 2591,
+      "y": 2369
+    },
+    {
+      "chip_path": "tests/test_files/chips/28.17_-146.409.jpeg",
+      "clear_sky_confidence": 0.0,
+      "latitude": 28.17,
+      "longitude": -146.409,
+      "meters_per_pixel": 86,
+      "moonlight_illumination": 97.0,
+      "nanowatts": 12.01,
+      "orientation": 79.0,
+      "radiance_nw": 12.01,
+      "scan_angle": [
+        -0.004,
+        -0.004,
+        -0.004
+      ],
+      "x": 2603,
+      "y": 2378
+    },
+    {
+      "chip_path": "tests/test_files/chips/28.627_-149.288.jpeg",
+      "clear_sky_confidence": 0.0,
+      "latitude": 28.627,
+      "longitude": -149.288,
+      "meters_per_pixel": 86,
+      "moonlight_illumination": 97.0,
+      "nanowatts": 6.58,
+      "orientation": 80.0,
+      "radiance_nw": 6.58,
+      "scan_angle": [
+        -0.004,
+        -0.004,
+        -0.004
+      ],
+      "x": 2606,
+      "y": 1997
+    },
+    {
+      "chip_path": "tests/test_files/chips/28.907_-151.377.jpeg",
+      "clear_sky_confidence": 0.0,
+      "latitude": 28.907,
+      "longitude": -151.377,
+      "meters_per_pixel": 86,
+      "moonlight_illumination": 97.0,
+      "nanowatts": 9.87,
+      "orientation": 81.0,
+      "radiance_nw": 9.87,
+      "scan_angle": [
+        -0.014,
+        -0.014,
+        -0.014
+      ],
+      "x": 2610,
+      "y": 1724
+    },
+    {
+      "chip_path": "tests/test_files/chips/28.27_-147.253.jpeg",
+      "clear_sky_confidence": 0.0,
+      "latitude": 28.27,
+      "longitude": -147.253,
+      "meters_per_pixel": 86,
+      "moonlight_illumination": 97.0,
+      "nanowatts": 13.46,
+      "orientation": 79.0,
+      "radiance_nw": 13.46,
+      "scan_angle": [
+        -0.014,
+        -0.014,
+        -0.014
+      ],
+      "x": 2610,
+      "y": 2269
+    },
+    {
+      "chip_path": "tests/test_files/chips/28.898_-151.362.jpeg",
+      "clear_sky_confidence": 0.0,
+      "latitude": 28.898,
+      "longitude": -151.362,
+      "meters_per_pixel": 86,
+      "moonlight_illumination": 97.0,
+      "nanowatts": 12.97,
+      "orientation": 81.0,
+      "radiance_nw": 12.97,
+      "scan_angle": [
+        -0.014,
+        -0.014,
+        -0.014
+      ],
+      "x": 2611,
+      "y": 1726
+    },
+    {
+      "chip_path": "tests/test_files/chips/28.034_-146.416.jpeg",
+      "clear_sky_confidence": 0.0,
+      "latitude": 28.034,
+      "longitude": -146.416,
+      "meters_per_pixel": 86,
+      "moonlight_illumination": 97.0,
+      "nanowatts": 17.22,
+      "orientation": 79.0,
+      "radiance_nw": 17.22,
+      "scan_angle": [
+        -0.004,
+        -0.004,
+        -0.004
+      ],
+      "x": 2623,
+      "y": 2382
+    },
+    {
+      "chip_path": "tests/test_files/chips/27.655_-144.37.jpeg",
+      "clear_sky_confidence": 0.0,
+      "latitude": 27.654,
+      "longitude": -144.37,
+      "meters_per_pixel": 86,
+      "moonlight_illumination": 97.0,
+      "nanowatts": 11.55,
+      "orientation": 78.0,
+      "radiance_nw": 11.55,
+      "scan_angle": [
+        -0.004,
+        -0.004,
+        -0.004
+      ],
+      "x": 2623,
+      "y": 2656
+    },
+    {
+      "chip_path": "tests/test_files/chips/28.026_-146.402.jpeg",
+      "clear_sky_confidence": 0.0,
+      "latitude": 28.026,
+      "longitude": -146.402,
+      "meters_per_pixel": 86,
+      "moonlight_illumination": 97.0,
+      "nanowatts": 15.15,
+      "orientation": 79.0,
+      "radiance_nw": 15.15,
+      "scan_angle": [
+        -0.014,
+        -0.014,
+        -0.014
+      ],
+      "x": 2624,
+      "y": 2385
+    },
+    {
+      "chip_path": "tests/test_files/chips/28.571_-149.894.jpeg",
+      "clear_sky_confidence": 0.0,
+      "latitude": 28.571,
+      "longitude": -149.894,
+      "meters_per_pixel": 86,
+      "moonlight_illumination": 97.0,
+      "nanowatts": 9.63,
+      "orientation": 80.0,
+      "radiance_nw": 9.63,
+      "scan_angle": [
+        -0.014,
+        -0.014,
+        -0.014
+      ],
+      "x": 2628,
+      "y": 1922
+    },
+    {
+      "chip_path": "tests/test_files/chips/28.516_-149.804.jpeg",
+      "clear_sky_confidence": 0.0,
+      "latitude": 28.516,
+      "longitude": -149.804,
+      "meters_per_pixel": 86,
+      "moonlight_illumination": 97.0,
+      "nanowatts": 6.99,
+      "orientation": 80.0,
+      "radiance_nw": 6.99,
+      "scan_angle": [
+        0.004,
+        0.004,
+        -0.004
+      ],
+      "x": 2634,
+      "y": 1935
+    },
+    {
+      "chip_path": "tests/test_files/chips/28.637_-150.673.jpeg",
+      "clear_sky_confidence": 0.0,
+      "latitude": 28.637,
+      "longitude": -150.673,
+      "meters_per_pixel": 86,
+      "moonlight_illumination": 97.0,
+      "nanowatts": 6.67,
+      "orientation": 81.0,
+      "radiance_nw": 6.67,
+      "scan_angle": [
+        -0.004,
+        -0.004,
+        -0.004
+      ],
+      "x": 2635,
+      "y": 1821
+    },
+    {
+      "chip_path": "tests/test_files/chips/28.751_-151.684.jpeg",
+      "clear_sky_confidence": 0.0,
+      "latitude": 28.751,
+      "longitude": -151.684,
+      "meters_per_pixel": 86,
+      "moonlight_illumination": 97.0,
+      "nanowatts": 10.3,
+      "orientation": 81.0,
+      "radiance_nw": 10.3,
+      "scan_angle": [
+        -0.004,
+        -0.004,
+        -0.004
+      ],
+      "x": 2639,
+      "y": 1690
+    },
+    {
+      "chip_path": "tests/test_files/chips/28.662_-151.038.jpeg",
+      "clear_sky_confidence": 0.0,
+      "latitude": 28.662,
+      "longitude": -151.038,
+      "meters_per_pixel": 86,
+      "moonlight_illumination": 97.0,
+      "nanowatts": 11.38,
+      "orientation": 81.0,
+      "radiance_nw": 11.38,
+      "scan_angle": [
+        -0.004,
+        -0.004,
+        -0.004
+      ],
+      "x": 2639,
+      "y": 1774
+    },
+    {
+      "chip_path": "tests/test_files/chips/28.736_-151.701.jpeg",
+      "clear_sky_confidence": 0.0,
+      "latitude": 28.736,
+      "longitude": -151.701,
+      "meters_per_pixel": 86,
+      "moonlight_illumination": 97.0,
+      "nanowatts": 11.26,
+      "orientation": 81.0,
+      "radiance_nw": 11.26,
+      "scan_angle": [
+        -0.014,
+        -0.014,
+        -0.014
+      ],
+      "x": 2642,
+      "y": 1689
+    },
+    {
+      "chip_path": "tests/test_files/chips/28.404_-149.6.jpeg",
+      "clear_sky_confidence": 0.0,
+      "latitude": 28.404,
+      "longitude": -149.6,
+      "meters_per_pixel": 86,
+      "moonlight_illumination": 97.0,
+      "nanowatts": 9.13,
+      "orientation": 80.0,
+      "radiance_nw": 9.13,
+      "scan_angle": [
+        0.004,
+        0.004,
+        0.004
+      ],
+      "x": 2646,
+      "y": 1965
+    },
+    {
+      "chip_path": "tests/test_files/chips/28.383_-149.504.jpeg",
+      "clear_sky_confidence": 0.0,
+      "latitude": 28.383,
+      "longitude": -149.504,
+      "meters_per_pixel": 86,
+      "moonlight_illumination": 97.0,
+      "nanowatts": 9.35,
+      "orientation": 80.0,
+      "radiance_nw": 9.35,
+      "scan_angle": [
+        0.004,
+        0.004,
+        0.004
+      ],
+      "x": 2647,
+      "y": 1978
+    },
+    {
+      "chip_path": "tests/test_files/chips/28.704_-151.769.jpeg",
+      "clear_sky_confidence": 0.0,
+      "latitude": 28.704,
+      "longitude": -151.769,
+      "meters_per_pixel": 86,
+      "moonlight_illumination": 97.0,
+      "nanowatts": 11.25,
+      "orientation": 81.0,
+      "radiance_nw": 11.25,
+      "scan_angle": [
+        0.004,
+        0.004,
+        0.004
+      ],
+      "x": 2648,
+      "y": 1681
+    },
+    {
+      "chip_path": "tests/test_files/chips/28.63_-151.283.jpeg",
+      "clear_sky_confidence": 0.0,
+      "latitude": 28.63,
+      "longitude": -151.283,
+      "meters_per_pixel": 86,
+      "moonlight_illumination": 97.0,
+      "nanowatts": 8.1,
+      "orientation": 81.0,
+      "radiance_nw": 8.1,
+      "scan_angle": [
+        0.004,
+        0.004,
+        0.004
+      ],
+      "x": 2649,
+      "y": 1744
+    },
+    {
+      "chip_path": "tests/test_files/chips/28.615_-151.224.jpeg",
+      "clear_sky_confidence": 0.0,
+      "latitude": 28.615,
+      "longitude": -151.224,
+      "meters_per_pixel": 86,
+      "moonlight_illumination": 97.0,
+      "nanowatts": 9.56,
+      "orientation": 81.0,
+      "radiance_nw": 9.56,
+      "scan_angle": [
+        0.004,
+        0.004,
+        -0.003
+      ],
+      "x": 2650,
+      "y": 1752
+    },
+    {
+      "chip_path": "tests/test_files/chips/28.404_-149.778.jpeg",
+      "clear_sky_confidence": 0.0,
+      "latitude": 28.404,
+      "longitude": -149.778,
+      "meters_per_pixel": 86,
+      "moonlight_illumination": 97.0,
+      "nanowatts": 10.66,
+      "orientation": 80.0,
+      "radiance_nw": 10.66,
+      "scan_angle": [
+        0.004,
+        0.004,
+        -0.003
+      ],
+      "x": 2650,
+      "y": 1942
+    },
+    {
+      "chip_path": "tests/test_files/chips/28.459_-150.235.jpeg",
+      "clear_sky_confidence": 0.0,
+      "latitude": 28.459,
+      "longitude": -150.235,
+      "meters_per_pixel": 86,
+      "moonlight_illumination": 97.0,
+      "nanowatts": 9.63,
+      "orientation": 80.0,
+      "radiance_nw": 9.63,
+      "scan_angle": [
+        -0.003,
+        -0.003,
+        -0.003
+      ],
+      "x": 2652,
+      "y": 1882
+    },
+    {
+      "chip_path": "tests/test_files/chips/27.975_-147.332.jpeg",
+      "clear_sky_confidence": 0.0,
+      "latitude": 27.975,
+      "longitude": -147.332,
+      "meters_per_pixel": 86,
+      "moonlight_illumination": 97.0,
+      "nanowatts": 12.51,
+      "orientation": 79.0,
+      "radiance_nw": 12.51,
+      "scan_angle": [
+        -0.003,
+        -0.003,
+        -0.003
+      ],
+      "x": 2655,
+      "y": 2269
+    },
+    {
+      "chip_path": "tests/test_files/chips/27.952_-147.383.jpeg",
+      "clear_sky_confidence": 0.0,
+      "latitude": 27.952,
+      "longitude": -147.383,
+      "meters_per_pixel": 86,
+      "moonlight_illumination": 97.0,
+      "nanowatts": 10.75,
+      "orientation": 79.0,
+      "radiance_nw": 10.75,
+      "scan_angle": [
+        -0.014,
+        -0.014,
+        -0.014
+      ],
+      "x": 2660,
+      "y": 2264
+    },
+    {
+      "chip_path": "tests/test_files/chips/28.21_-149.399.jpeg",
+      "clear_sky_confidence": 0.0,
+      "latitude": 28.21,
+      "longitude": -149.399,
+      "meters_per_pixel": 86,
+      "moonlight_illumination": 97.0,
+      "nanowatts": 12.25,
+      "orientation": 80.0,
+      "radiance_nw": 12.25,
+      "scan_angle": [
+        -0.003,
+        -0.003,
+        -0.003
+      ],
+      "x": 2670,
+      "y": 1997
+    },
+    {
+      "chip_path": "tests/test_files/chips/27.843_-147.225.jpeg",
+      "clear_sky_confidence": 0.0,
+      "latitude": 27.843,
+      "longitude": -147.225,
+      "meters_per_pixel": 86,
+      "moonlight_illumination": 97.0,
+      "nanowatts": 10.29,
+      "orientation": 79.0,
+      "radiance_nw": 10.29,
+      "scan_angle": [
+        -0.014,
+        -0.014,
+        -0.014
+      ],
+      "x": 2672,
+      "y": 2288
+    },
+    {
+      "chip_path": "tests/test_files/chips/27.825_-147.237.jpeg",
+      "clear_sky_confidence": 0.0,
+      "latitude": 27.825,
+      "longitude": -147.237,
+      "meters_per_pixel": 86,
+      "moonlight_illumination": 97.0,
+      "nanowatts": 10.05,
+      "orientation": 79.0,
+      "radiance_nw": 10.05,
+      "scan_angle": [
+        -0.014,
+        -0.014,
+        -0.014
+      ],
+      "x": 2675,
+      "y": 2287
+    },
+    {
+      "chip_path": "tests/test_files/chips/28.168_-149.652.jpeg",
+      "clear_sky_confidence": 0.0,
+      "latitude": 28.168,
+      "longitude": -149.652,
+      "meters_per_pixel": 86,
+      "moonlight_illumination": 97.0,
+      "nanowatts": 7.58,
+      "orientation": 80.0,
+      "radiance_nw": 7.58,
+      "scan_angle": [
+        0.004,
+        0.004,
+        -0.003
+      ],
+      "x": 2682,
+      "y": 1966
+    },
+    {
+      "chip_path": "tests/test_files/chips/28.265_-150.388.jpeg",
+      "clear_sky_confidence": 0.0,
+      "latitude": 28.265,
+      "longitude": -150.388,
+      "meters_per_pixel": 86,
+      "moonlight_illumination": 97.0,
+      "nanowatts": 11.21,
+      "orientation": 80.0,
+      "radiance_nw": 11.21,
+      "scan_angle": [
+        -0.003,
+        -0.003,
+        -0.003
+      ],
+      "x": 2684,
+      "y": 1869
+    },
+    {
+      "chip_path": "tests/test_files/chips/27.856_-148.198.jpeg",
+      "clear_sky_confidence": 0.0,
+      "latitude": 27.856,
+      "longitude": -148.198,
+      "meters_per_pixel": 86,
+      "moonlight_illumination": 97.0,
+      "nanowatts": 10.4,
+      "orientation": 79.0,
+      "radiance_nw": 10.4,
+      "scan_angle": [
+        0.004,
+        0.004,
+        0.004
+      ],
+      "x": 2694,
+      "y": 2164
+    },
+    {
+      "chip_path": "tests/test_files/chips/28.314_-151.244.jpeg",
+      "clear_sky_confidence": 0.0,
+      "latitude": 28.314,
+      "longitude": -151.244,
+      "meters_per_pixel": 86,
+      "moonlight_illumination": 97.0,
+      "nanowatts": 8.35,
+      "orientation": 81.0,
+      "radiance_nw": 8.35,
+      "scan_angle": [
+        0.004,
+        0.004,
+        0.004
+      ],
+      "x": 2695,
+      "y": 1759
+    },
+    {
+      "chip_path": "tests/test_files/chips/28.192_-150.628.jpeg",
+      "clear_sky_confidence": 0.0,
+      "latitude": 28.192,
+      "longitude": -150.628,
+      "meters_per_pixel": 86,
+      "moonlight_illumination": 97.0,
+      "nanowatts": 10.06,
+      "orientation": 81.0,
+      "radiance_nw": 10.06,
+      "scan_angle": [
+        -0.004,
+        -0.004,
+        -0.004
+      ],
+      "x": 2700,
+      "y": 1841
+    },
+    {
+      "chip_path": "tests/test_files/chips/28.101_-150.059.jpeg",
+      "clear_sky_confidence": 0.0,
+      "latitude": 28.101,
+      "longitude": -150.059,
+      "meters_per_pixel": 86,
+      "moonlight_illumination": 97.0,
+      "nanowatts": 12.8,
+      "orientation": 80.0,
+      "radiance_nw": 12.8,
+      "scan_angle": [
+        -0.004,
+        -0.004,
+        -0.004
+      ],
+      "x": 2701,
+      "y": 1916
+    },
+    {
+      "chip_path": "tests/test_files/chips/28.036_-149.631.jpeg",
+      "clear_sky_confidence": 0.0,
+      "latitude": 28.036,
+      "longitude": -149.631,
+      "meters_per_pixel": 86,
+      "moonlight_illumination": 97.0,
+      "nanowatts": 7.18,
+      "orientation": 80.0,
+      "radiance_nw": 7.18,
+      "scan_angle": [
+        -0.004,
+        -0.004,
+        -0.004
+      ],
+      "x": 2701,
+      "y": 1973
+    },
+    {
+      "chip_path": "tests/test_files/chips/28.295_-151.631.jpeg",
+      "clear_sky_confidence": 0.0,
+      "latitude": 28.295,
+      "longitude": -151.631,
+      "meters_per_pixel": 86,
+      "moonlight_illumination": 97.0,
+      "nanowatts": 7.09,
+      "orientation": 81.0,
+      "radiance_nw": 7.09,
+      "scan_angle": [
+        -0.015,
+        -0.015,
+        -0.015
+      ],
+      "x": 2706,
+      "y": 1711
+    },
+    {
+      "chip_path": "tests/test_files/chips/28.081_-150.234.jpeg",
+      "clear_sky_confidence": 0.0,
+      "latitude": 28.081,
+      "longitude": -150.234,
+      "meters_per_pixel": 86,
+      "moonlight_illumination": 97.0,
+      "nanowatts": 5.66,
+      "orientation": 80.0,
+      "radiance_nw": 5.66,
+      "scan_angle": [
+        -0.015,
+        -0.015,
+        -0.015
+      ],
+      "x": 2708,
+      "y": 1895
+    },
+    {
+      "chip_path": "tests/test_files/chips/28.01_-149.991.jpeg",
+      "clear_sky_confidence": 0.0,
+      "latitude": 28.01,
+      "longitude": -149.991,
+      "meters_per_pixel": 86,
+      "moonlight_illumination": 97.0,
+      "nanowatts": 7.47,
+      "orientation": 80.0,
+      "radiance_nw": 7.47,
+      "scan_angle": [
+        0.004,
+        0.004,
+        0.004
+      ],
+      "x": 2713,
+      "y": 1928
+    },
+    {
+      "chip_path": "tests/test_files/chips/28.196_-151.319.jpeg",
+      "clear_sky_confidence": 0.0,
+      "latitude": 28.196,
+      "longitude": -151.319,
+      "meters_per_pixel": 86,
+      "moonlight_illumination": 97.0,
+      "nanowatts": 10.44,
+      "orientation": 81.0,
+      "radiance_nw": 10.44,
+      "scan_angle": [
+        0.004,
+        0.004,
+        -0.004
+      ],
+      "x": 2714,
+      "y": 1753
+    },
+    {
+      "chip_path": "tests/test_files/chips/27.937_-150.136.jpeg",
+      "clear_sky_confidence": 0.0,
+      "latitude": 27.937,
+      "longitude": -150.136,
+      "meters_per_pixel": 86,
+      "moonlight_illumination": 97.0,
+      "nanowatts": 6.29,
+      "orientation": 80.0,
+      "radiance_nw": 6.29,
+      "scan_angle": [
+        0.004,
+        0.004,
+        0.004
+      ],
+      "x": 2727,
+      "y": 1912
+    },
+    {
+      "chip_path": "tests/test_files/chips/27.585_-148.246.jpeg",
+      "clear_sky_confidence": 0.0,
+      "latitude": 27.585,
+      "longitude": -148.246,
+      "meters_per_pixel": 86,
+      "moonlight_illumination": 97.0,
+      "nanowatts": 9.61,
+      "orientation": 79.0,
+      "radiance_nw": 9.61,
+      "scan_angle": [
+        -0.004,
+        -0.004,
+        -0.004
+      ],
+      "x": 2735,
+      "y": 2167
+    },
+    {
+      "chip_path": "tests/test_files/chips/27.795_-150.0.jpeg",
+      "clear_sky_confidence": 0.0,
+      "latitude": 27.795,
+      "longitude": -149.999,
+      "meters_per_pixel": 86,
+      "moonlight_illumination": 97.0,
+      "nanowatts": 11.09,
+      "orientation": 80.0,
+      "radiance_nw": 11.09,
+      "scan_angle": [
+        0.004,
+        0.004,
+        0.004
+      ],
+      "x": 2745,
+      "y": 1934
+    },
+    {
+      "chip_path": "tests/test_files/chips/27.787_-149.993.jpeg",
+      "clear_sky_confidence": 0.0,
+      "latitude": 27.787,
+      "longitude": -149.993,
+      "meters_per_pixel": 86,
+      "moonlight_illumination": 97.0,
+      "nanowatts": 9.66,
+      "orientation": 80.0,
+      "radiance_nw": 9.66,
+      "scan_angle": [
+        0.004,
+        0.004,
+        -0.004
+      ],
+      "x": 2746,
+      "y": 1935
+    },
+    {
+      "chip_path": "tests/test_files/chips/27.748_-150.0.jpeg",
+      "clear_sky_confidence": 0.0,
+      "latitude": 27.748,
+      "longitude": -150.0,
+      "meters_per_pixel": 86,
+      "moonlight_illumination": 97.0,
+      "nanowatts": 11.84,
+      "orientation": 80.0,
+      "radiance_nw": 11.84,
+      "scan_angle": [
+        -0.014,
+        -0.014,
+        -0.014
+      ],
+      "x": 2752,
+      "y": 1936
+    },
+    {
+      "chip_path": "tests/test_files/chips/27.687_-150.236.jpeg",
+      "clear_sky_confidence": 0.0,
+      "latitude": 27.687,
+      "longitude": -150.236,
+      "meters_per_pixel": 86,
+      "moonlight_illumination": 97.0,
+      "nanowatts": 6.32,
+      "orientation": 80.0,
+      "radiance_nw": 6.32,
+      "scan_angle": [
+        -0.004,
+        -0.004,
+        -0.004
+      ],
+      "x": 2766,
+      "y": 1907
+    },
+    {
+      "chip_path": "tests/test_files/chips/27.851_-152.144.jpeg",
+      "clear_sky_confidence": 0.0,
+      "latitude": 27.851,
+      "longitude": -152.144,
+      "meters_per_pixel": 86,
+      "moonlight_illumination": 97.0,
+      "nanowatts": 11.35,
+      "orientation": 81.0,
+      "radiance_nw": 11.35,
+      "scan_angle": [
+        -0.004,
+        -0.004,
+        -0.004
+      ],
+      "x": 2782,
+      "y": 1659
+    },
+    {
+      "chip_path": "tests/test_files/chips/27.091_-147.284.jpeg",
+      "clear_sky_confidence": 0.0,
+      "latitude": 27.091,
+      "longitude": -147.284,
+      "meters_per_pixel": 86,
+      "moonlight_illumination": 97.0,
+      "nanowatts": 10.8,
+      "orientation": 79.0,
+      "radiance_nw": 10.8,
+      "scan_angle": [
+        -0.014,
+        -0.014,
+        -0.014
+      ],
+      "x": 2784,
+      "y": 2308
+    },
+    {
+      "chip_path": "tests/test_files/chips/27.076_-147.272.jpeg",
+      "clear_sky_confidence": 0.0,
+      "latitude": 27.076,
+      "longitude": -147.272,
+      "meters_per_pixel": 86,
+      "moonlight_illumination": 97.0,
+      "nanowatts": 15.59,
+      "orientation": 79.0,
+      "radiance_nw": 15.59,
+      "scan_angle": [
+        -0.014,
+        -0.014,
+        -0.014
+      ],
+      "x": 2786,
+      "y": 2310
+    },
+    {
+      "chip_path": "tests/test_files/chips/27.164_-147.872.jpeg",
+      "clear_sky_confidence": 0.0,
+      "latitude": 27.164,
+      "longitude": -147.872,
+      "meters_per_pixel": 86,
+      "moonlight_illumination": 97.0,
+      "nanowatts": 6.97,
+      "orientation": 79.0,
+      "radiance_nw": 6.97,
+      "scan_angle": [
+        -0.014,
+        -0.014,
+        -0.014
+      ],
+      "x": 2788,
+      "y": 2230
+    },
+    {
+      "chip_path": "tests/test_files/chips/27.182_-148.022.jpeg",
+      "clear_sky_confidence": 0.0,
+      "latitude": 27.182,
+      "longitude": -148.022,
+      "meters_per_pixel": 86,
+      "moonlight_illumination": 97.0,
+      "nanowatts": 5.2,
+      "orientation": 79.0,
+      "radiance_nw": 5.2,
+      "scan_angle": [
+        -0.014,
+        0.004,
+        0.004
+      ],
+      "x": 2789,
+      "y": 2210
+    },
+    {
+      "chip_path": "tests/test_files/chips/27.609_-150.94.jpeg",
+      "clear_sky_confidence": 0.0,
+      "latitude": 27.609,
+      "longitude": -150.94,
+      "meters_per_pixel": 86,
+      "moonlight_illumination": 97.0,
+      "nanowatts": 8.16,
+      "orientation": 81.0,
+      "radiance_nw": 8.16,
+      "scan_angle": [
+        0.004,
+        0.004,
+        0.004
+      ],
+      "x": 2793,
+      "y": 1820
+    },
+    {
+      "chip_path": "tests/test_files/chips/27.146_-148.179.jpeg",
+      "clear_sky_confidence": 0.0,
+      "latitude": 27.146,
+      "longitude": -148.179,
+      "meters_per_pixel": 86,
+      "moonlight_illumination": 97.0,
+      "nanowatts": 14.06,
+      "orientation": 79.0,
+      "radiance_nw": 14.06,
+      "scan_angle": [
+        -0.004,
+        -0.004,
+        -0.004
+      ],
+      "x": 2798,
+      "y": 2191
+    },
+    {
+      "chip_path": "tests/test_files/chips/27.571_-150.963.jpeg",
+      "clear_sky_confidence": 0.0,
+      "latitude": 27.57,
+      "longitude": -150.963,
+      "meters_per_pixel": 86,
+      "moonlight_illumination": 97.0,
+      "nanowatts": 9.33,
+      "orientation": 81.0,
+      "radiance_nw": 9.33,
+      "scan_angle": [
+        -0.004,
+        -0.004,
+        -0.004
+      ],
+      "x": 2799,
+      "y": 1818
+    },
+    {
+      "chip_path": "tests/test_files/chips/27.494_-151.084.jpeg",
+      "clear_sky_confidence": 0.0,
+      "latitude": 27.494,
+      "longitude": -151.084,
+      "meters_per_pixel": 86,
+      "moonlight_illumination": 97.0,
+      "nanowatts": 8.75,
+      "orientation": 81.0,
+      "radiance_nw": 8.75,
+      "scan_angle": [
+        -0.003,
+        -0.003,
+        -0.003
+      ],
+      "x": 2813,
+      "y": 1805
+    },
+    {
+      "chip_path": "tests/test_files/chips/26.758_-146.555.jpeg",
+      "clear_sky_confidence": 0.0,
+      "latitude": 26.758,
+      "longitude": -146.555,
+      "meters_per_pixel": 86,
+      "moonlight_illumination": 97.0,
+      "nanowatts": 12.49,
+      "orientation": 79.0,
+      "radiance_nw": 12.49,
+      "scan_angle": [
+        -0.003,
+        -0.003,
+        -0.003
+      ],
+      "x": 2814,
+      "y": 2412
+    },
+    {
+      "chip_path": "tests/test_files/chips/27.441_-150.847.jpeg",
+      "clear_sky_confidence": 0.0,
+      "latitude": 27.441,
+      "longitude": -150.847,
+      "meters_per_pixel": 86,
+      "moonlight_illumination": 97.0,
+      "nanowatts": 7.95,
+      "orientation": 81.0,
+      "radiance_nw": 7.95,
+      "scan_angle": [
+        -0.014,
+        -0.014,
+        -0.014
+      ],
+      "x": 2816,
+      "y": 1838
+    },
+    {
+      "chip_path": "tests/test_files/chips/27.32_-150.356.jpeg",
+      "clear_sky_confidence": 0.0,
+      "latitude": 27.32,
+      "longitude": -150.356,
+      "meters_per_pixel": 86,
+      "moonlight_illumination": 97.0,
+      "nanowatts": 6.49,
+      "orientation": 80.0,
+      "radiance_nw": 6.49,
+      "scan_angle": [
+        0.004,
+        0.004,
+        0.004
+      ],
+      "x": 2823,
+      "y": 1904
+    },
+    {
+      "chip_path": "tests/test_files/chips/27.266_-150.396.jpeg",
+      "clear_sky_confidence": 0.0,
+      "latitude": 27.266,
+      "longitude": -150.396,
+      "meters_per_pixel": 86,
+      "moonlight_illumination": 97.0,
+      "nanowatts": 9.26,
+      "orientation": 80.0,
+      "radiance_nw": 9.26,
+      "scan_angle": [
+        -0.014,
+        -0.014,
+        -0.014
+      ],
+      "x": 2832,
+      "y": 1901
+    },
+    {
+      "chip_path": "tests/test_files/chips/26.857_-147.988.jpeg",
+      "clear_sky_confidence": 0.0,
+      "latitude": 26.857,
+      "longitude": -147.988,
+      "meters_per_pixel": 86,
+      "moonlight_illumination": 97.0,
+      "nanowatts": 9.14,
+      "orientation": 79.0,
+      "radiance_nw": 9.14,
+      "scan_angle": [
+        -0.014,
+        -0.014,
+        -0.014
+      ],
+      "x": 2836,
+      "y": 2226
+    },
+    {
+      "chip_path": "tests/test_files/chips/26.817_-148.08.jpeg",
+      "clear_sky_confidence": 0.0,
+      "latitude": 26.817,
+      "longitude": -148.08,
+      "meters_per_pixel": 86,
+      "moonlight_illumination": 97.0,
+      "nanowatts": 7.55,
+      "orientation": 79.0,
+      "radiance_nw": 7.55,
+      "scan_angle": [
+        -0.003,
+        -0.003,
+        -0.003
+      ],
+      "x": 2844,
+      "y": 2215
+    },
+    {
+      "chip_path": "tests/test_files/chips/26.639_-147.116.jpeg",
+      "clear_sky_confidence": 0.0,
+      "latitude": 26.639,
+      "longitude": -147.116,
+      "meters_per_pixel": 86,
+      "moonlight_illumination": 97.0,
+      "nanowatts": 13.46,
+      "orientation": 79.0,
+      "radiance_nw": 13.46,
+      "scan_angle": [
+        -0.003,
+        -0.003,
+        -0.003
+      ],
+      "x": 2846,
+      "y": 2345
+    },
+    {
+      "chip_path": "tests/test_files/chips/26.674_-147.387.jpeg",
+      "clear_sky_confidence": 0.0,
+      "latitude": 26.674,
+      "longitude": -147.387,
+      "meters_per_pixel": 86,
+      "moonlight_illumination": 97.0,
+      "nanowatts": 13.98,
+      "orientation": 79.0,
+      "radiance_nw": 13.98,
+      "scan_angle": [
+        -0.015,
+        -0.015,
+        -0.015
+      ],
+      "x": 2848,
+      "y": 2310
+    },
+    {
+      "chip_path": "tests/test_files/chips/26.718_-148.055.jpeg",
+      "clear_sky_confidence": 0.0,
+      "latitude": 26.718,
+      "longitude": -148.055,
+      "meters_per_pixel": 86,
+      "moonlight_illumination": 97.0,
+      "nanowatts": 6.8,
+      "orientation": 79.0,
+      "radiance_nw": 6.8,
+      "scan_angle": [
+        0.005,
+        0.005,
+        -0.003
+      ],
+      "x": 2858,
+      "y": 2222
+    },
+    {
+      "chip_path": "tests/test_files/chips/26.917_-149.365.jpeg",
+      "clear_sky_confidence": 0.0,
+      "latitude": 26.917,
+      "longitude": -149.365,
+      "meters_per_pixel": 86,
+      "moonlight_illumination": 97.0,
+      "nanowatts": 13.01,
+      "orientation": 80.0,
+      "radiance_nw": 13.01,
+      "scan_angle": [
+        -0.003,
+        -0.003,
+        -0.003
+      ],
+      "x": 2860,
+      "y": 2046
+    },
+    {
+      "chip_path": "tests/test_files/chips/26.661_-148.407.jpeg",
+      "clear_sky_confidence": 0.0,
+      "latitude": 26.661,
+      "longitude": -148.407,
+      "meters_per_pixel": 86,
+      "moonlight_illumination": 97.0,
+      "nanowatts": 8.54,
+      "orientation": 80.0,
+      "radiance_nw": 8.54,
+      "scan_angle": [
+        -0.003,
+        -0.003,
+        -0.003
+      ],
+      "x": 2875,
+      "y": 2179
+    },
+    {
+      "chip_path": "tests/test_files/chips/26.652_-148.555.jpeg",
+      "clear_sky_confidence": 0.0,
+      "latitude": 26.652,
+      "longitude": -148.555,
+      "meters_per_pixel": 86,
+      "moonlight_illumination": 97.0,
+      "nanowatts": 10.35,
+      "orientation": 80.0,
+      "radiance_nw": 10.35,
+      "scan_angle": [
+        -0.014,
+        -0.014,
+        -0.014
+      ],
+      "x": 2880,
+      "y": 2161
+    },
+    {
+      "chip_path": "tests/test_files/chips/26.43_-147.276.jpeg",
+      "clear_sky_confidence": 0.0,
+      "latitude": 26.43,
+      "longitude": -147.276,
+      "meters_per_pixel": 86,
+      "moonlight_illumination": 97.0,
+      "nanowatts": 8.05,
+      "orientation": 79.0,
+      "radiance_nw": 8.05,
+      "scan_angle": [
+        -0.014,
+        -0.014,
+        -0.014
+      ],
+      "x": 2881,
+      "y": 2333
+    },
+    {
+      "chip_path": "tests/test_files/chips/26.444_-147.481.jpeg",
+      "clear_sky_confidence": 0.0,
+      "latitude": 26.444,
+      "longitude": -147.481,
+      "meters_per_pixel": 86,
+      "moonlight_illumination": 97.0,
+      "nanowatts": 7.79,
+      "orientation": 79.0,
+      "radiance_nw": 7.79,
+      "scan_angle": [
+        -0.014,
+        -0.014,
+        -0.014
+      ],
+      "x": 2884,
+      "y": 2306
+    },
+    {
+      "chip_path": "tests/test_files/chips/26.041_-146.051.jpeg",
+      "clear_sky_confidence": 0.0,
+      "latitude": 26.041,
+      "longitude": -146.051,
+      "meters_per_pixel": 86,
+      "moonlight_illumination": 97.0,
+      "nanowatts": 8.89,
+      "orientation": 79.0,
+      "radiance_nw": 8.89,
+      "scan_angle": [
+        0.005,
+        0.005,
+        -0.003
+      ],
+      "x": 2906,
+      "y": 2504
+    },
+    {
+      "chip_path": "tests/test_files/chips/26.672_-149.964.jpeg",
+      "clear_sky_confidence": 0.0,
+      "latitude": 26.672,
+      "longitude": -149.964,
+      "meters_per_pixel": 86,
+      "moonlight_illumination": 97.0,
+      "nanowatts": 8.77,
+      "orientation": 80.0,
+      "radiance_nw": 8.77,
+      "scan_angle": [
+        -0.003,
+        -0.003,
+        -0.003
+      ],
+      "x": 2910,
+      "y": 1976
+    },
+    {
+      "chip_path": "tests/test_files/chips/26.416_-148.363.jpeg",
+      "clear_sky_confidence": 0.0,
+      "latitude": 26.416,
+      "longitude": -148.363,
+      "meters_per_pixel": 86,
+      "moonlight_illumination": 97.0,
+      "nanowatts": 5.52,
+      "orientation": 79.0,
+      "radiance_nw": 5.52,
+      "scan_angle": [
+        -0.003,
+        -0.003,
+        -0.003
+      ],
+      "x": 2910,
+      "y": 2193
+    },
+    {
+      "chip_path": "tests/test_files/chips/26.409_-148.395.jpeg",
+      "clear_sky_confidence": 0.0,
+      "latitude": 26.409,
+      "longitude": -148.395,
+      "meters_per_pixel": 86,
+      "moonlight_illumination": 97.0,
+      "nanowatts": 8.99,
+      "orientation": 79.0,
+      "radiance_nw": 8.99,
+      "scan_angle": [
+        -0.015,
+        -0.015,
+        -0.015
+      ],
+      "x": 2912,
+      "y": 2190
+    },
+    {
+      "chip_path": "tests/test_files/chips/26.63_-149.911.jpeg",
+      "clear_sky_confidence": 0.0,
+      "latitude": 26.63,
+      "longitude": -149.911,
+      "meters_per_pixel": 86,
+      "moonlight_illumination": 97.0,
+      "nanowatts": 14.22,
+      "orientation": 80.0,
+      "radiance_nw": 14.22,
+      "scan_angle": [
+        -0.015,
+        -0.015,
+        -0.015
+      ],
+      "x": 2915,
+      "y": 1985
+    },
+    {
+      "chip_path": "tests/test_files/chips/26.43_-148.653.jpeg",
+      "clear_sky_confidence": 0.0,
+      "latitude": 26.43,
+      "longitude": -148.653,
+      "meters_per_pixel": 86,
+      "moonlight_illumination": 97.0,
+      "nanowatts": 7.2,
+      "orientation": 80.0,
+      "radiance_nw": 7.2,
+      "scan_angle": [
+        -0.015,
+        -0.015,
+        -0.015
+      ],
+      "x": 2915,
+      "y": 2156
+    },
+    {
+      "chip_path": "tests/test_files/chips/26.231_-147.624.jpeg",
+      "clear_sky_confidence": 0.0,
+      "latitude": 26.231,
+      "longitude": -147.624,
+      "meters_per_pixel": 86,
+      "moonlight_illumination": 97.0,
+      "nanowatts": 8.56,
+      "orientation": 79.0,
+      "radiance_nw": 8.56,
+      "scan_angle": [
+        0.005,
+        0.005,
+        0.005
+      ],
+      "x": 2919,
+      "y": 2295
+    },
+    {
+      "chip_path": "tests/test_files/chips/26.386_-148.593.jpeg",
+      "clear_sky_confidence": 0.0,
+      "latitude": 26.386,
+      "longitude": -148.593,
+      "meters_per_pixel": 86,
+      "moonlight_illumination": 97.0,
+      "nanowatts": 9.76,
+      "orientation": 80.0,
+      "radiance_nw": 9.76,
+      "scan_angle": [
+        0.005,
+        0.005,
+        0.005
+      ],
+      "x": 2920,
+      "y": 2165
+    },
+    {
+      "chip_path": "tests/test_files/chips/26.188_-147.534.jpeg",
+      "clear_sky_confidence": 0.0,
+      "latitude": 26.188,
+      "longitude": -147.534,
+      "meters_per_pixel": 86,
+      "moonlight_illumination": 97.0,
+      "nanowatts": 12.29,
+      "orientation": 79.0,
+      "radiance_nw": 12.29,
+      "scan_angle": [
+        -0.004,
+        -0.004,
+        -0.004
+      ],
+      "x": 2923,
+      "y": 2308
+    },
+    {
+      "chip_path": "tests/test_files/chips/26.258_-147.988.jpeg",
+      "clear_sky_confidence": 0.0,
+      "latitude": 26.258,
+      "longitude": -147.988,
+      "meters_per_pixel": 86,
+      "moonlight_illumination": 97.0,
+      "nanowatts": 12.24,
+      "orientation": 79.0,
+      "radiance_nw": 12.24,
+      "scan_angle": [
+        -0.004,
+        -0.004,
+        -0.004
+      ],
+      "x": 2924,
+      "y": 2247
+    },
+    {
+      "chip_path": "tests/test_files/chips/27.195_-154.546.jpeg",
+      "clear_sky_confidence": 0.0,
+      "latitude": 27.195,
+      "longitude": -154.546,
+      "meters_per_pixel": 86,
+      "moonlight_illumination": 97.0,
+      "nanowatts": 10.9,
+      "orientation": 82.0,
+      "radiance_nw": 10.9,
+      "scan_angle": [
+        -0.004,
+        -0.004,
+        -0.004
+      ],
+      "x": 2925,
+      "y": 1369
+    },
+    {
+      "chip_path": "tests/test_files/chips/26.137_-147.322.jpeg",
+      "clear_sky_confidence": 0.0,
+      "latitude": 26.137,
+      "longitude": -147.322,
+      "meters_per_pixel": 86,
+      "moonlight_illumination": 97.0,
+      "nanowatts": 8.37,
+      "orientation": 79.0,
+      "radiance_nw": 8.37,
+      "scan_angle": [
+        -0.004,
+        -0.004,
+        -0.004
+      ],
+      "x": 2925,
+      "y": 2337
+    },
+    {
+      "chip_path": "tests/test_files/chips/25.985_-146.494.jpeg",
+      "clear_sky_confidence": 0.0,
+      "latitude": 25.985,
+      "longitude": -146.494,
+      "meters_per_pixel": 86,
+      "moonlight_illumination": 97.0,
+      "nanowatts": 6.08,
+      "orientation": 79.0,
+      "radiance_nw": 6.08,
+      "scan_angle": [
+        -0.004,
+        -0.004,
+        -0.004
+      ],
+      "x": 2926,
+      "y": 2448
+    },
+    {
+      "chip_path": "tests/test_files/chips/26.162_-147.699.jpeg",
+      "clear_sky_confidence": 0.0,
+      "latitude": 26.162,
+      "longitude": -147.699,
+      "meters_per_pixel": 86,
+      "moonlight_illumination": 97.0,
+      "nanowatts": 13.64,
+      "orientation": 79.0,
+      "radiance_nw": 13.64,
+      "scan_angle": [
+        -0.015,
+        -0.015,
+        -0.015
+      ],
+      "x": 2931,
+      "y": 2288
+    },
+    {
+      "chip_path": "tests/test_files/chips/26.044_-147.091.jpeg",
+      "clear_sky_confidence": 0.0,
+      "latitude": 26.044,
+      "longitude": -147.091,
+      "meters_per_pixel": 86,
+      "moonlight_illumination": 97.0,
+      "nanowatts": 7.5,
+      "orientation": 79.0,
+      "radiance_nw": 7.5,
+      "scan_angle": [
+        -0.015,
+        0.005,
+        0.005
+      ],
+      "x": 2933,
+      "y": 2370
+    },
+    {
+      "chip_path": "tests/test_files/chips/25.786_-146.373.jpeg",
+      "clear_sky_confidence": 0.0,
+      "latitude": 25.786,
+      "longitude": -146.373,
+      "meters_per_pixel": 86,
+      "moonlight_illumination": 97.0,
+      "nanowatts": 11.71,
+      "orientation": 79.0,
+      "radiance_nw": 11.71,
+      "scan_angle": [
+        0.005,
+        0.005,
+        0.005
+      ],
+      "x": 2952,
+      "y": 2472
+    },
+    {
+      "chip_path": "tests/test_files/chips/26.03_-147.803.jpeg",
+      "clear_sky_confidence": 0.0,
+      "latitude": 26.03,
+      "longitude": -147.803,
+      "meters_per_pixel": 86,
+      "moonlight_illumination": 97.0,
+      "nanowatts": 7.77,
+      "orientation": 79.0,
+      "radiance_nw": 7.77,
+      "scan_angle": [
+        0.005,
+        0.005,
+        0.005
+      ],
+      "x": 2953,
+      "y": 2279
+    },
+    {
+      "chip_path": "tests/test_files/chips/25.956_-147.452.jpeg",
+      "clear_sky_confidence": 0.0,
+      "latitude": 25.956,
+      "longitude": -147.452,
+      "meters_per_pixel": 86,
+      "moonlight_illumination": 97.0,
+      "nanowatts": 8.51,
+      "orientation": 79.0,
+      "radiance_nw": 8.51,
+      "scan_angle": [
+        -0.003,
+        -0.003,
+        -0.003
+      ],
+      "x": 2955,
+      "y": 2327
+    },
+    {
+      "chip_path": "tests/test_files/chips/25.971_-147.7.jpeg",
+      "clear_sky_confidence": 0.0,
+      "latitude": 25.971,
+      "longitude": -147.7,
+      "meters_per_pixel": 86,
+      "moonlight_illumination": 97.0,
+      "nanowatts": 9.17,
+      "orientation": 79.0,
+      "radiance_nw": 9.17,
+      "scan_angle": [
+        -0.003,
+        -0.003,
+        -0.003
+      ],
+      "x": 2959,
+      "y": 2294
+    },
+    {
+      "chip_path": "tests/test_files/chips/25.943_-147.569.jpeg",
+      "clear_sky_confidence": 0.0,
+      "latitude": 25.943,
+      "longitude": -147.569,
+      "meters_per_pixel": 86,
+      "moonlight_illumination": 97.0,
+      "nanowatts": 10.37,
+      "orientation": 79.0,
+      "radiance_nw": 10.37,
+      "scan_angle": [
+        -0.014,
+        -0.014,
+        -0.014
+      ],
+      "x": 2960,
+      "y": 2313
+    },
+    {
+      "chip_path": "tests/test_files/chips/25.971_-148.304.jpeg",
+      "clear_sky_confidence": 0.0,
+      "latitude": 25.971,
+      "longitude": -148.304,
+      "meters_per_pixel": 86,
+      "moonlight_illumination": 97.0,
+      "nanowatts": 7.93,
+      "orientation": 79.0,
+      "radiance_nw": 7.93,
+      "scan_angle": [
+        -0.003,
+        -0.003,
+        -0.003
+      ],
+      "x": 2974,
+      "y": 2216
+    },
+    {
+      "chip_path": "tests/test_files/chips/25.953_-148.308.jpeg",
+      "clear_sky_confidence": 0.0,
+      "latitude": 25.953,
+      "longitude": -148.308,
+      "meters_per_pixel": 86,
+      "moonlight_illumination": 97.0,
+      "nanowatts": 9.69,
+      "orientation": 79.0,
+      "radiance_nw": 9.69,
+      "scan_angle": [
+        -0.014,
+        -0.014,
+        -0.014
+      ],
+      "x": 2977,
+      "y": 2217
+    },
+    {
+      "chip_path": "tests/test_files/chips/25.798_-147.966.jpeg",
+      "clear_sky_confidence": 0.0,
+      "latitude": 25.798,
+      "longitude": -147.966,
+      "meters_per_pixel": 86,
+      "moonlight_illumination": 97.0,
+      "nanowatts": 11.15,
+      "orientation": 79.0,
+      "radiance_nw": 11.15,
+      "scan_angle": [
+        -0.003,
+        -0.003,
+        -0.003
+      ],
+      "x": 2991,
+      "y": 2266
+    },
+    {
+      "chip_path": "tests/test_files/chips/25.795_-147.966.jpeg",
+      "clear_sky_confidence": 0.0,
+      "latitude": 25.795,
+      "longitude": -147.966,
+      "meters_per_pixel": 86,
+      "moonlight_illumination": 97.0,
+      "nanowatts": 8.57,
+      "orientation": 79.0,
+      "radiance_nw": 8.57,
+      "scan_angle": [
+        -0.015,
+        -0.015,
+        -0.015
+      ],
+      "x": 2992,
+      "y": 2267
+    },
+    {
+      "chip_path": "tests/test_files/chips/25.847_-148.406.jpeg",
+      "clear_sky_confidence": 0.0,
+      "latitude": 25.847,
+      "longitude": -148.406,
+      "meters_per_pixel": 86,
+      "moonlight_illumination": 97.0,
+      "nanowatts": 12.86,
+      "orientation": 79.0,
+      "radiance_nw": 12.86,
+      "scan_angle": [
+        -0.015,
+        -0.015,
+        -0.015
+      ],
+      "x": 2995,
+      "y": 2208
+    },
+    {
+      "chip_path": "tests/test_files/chips/25.844_-148.43.jpeg",
+      "clear_sky_confidence": 0.0,
+      "latitude": 25.844,
+      "longitude": -148.43,
+      "meters_per_pixel": 86,
+      "moonlight_illumination": 97.0,
+      "nanowatts": 13.9,
+      "orientation": 80.0,
+      "radiance_nw": 13.9,
+      "scan_angle": [
+        -0.015,
+        -0.015,
+        -0.015
+      ],
+      "x": 2996,
+      "y": 2205
+    },
+    {
+      "chip_path": "tests/test_files/chips/25.835_-148.416.jpeg",
+      "clear_sky_confidence": 0.0,
+      "latitude": 25.835,
+      "longitude": -148.416,
+      "meters_per_pixel": 86,
+      "moonlight_illumination": 97.0,
+      "nanowatts": 12.09,
+      "orientation": 80.0,
+      "radiance_nw": 12.09,
+      "scan_angle": [
+        -0.015,
+        0.005,
+        0.005
+      ],
+      "x": 2997,
+      "y": 2207
+    },
+    {
+      "chip_path": "tests/test_files/chips/26.364_-151.909.jpeg",
+      "clear_sky_confidence": 0.0,
+      "latitude": 26.364,
+      "longitude": -151.909,
+      "meters_per_pixel": 86,
+      "moonlight_illumination": 97.0,
+      "nanowatts": 15.03,
+      "orientation": 81.0,
+      "radiance_nw": 15.03,
+      "scan_angle": [
+        0.005,
+        0.005,
+        0.005
+      ],
+      "x": 2998,
+      "y": 1735
+    },
+    {
+      "chip_path": "tests/test_files/chips/26.351_-152.3.jpeg",
+      "clear_sky_confidence": 0.0,
+      "latitude": 26.351,
+      "longitude": -152.3,
+      "meters_per_pixel": 86,
+      "moonlight_illumination": 97.0,
+      "nanowatts": 6.99,
+      "orientation": 81.0,
+      "radiance_nw": 6.99,
+      "scan_angle": [
+        -0.015,
+        -0.015,
+        -0.015
+      ],
+      "x": 3008,
+      "y": 1686
+    },
+    {
+      "chip_path": "tests/test_files/chips/25.739_-148.535.jpeg",
+      "clear_sky_confidence": 0.0,
+      "latitude": 25.739,
+      "longitude": -148.535,
+      "meters_per_pixel": 86,
+      "moonlight_illumination": 97.0,
+      "nanowatts": 9.41,
+      "orientation": 80.0,
+      "radiance_nw": 9.41,
+      "scan_angle": [
+        0.005,
+        0.005,
+        0.005
+      ],
+      "x": 3014,
+      "y": 2195
+    },
+    {
+      "chip_path": "tests/test_files/chips/25.715_-148.556.jpeg",
+      "clear_sky_confidence": 0.0,
+      "latitude": 25.715,
+      "longitude": -148.556,
+      "meters_per_pixel": 86,
+      "moonlight_illumination": 97.0,
+      "nanowatts": 10.37,
+      "orientation": 80.0,
+      "radiance_nw": 10.37,
+      "scan_angle": [
+        0.005,
+        0.005,
+        -0.003
+      ],
+      "x": 3018,
+      "y": 2193
+    },
+    {
+      "chip_path": "tests/test_files/chips/25.205_-145.696.jpeg",
+      "clear_sky_confidence": 0.0,
+      "latitude": 25.205,
+      "longitude": -145.696,
+      "meters_per_pixel": 86,
+      "moonlight_illumination": 97.0,
+      "nanowatts": 8.1,
+      "orientation": 78.0,
+      "radiance_nw": 8.1,
+      "scan_angle": [
+        -0.003,
+        -0.003,
+        -0.003
+      ],
+      "x": 3019,
+      "y": 2582
+    },
+    {
+      "chip_path": "tests/test_files/chips/25.673_-148.433.jpeg",
+      "clear_sky_confidence": 0.0,
+      "latitude": 25.673,
+      "longitude": -148.433,
+      "meters_per_pixel": 86,
+      "moonlight_illumination": 97.0,
+      "nanowatts": 8.6,
+      "orientation": 80.0,
+      "radiance_nw": 8.6,
+      "scan_angle": [
+        -0.003,
+        -0.003,
+        -0.003
+      ],
+      "x": 3021,
+      "y": 2210
+    },
+    {
+      "chip_path": "tests/test_files/chips/25.615_-148.125.jpeg",
+      "clear_sky_confidence": 0.0,
+      "latitude": 25.615,
+      "longitude": -148.125,
+      "meters_per_pixel": 86,
+      "moonlight_illumination": 97.0,
+      "nanowatts": 6.06,
+      "orientation": 79.0,
+      "radiance_nw": 6.06,
+      "scan_angle": [
+        -0.003,
+        -0.003,
+        -0.003
+      ],
+      "x": 3022,
+      "y": 2252
+    },
+    {
+      "chip_path": "tests/test_files/chips/25.653_-148.42.jpeg",
+      "clear_sky_confidence": 0.0,
+      "latitude": 25.653,
+      "longitude": -148.42,
+      "meters_per_pixel": 86,
+      "moonlight_illumination": 97.0,
+      "nanowatts": 10.55,
+      "orientation": 79.0,
+      "radiance_nw": 10.55,
+      "scan_angle": [
+        -0.014,
+        -0.014,
+        -0.014
+      ],
+      "x": 3024,
+      "y": 2213
+    },
+    {
+      "chip_path": "tests/test_files/chips/25.943_-150.461.jpeg",
+      "clear_sky_confidence": 0.0,
+      "latitude": 25.943,
+      "longitude": -150.461,
+      "meters_per_pixel": 86,
+      "moonlight_illumination": 97.0,
+      "nanowatts": 8.9,
+      "orientation": 80.0,
+      "radiance_nw": 8.9,
+      "scan_angle": [
+        -0.014,
+        0.005,
+        0.005
+      ],
+      "x": 3029,
+      "y": 1936
+    },
+    {
+      "chip_path": "tests/test_files/chips/25.489_-147.904.jpeg",
+      "clear_sky_confidence": 0.0,
+      "latitude": 25.489,
+      "longitude": -147.904,
+      "meters_per_pixel": 86,
+      "moonlight_illumination": 97.0,
+      "nanowatts": 8.74,
+      "orientation": 79.0,
+      "radiance_nw": 8.74,
+      "scan_angle": [
+        -0.003,
+        -0.003,
+        -0.003
+      ],
+      "x": 3035,
+      "y": 2285
+    },
+    {
+      "chip_path": "tests/test_files/chips/25.477_-147.915.jpeg",
+      "clear_sky_confidence": 0.0,
+      "latitude": 25.477,
+      "longitude": -147.915,
+      "meters_per_pixel": 86,
+      "moonlight_illumination": 97.0,
+      "nanowatts": 8.84,
+      "orientation": 79.0,
+      "radiance_nw": 8.84,
+      "scan_angle": [
+        -0.003,
+        -0.003,
+        -0.003
+      ],
+      "x": 3037,
+      "y": 2284
+    },
+    {
+      "chip_path": "tests/test_files/chips/25.886_-150.54.jpeg",
+      "clear_sky_confidence": 0.0,
+      "latitude": 25.886,
+      "longitude": -150.54,
+      "meters_per_pixel": 86,
+      "moonlight_illumination": 97.0,
+      "nanowatts": 8.27,
+      "orientation": 80.0,
+      "radiance_nw": 8.27,
+      "scan_angle": [
+        -0.003,
+        -0.003,
+        -0.003
+      ],
+      "x": 3039,
+      "y": 1927
+    },
+    {
+      "chip_path": "tests/test_files/chips/25.071_-145.77.jpeg",
+      "clear_sky_confidence": 0.0,
+      "latitude": 25.071,
+      "longitude": -145.77,
+      "meters_per_pixel": 86,
+      "moonlight_illumination": 97.0,
+      "nanowatts": 9.22,
+      "orientation": 78.0,
+      "radiance_nw": 9.22,
+      "scan_angle": [
+        -0.014,
+        -0.014,
+        -0.014
+      ],
+      "x": 3041,
+      "y": 2578
+    },
+    {
+      "chip_path": "tests/test_files/chips/25.998_-152.054.jpeg",
+      "clear_sky_confidence": 0.0,
+      "latitude": 25.998,
+      "longitude": -152.054,
+      "meters_per_pixel": 86,
+      "moonlight_illumination": 97.0,
+      "nanowatts": 5.84,
+      "orientation": 81.0,
+      "radiance_nw": 5.84,
+      "scan_angle": [
+        -0.003,
+        -0.003,
+        -0.003
+      ],
+      "x": 3055,
+      "y": 1727
+    },
+    {
+      "chip_path": "tests/test_files/chips/25.211_-147.083.jpeg",
+      "clear_sky_confidence": 0.0,
+      "latitude": 25.211,
+      "longitude": -147.083,
+      "meters_per_pixel": 86,
+      "moonlight_illumination": 97.0,
+      "nanowatts": 7.94,
+      "orientation": 79.0,
+      "radiance_nw": 7.94,
+      "scan_angle": [
+        -0.003,
+        -0.003,
+        -0.003
+      ],
+      "x": 3055,
+      "y": 2401
+    },
+    {
+      "chip_path": "tests/test_files/chips/25.993_-152.047.jpeg",
+      "clear_sky_confidence": 0.0,
+      "latitude": 25.993,
+      "longitude": -152.047,
+      "meters_per_pixel": 86,
+      "moonlight_illumination": 97.0,
+      "nanowatts": 13.0,
+      "orientation": 81.0,
+      "radiance_nw": 13.0,
+      "scan_angle": [
+        -0.014,
+        -0.014,
+        -0.014
+      ],
+      "x": 3056,
+      "y": 1729
+    },
+    {
+      "chip_path": "tests/test_files/chips/25.926_-151.671.jpeg",
+      "clear_sky_confidence": 0.0,
+      "latitude": 25.926,
+      "longitude": -151.671,
+      "meters_per_pixel": 86,
+      "moonlight_illumination": 97.0,
+      "nanowatts": 10.43,
+      "orientation": 81.0,
+      "radiance_nw": 10.43,
+      "scan_angle": [
+        -0.014,
+        -0.014,
+        -0.014
+      ],
+      "x": 3058,
+      "y": 1780
+    },
+    {
+      "chip_path": "tests/test_files/chips/25.36_-148.343.jpeg",
+      "clear_sky_confidence": 0.0,
+      "latitude": 25.36,
+      "longitude": -148.343,
+      "meters_per_pixel": 86,
+      "moonlight_illumination": 97.0,
+      "nanowatts": 6.37,
+      "orientation": 80.0,
+      "radiance_nw": 6.37,
+      "scan_angle": [
+        0.005,
+        0.005,
+        0.005
+      ],
+      "x": 3065,
+      "y": 2233
+    },
+    {
+      "chip_path": "tests/test_files/chips/25.324_-148.373.jpeg",
+      "clear_sky_confidence": 0.0,
+      "latitude": 25.324,
+      "longitude": -148.373,
+      "meters_per_pixel": 86,
+      "moonlight_illumination": 97.0,
+      "nanowatts": 7.06,
+      "orientation": 79.0,
+      "radiance_nw": 7.06,
+      "scan_angle": [
+        -0.003,
+        -0.003,
+        -0.003
+      ],
+      "x": 3071,
+      "y": 2230
+    },
+    {
+      "chip_path": "tests/test_files/chips/25.847_-151.783.jpeg",
+      "clear_sky_confidence": 0.0,
+      "latitude": 25.847,
+      "longitude": -151.783,
+      "meters_per_pixel": 86,
+      "moonlight_illumination": 97.0,
+      "nanowatts": 7.74,
+      "orientation": 81.0,
+      "radiance_nw": 7.74,
+      "scan_angle": [
+        -0.014,
+        -0.014,
+        -0.014
+      ],
+      "x": 3072,
+      "y": 1768
+    },
+    {
+      "chip_path": "tests/test_files/chips/25.866_-152.015.jpeg",
+      "clear_sky_confidence": 0.0,
+      "latitude": 25.866,
+      "longitude": -152.015,
+      "meters_per_pixel": 86,
+      "moonlight_illumination": 97.0,
+      "nanowatts": 11.57,
+      "orientation": 81.0,
+      "radiance_nw": 11.57,
+      "scan_angle": [
+        -0.014,
+        -0.014,
+        -0.014
+      ],
+      "x": 3074,
+      "y": 1737
+    },
+    {
+      "chip_path": "tests/test_files/chips/25.071_-147.449.jpeg",
+      "clear_sky_confidence": 0.0,
+      "latitude": 25.071,
+      "longitude": -147.449,
+      "meters_per_pixel": 86,
+      "moonlight_illumination": 97.0,
+      "nanowatts": 8.54,
+      "orientation": 79.0,
+      "radiance_nw": 8.54,
+      "scan_angle": [
+        -0.003,
+        -0.003,
+        -0.003
+      ],
+      "x": 3085,
+      "y": 2359
+    },
+    {
+      "chip_path": "tests/test_files/chips/26.261_-156.84.jpeg",
+      "clear_sky_confidence": 0.0,
+      "latitude": 26.261,
+      "longitude": -156.84,
+      "meters_per_pixel": 86,
+      "moonlight_illumination": 97.0,
+      "nanowatts": 11.19,
+      "orientation": 83.0,
+      "radiance_nw": 11.19,
+      "scan_angle": [
+        -0.014,
+        -0.014,
+        -0.014
+      ],
+      "x": 3104,
+      "y": 1094
+    },
+    {
+      "chip_path": "tests/test_files/chips/25.401_-150.506.jpeg",
+      "clear_sky_confidence": 0.0,
+      "latitude": 25.401,
+      "longitude": -150.506,
+      "meters_per_pixel": 86,
+      "moonlight_illumination": 97.0,
+      "nanowatts": 6.92,
+      "orientation": 80.0,
+      "radiance_nw": 6.92,
+      "scan_angle": [
+        0.005,
+        0.005,
+        0.005
+      ],
+      "x": 3110,
+      "y": 1948
+    },
+    {
+      "chip_path": "tests/test_files/chips/25.074_-148.833.jpeg",
+      "clear_sky_confidence": 0.0,
+      "latitude": 25.074,
+      "longitude": -148.833,
+      "meters_per_pixel": 86,
+      "moonlight_illumination": 97.0,
+      "nanowatts": 5.34,
+      "orientation": 80.0,
+      "radiance_nw": 5.34,
+      "scan_angle": [
+        -0.003,
+        -0.003,
+        -0.003
+      ],
+      "x": 3119,
+      "y": 2179
+    },
+    {
+      "chip_path": "tests/test_files/chips/25.476_-151.693.jpeg",
+      "clear_sky_confidence": 0.0,
+      "latitude": 25.476,
+      "longitude": -151.693,
+      "meters_per_pixel": 86,
+      "moonlight_illumination": 97.0,
+      "nanowatts": 15.97,
+      "orientation": 81.0,
+      "radiance_nw": 15.97,
+      "scan_angle": [
+        -0.014,
+        0.005,
+        0.005
+      ],
+      "x": 3125,
+      "y": 1791
+    },
+    {
+      "chip_path": "tests/test_files/chips/25.376_-151.748.jpeg",
+      "clear_sky_confidence": 0.0,
+      "latitude": 25.376,
+      "longitude": -151.749,
+      "meters_per_pixel": 86,
+      "moonlight_illumination": 97.0,
+      "nanowatts": 7.04,
+      "orientation": 81.0,
+      "radiance_nw": 7.04,
+      "scan_angle": [
+        -0.015,
+        0.005,
+        0.005
+      ],
+      "x": 3141,
+      "y": 1787
+    },
+    {
+      "chip_path": "tests/test_files/chips/25.37_-151.757.jpeg",
+      "clear_sky_confidence": 0.0,
+      "latitude": 25.37,
+      "longitude": -151.757,
+      "meters_per_pixel": 86,
+      "moonlight_illumination": 97.0,
+      "nanowatts": 7.03,
+      "orientation": 81.0,
+      "radiance_nw": 7.03,
+      "scan_angle": [
+        0.005,
+        0.005,
+        0.005
+      ],
+      "x": 3142,
+      "y": 1786
+    },
+    {
+      "chip_path": "tests/test_files/chips/25.29_-151.709.jpeg",
+      "clear_sky_confidence": 0.0,
+      "latitude": 25.29,
+      "longitude": -151.709,
+      "meters_per_pixel": 86,
+      "moonlight_illumination": 97.0,
+      "nanowatts": 10.18,
+      "orientation": 81.0,
+      "radiance_nw": 10.18,
+      "scan_angle": [
+        -0.014,
+        -0.014,
+        -0.014
+      ],
+      "x": 3153,
+      "y": 1795
+    },
+    {
+      "chip_path": "tests/test_files/chips/24.58_-147.517.jpeg",
+      "clear_sky_confidence": 0.0,
+      "latitude": 24.58,
+      "longitude": -147.517,
+      "meters_per_pixel": 86,
+      "moonlight_illumination": 97.0,
+      "nanowatts": 9.27,
+      "orientation": 79.0,
+      "radiance_nw": 9.27,
+      "scan_angle": [
+        0.005,
+        0.005,
+        0.005
+      ],
+      "x": 3159,
+      "y": 2368
+    },
+    {
+      "chip_path": "tests/test_files/chips/24.826_-149.139.jpeg",
+      "clear_sky_confidence": 0.0,
+      "latitude": 24.826,
+      "longitude": -149.139,
+      "meters_per_pixel": 86,
+      "moonlight_illumination": 97.0,
+      "nanowatts": 5.23,
+      "orientation": 80.0,
+      "radiance_nw": 5.23,
+      "scan_angle": [
+        -0.002,
+        -0.002,
+        -0.002
+      ],
+      "x": 3163,
+      "y": 2148
+    },
+    {
+      "chip_path": "tests/test_files/chips/24.8_-149.144.jpeg",
+      "clear_sky_confidence": 0.0,
+      "latitude": 24.8,
+      "longitude": -149.144,
+      "meters_per_pixel": 86,
+      "moonlight_illumination": 97.0,
+      "nanowatts": 8.53,
+      "orientation": 80.0,
+      "radiance_nw": 8.53,
+      "scan_angle": [
+        -0.002,
+        -0.002,
+        -0.002
+      ],
+      "x": 3167,
+      "y": 2148
+    },
+    {
+      "chip_path": "tests/test_files/chips/25.133_-151.705.jpeg",
+      "clear_sky_confidence": 0.0,
+      "latitude": 25.133,
+      "longitude": -151.705,
+      "meters_per_pixel": 86,
+      "moonlight_illumination": 97.0,
+      "nanowatts": 8.36,
+      "orientation": 81.0,
+      "radiance_nw": 8.36,
+      "scan_angle": [
+        0.005,
+        0.005,
+        0.005
+      ],
+      "x": 3176,
+      "y": 1800
+    },
+    {
+      "chip_path": "tests/test_files/chips/25.109_-151.732.jpeg",
+      "clear_sky_confidence": 0.0,
+      "latitude": 25.109,
+      "longitude": -151.732,
+      "meters_per_pixel": 86,
+      "moonlight_illumination": 97.0,
+      "nanowatts": 7.51,
+      "orientation": 81.0,
+      "radiance_nw": 7.51,
+      "scan_angle": [
+        -0.003,
+        -0.003,
+        -0.003
+      ],
+      "x": 3180,
+      "y": 1797
+    },
+    {
+      "chip_path": "tests/test_files/chips/24.569_-149.226.jpeg",
+      "clear_sky_confidence": 0.0,
+      "latitude": 24.569,
+      "longitude": -149.226,
+      "meters_per_pixel": 86,
+      "moonlight_illumination": 97.0,
+      "nanowatts": 5.72,
+      "orientation": 80.0,
+      "radiance_nw": 5.72,
+      "scan_angle": [
+        -0.014,
+        -0.014,
+        -0.014
+      ],
+      "x": 3203,
+      "y": 2146
     }
   ],
-  "satellite_name": "JPSS-1",
+  "satellite_name": "Suomi-NPP",
   "status": [
     "processed"
   ]

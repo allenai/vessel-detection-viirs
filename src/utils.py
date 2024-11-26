@@ -20,7 +20,9 @@ from google.cloud.storage import Client as StorageClient
 from matplotlib import cm
 from PIL import Image, ImageFilter
 from pydantic import BaseModel
+from scipy.interpolate import griddata
 from skimage import draw
+from custom_types import RoundedFloat
 
 logging.config.fileConfig(
     os.path.join(os.path.dirname(os.path.realpath(__file__)), "logging.conf"),
@@ -53,6 +55,8 @@ MID_AURORA = utils_config["MID_AURORA"]
 LOW_AURORA = utils_config["LOW_AURORA"]
 GAS_FLARE_THRESHOLD = utils_config["GAS_FLARE_THRESHOLD"]
 CLOUD_EROSION_KERNEL_DIM = utils_config["CLOUD_EROSION_KERNEL_DIM"]
+FILL_VALUE = utils_config["FILL_VALUE"]
+THRESHOLD_FILL_VALUE = utils_config["THRESHOLD_FILL_VALUE"]
 
 TOKEN = os.environ.get("EARTHDATA_TOKEN")
 
@@ -97,9 +101,9 @@ def upload_image(
     incomplete_chips = []
     for idx, chip_info in chips_dict.items():
         try:
-            lat = chip_info["latitude"]
-            lon = chip_info["longitude"]
-            filename = f"{lat}_{lon}.jpeg"
+            lat = RoundedFloat(chip_info["latitude"])
+            lon = RoundedFloat(chip_info["longitude"])
+            filename = f"{round(lat, 2)}_{round(lon, 2)}.jpeg"
             destination_blob_name = os.path.join(
                 destination_path,
                 image_name.stem,
@@ -196,7 +200,9 @@ def get_frame_extents(dnb_dataset: dict) -> List[List[float]]:
     longitude = dnb_dataset["longitude"]
     lon_corners = longitude[[0, 0, -1, -1, 0], [0, -1, -1, 0, 0]]
     lat_corners = latitude[[0, 0, -1, -1, 0], [0, -1, -1, 0, 0]]
-    frame_extents = [[lon, lat] for lon, lat in zip(lon_corners, lat_corners)]
+    frame_extents = [
+        [round(float(lon), 2), round(float(lat), 2)] for lon, lat in zip(lon_corners, lat_corners)
+    ]
     return frame_extents
 
 
@@ -263,16 +269,16 @@ def download_phys_image(
         phys_dir = image_dir.replace(NOAA20_PRODUCT_NAME, "CLDMSK_L2_VIIRS_NOAA20_NRT")
 
     temp_list = temp.rsplit(".")
-    phys_filename_prefix = ".".join(temp_list[0:3])
+    cloud_maskname_prefix = ".".join(temp_list[0:3])
 
     storage_client = StorageClient()
     bucket = storage_client.bucket(gcp_bucket)
-    phys_path_prefix = os.path.join(phys_dir, phys_filename_prefix)
+    phys_path_prefix = os.path.join(phys_dir, cloud_maskname_prefix)
     for blob in bucket.list_blobs(prefix=phys_path_prefix):
         src_path = blob.name
-        phys_filename = src_path.rsplit("/")[-1]
+        cloud_maskname = src_path.rsplit("/")[-1]
         blob = bucket.blob(src_path)
-        dest_path = os.path.join(dest_dir, phys_filename)
+        dest_path = os.path.join(dest_dir, cloud_maskname)
         blob.download_to_filename(dest_path)
     logger.debug(f"Copied {os.path.join(gcp_bucket, src_path)} to {dest_path}")
 
@@ -369,6 +375,10 @@ def download_geo_image(
         temp = filename.replace("VJ102", "VJ103")
         geo_dir = image_dir.replace("VJ102", "VJ103")
 
+    elif "VJ202" in filename:
+        temp = filename.replace("VJ202", "VJ203")
+        geo_dir = image_dir.replace("VJ202", "VJ203")
+
     temp_list = temp.rsplit(".")
     geo_filename_prefix = ".".join(temp_list[0:3])
 
@@ -420,6 +430,22 @@ def image_contains_ocean(dnb_dataset: dict) -> bool:
     return contains_ocean
 
 
+def crop_image(detection: dict, chip_width: int, image: np.ndarray) -> np.ndarray:
+    x0, y0 = detection["coords"]
+
+    # for chip creation, center need to be adjusted by amount image was padded
+    padded_center_x = x0 + IMAGE_CHIP_SIZE
+    padded_center_y = y0 + IMAGE_CHIP_SIZE
+
+    # set the boundaries of the image chip
+    top = int(padded_center_x - chip_width / 2)
+    bottom = int(padded_center_x + chip_width / 2)
+    left = int(padded_center_y - chip_width / 2)
+    right = int(padded_center_y + chip_width / 2)
+
+    return image[top:bottom, left:right]
+
+
 def get_chips(image: np.ndarray, detections: dict, dnb_dataset: Dict) -> dict:
     """extracts the context from original image surrounding a vessel
     # Check with product if they prefer something else here, like black pixels.
@@ -447,6 +473,7 @@ def get_chips(image: np.ndarray, detections: dict, dnb_dataset: Dict) -> dict:
         chip_image = cv2.rotate(image, cv2.ROTATE_180)
         chip_latitude = cv2.rotate(dnb_dataset["latitude"], cv2.ROTATE_180)
         chip_longitude = cv2.rotate(dnb_dataset["longitude"], cv2.ROTATE_180)
+
     else:
         chip_image = np.copy(image)
         chip_latitude = dnb_dataset["latitude"]
@@ -462,19 +489,9 @@ def get_chips(image: np.ndarray, detections: dict, dnb_dataset: Dict) -> dict:
     if detections is not None:
         for idx, detection in detections.items():
             # pixel based coordinate system
+
+            chip_dnb = crop_image(detection, IMAGE_CHIP_SIZE, padded_image)
             x0, y0 = detection["coords"]
-
-            # for chip creation, center need to be adjusted by amount image was padded
-            padded_center_x = x0 + IMAGE_CHIP_SIZE
-            padded_center_y = y0 + IMAGE_CHIP_SIZE
-
-            # set the boundaries of the image chip
-            top = int(padded_center_x - chip_half_width)
-            bottom = int(padded_center_x + chip_half_width)
-            left = int(padded_center_y - chip_half_width)
-            right = int(padded_center_y + chip_half_width)
-
-            chip_dnb = padded_image[top:bottom, left:right]
 
             fwd_azimuth = get_chip_azimuth(
                 x0,
@@ -496,6 +513,8 @@ def get_chips(image: np.ndarray, detections: dict, dnb_dataset: Dict) -> dict:
                 "moonlight_illumination": detection["moonlight_illumination"],
                 "max_nanowatts": detection["max_nanowatts"],
                 "clear_sky_confidence": detection["clear_sky_confidence"],
+                "scan_angle": detection["scan_angle"],
+                "radiance_nw": detection["radiance_nw"],
             }
     return chips_dict
 
@@ -567,14 +586,17 @@ def format_detections(chips_dict: dict) -> List:
     for idx, chip_info in chips_dict.items():
         predictions.append(
             {
-                "latitude": chip_info["latitude"],
-                "longitude": chip_info["longitude"],
+                "latitude": RoundedFloat(chip_info["latitude"]),
+                "longitude": RoundedFloat(chip_info["longitude"]),
                 "chip_path": chip_info["path"],
-                "orientation": chip_info["orientation"],
-                "meters_per_pixel": chip_info["meters_per_pixel"],
-                "moonlight_illumination": chip_info["moonlight_illumination"],
-                "nanowatts": chip_info["max_nanowatts"],
-                "clear_sky_confidence": chip_info["clear_sky_confidence"],
+                "x": int(chip_info["coords_pix"][0]),
+                "y": int(chip_info["coords_pix"][1]),
+                "orientation": RoundedFloat(chip_info["orientation"]),
+                "meters_per_pixel": int(chip_info["meters_per_pixel"]),
+                "moonlight_illumination": RoundedFloat(chip_info["moonlight_illumination"]),
+                "clear_sky_confidence": RoundedFloat(chip_info["clear_sky_confidence"]),
+                "scan_angle": chip_info["scan_angle"],
+                "radiance_nw": RoundedFloat(chip_info["radiance_nw"]),
             }
         )
     return predictions
@@ -692,7 +714,7 @@ def detection_near_mask(
 
 def save_chips_locally(
     chips_dict: dict, destination_path: str, chip_features: dict
-) -> None:
+) -> dict:
     """saves image of each detection
 
     Parameters
@@ -709,8 +731,8 @@ def save_chips_locally(
     for idx, chip_info in chips_dict.items():
         features = chip_features[idx]
 
-        lat = chip_info["latitude"]
-        long = chip_info["longitude"]
+        lat = RoundedFloat(chip_info["latitude"])
+        long = RoundedFloat(chip_info["longitude"])
 
         img_filename = f"{lat}_{long}.jpeg"
         dest_img = os.path.join(
@@ -752,6 +774,7 @@ def save_chips_locally(
         }
         pd.DataFrame(feature_dict, index=[0]).to_csv(dest_csv)
         cv2.imwrite(dest_img, resized_img)
+    return chips_dict
 
 
 def numpy_nms(detections: dict, thresh: float = 0.1) -> dict:
@@ -1033,6 +1056,7 @@ def quality_flag_mask(
         1024: Cal_Fail Calibration failure
         2048: Dead_Detector Detector is not producing valid data
 
+    See: https://viirsland.gsfc.nasa.gov/PDF/VIIRS_BlackMarbleUserGuide_V1.1.pdf
 
     Consider special handling of low gain samples to salvage some true positive
     detections in center of the frame even with bad edge data
@@ -1068,73 +1092,11 @@ def quality_flag_mask(
         quality_flag_data_copy == 0, quality_flag_data_copy == 0, quality_flag_data_copy
     )
     if not np.all(bool_mask):
-        logger.info("Found quality flag issues")
+        logger.debug("Removed bad quality data from image")
 
     masked_img = bool_mask * data
 
     return masked_img, bool_mask
-
-
-def format_detections_df(detections: dict, filename: str) -> pd.DataFrame:
-    """formats detections into a pandas dataframe
-
-    Parameters
-    ----------
-    detections : dict
-
-    filename : str
-
-
-    Returns
-    -------
-    pd.DataFrame
-
-    """
-    xmins = []
-    ymins = []
-    area = []
-    perimeter = []
-    max_nanowatts = []
-    min_nanowatts = []
-    moonlight_illumination = []
-    clear_sky_confidence = []
-    mean_nanowatts = []
-    img_name = []
-    lats = []
-    lons = []
-    for idx, detection in detections.items():
-        xmin, ymin = detection["coords"]
-        xmins.append(int(xmin))
-        ymins.append(int(ymin))
-        lats.append(detection["latitude"])
-        lons.append(detection["longitude"])
-        area.append(detection["area"])
-        perimeter.append(detection["perimeter"])
-        max_nanowatts.append(detection["max_nanowatts"])
-        min_nanowatts.append(detection["min_nanowatts"])
-        moonlight_illumination.append(detection["moonlight_illumination"])
-        clear_sky_confidence.append(detection["clear_sky_confidence"])
-        mean_nanowatts.append(detection["mean_nanowatts"])
-        img_name.append(filename)
-
-    detections_df = pd.DataFrame.from_dict(
-        {
-            "xmin": xmins,
-            "ymin": ymins,
-            "latitude": lats,
-            "longitude": lons,
-            "area": area,
-            "perimeter": perimeter,
-            "max_nanowatts": max_nanowatts,
-            "min_nanowatts": min_nanowatts,
-            "moonlight_illumination": moonlight_illumination,
-            "clear_sky_confidence": clear_sky_confidence,
-            "mean_nanowatts": mean_nanowatts,
-            "img_name": img_name,
-        }
-    )
-
-    return detections_df
 
 
 def viirs_annotate_pipeline(
@@ -1142,6 +1104,7 @@ def viirs_annotate_pipeline(
     geo_filename: str,
     input_dir: str,
     output_dir: str,
+    optional_id: str = "",
     **optional_files: str,
 ) -> Tuple[dict, List]:
     """viirs debugging pipeline
@@ -1198,10 +1161,17 @@ def viirs_annotate_pipeline(
         dnb_path, geo_path, TemporaryDirectory(), phys_path, modraw_path, modgeo_path
     )
     filtered_detections = all_detections["vessel_detections"]
+    # add specific test name for easier debugging:
+    filename = Path(dnb_filename).stem
+
+    if len(optional_id):
+        filename = optional_id + "_" + filename
+
     output_dir = os.path.join(
         output_dir,
-        Path(dnb_filename).stem,
+        filename,
     )
+
     chip_dir = os.path.join(output_dir, "image_chips")
     os.makedirs(output_dir, exist_ok=True)
     os.makedirs(chip_dir, exist_ok=True)
@@ -1210,57 +1180,62 @@ def viirs_annotate_pipeline(
     _, land_mask = land_water_mask(
         dnb_dataset["dnb"]["data"], dnb_dataset["land_sea_mask"]
     )
-    all_detections_csv = format_detections_df(
-        filtered_detections, f"{dnb_path.stem}.npy"
-    )
-    annotation_csv_path = os.path.join(output_dir, "detections.csv")
-    all_detections_csv.to_csv(annotation_csv_path)
-    logger.debug(f"Wrote {len(all_detections_csv)} detections to {annotation_csv_path}")
+    predictions = format_detections(chips_dict)
+    all_detections_csv = pd.DataFrame(predictions)
+    if not all_detections_csv.empty:
+        all_detections_csv.drop(columns=["chip_path"], inplace=True)
 
-    # save image as numpy array
-    img_array, _, _ = preprocess_raw_data(dnb_dataset)
-    np.save(
-        os.path.join(output_dir, f"{dnb_path.stem}.npy"),
-        img_array,
-    )
-    plt.imsave(
-        os.path.join(output_dir, "detections.jpg"),
-        draw_detections(np.clip(img_array, 0, 100), filtered_detections),
-        cmap=cm.gray,
-    )
-
-    if phys_path:
-        clear_skies, cld_mask, _ = clear_sky_mask(
-            dnb_dataset["dnb"]["data"], dnb_dataset["cloud_mask"]
-        )
-        _, _, cloudy_skies = clear_sky_mask(
-            dnb_dataset["dnb"]["data"], dnb_dataset["cloud_mask"]
+        annotation_csv_path = os.path.join(output_dir, "detections.csv")
+        all_detections_csv.to_csv(annotation_csv_path)
+        logger.debug(
+            f"Wrote {len(all_detections_csv)} detections to {annotation_csv_path}"
         )
 
-        dnb_observations, _, _ = preprocess_raw_data(dnb_dataset)
-        all_channels = np.stack(
-            [
-                dnb_observations,
-                dnb_dataset["land_sea_mask"],
-                dnb_dataset["moonlight"],
-                dnb_dataset["cloud_mask"],
-            ],
-            axis=0,
+        # save image as numpy array
+        img_array, _, _ = preprocess_raw_data(dnb_dataset)
+        np.save(
+            os.path.join(output_dir, f"{dnb_path.stem}.npy"),
+            img_array,
         )
-        for chip_idx, chip in chips_dict.items():
-            x, y = chip["coords_pix"]
-            lat = chip["latitude"]
-            lon = chip["longitude"]
+        plt.imsave(
+            os.path.join(output_dir, "detections.jpg"),
+            draw_detections(np.clip(img_array, 0, 100), filtered_detections),
+            cmap=cm.gray,
+        )
 
-            chip_all_channels, skip = get_chip_from_all_channels(all_channels, x, y)
-            if not skip:
-                out_filename = os.path.join(
-                    output_dir, "image_chips", f"{lat}_{lon}.npy"
-                )
+        if phys_path:
+            clear_skies, cld_mask, _ = clear_sky_mask(
+                dnb_dataset["dnb"]["data"], dnb_dataset["cloud_mask"]
+            )
+            _, _, cloudy_skies = clear_sky_mask(
+                dnb_dataset["dnb"]["data"], dnb_dataset["cloud_mask"]
+            )
 
-                np.save(out_filename, chip_all_channels)
+            dnb_observations, _, _ = preprocess_raw_data(dnb_dataset)
+            all_channels = np.stack(
+                [
+                    dnb_observations,
+                    dnb_dataset["land_sea_mask"],
+                    dnb_dataset["moonlight"],
+                    dnb_dataset["cloud_mask"],
+                ],
+                axis=0,
+            )
+            for chip_idx, chip in chips_dict.items():
+                x, y = chip["coords_pix"]
+                lat = chip["latitude"]
+                lon = chip["longitude"]
 
-    return filtered_detections, status
+                chip_all_channels, skip = get_chip_from_all_channels(all_channels, x, y)
+                if not skip:
+                    out_filename = os.path.join(
+                        output_dir, "image_chips", f"{lat}_{lon}.npy"
+                    )
+
+                    np.save(out_filename, chip_all_channels)
+    else:
+        logger.info("No detections found")
+    return chips_dict, status
 
 
 def preprocess_raw_data(dnb_dataset: dict) -> Tuple[np.ndarray, float, float]:
@@ -1292,6 +1267,30 @@ def preprocess_raw_data(dnb_dataset: dict) -> Tuple[np.ndarray, float, float]:
     return dnb_observations, valid_min, valid_max
 
 
+def is_invalid(value: float) -> bool:
+    """Check if a value is close enough to the fill value."""
+    return abs(value - FILL_VALUE) < THRESHOLD_FILL_VALUE
+
+
+def interpolate_array(arr: np.ndarray) -> np.ndarray:
+    """Interpolates an array with missing values (FILL_VALUE)."""
+    valid_mask = np.abs(arr - FILL_VALUE) > THRESHOLD_FILL_VALUE
+    valid_data = arr[valid_mask]
+    valid_idx = np.array(np.where(valid_mask)).T
+    grid_idx = np.array(
+        np.meshgrid(np.arange(arr.shape[0]), np.arange(arr.shape[1]), indexing="ij")
+    ).T.reshape(-1, 2)
+    interpolated_data = griddata(
+        valid_idx, valid_data, grid_idx, method="linear", fill_value=FILL_VALUE
+    ).reshape(arr.shape)
+    still_invalid_mask = np.abs(interpolated_data - FILL_VALUE) < 2
+    if np.any(still_invalid_mask):
+        interpolated_data = griddata(
+            valid_idx, valid_data, grid_idx, method="nearest"
+        ).reshape(arr.shape)
+    return interpolated_data
+
+
 def get_chip_azimuth(
     x0: int,
     y0: int,
@@ -1318,6 +1317,8 @@ def get_chip_azimuth(
     float
 
     """
+    # If there are any invalid points (FILL_VALUE), interpolate the missing data
+
     xmin = np.max([0, x0 - chip_half_width])
     xmax = np.min([x0 + chip_half_width - 1, xpixels - 2])
     ymin = np.max([0, y0 - chip_half_width])
@@ -1325,6 +1326,15 @@ def get_chip_azimuth(
 
     chip_latitude_crop = chip_latitude[xmin:xmax, ymin:ymax]
     chip_longitude_crop = chip_longitude[xmin:xmax, ymin:ymax]
+
+    if np.any(is_invalid(chip_latitude)) or np.any(is_invalid(chip_longitude)):
+        logger.info(
+            "Interpolating missing data, note that interpolation is "
+            "slow, so this needs to be executed on relatively small arrays "
+            "(i.e. crops are ok if the number of pixels is under 1000)."
+        )
+        chip_latitude_crop = interpolate_array(chip_latitude_crop)
+        chip_longitude_crop = interpolate_array(chip_longitude_crop)
 
     fwd_azimuth, _ = calculate_e2e_cog(
         GeoPoint(lat=chip_latitude_crop[-1, 0], lon=chip_longitude_crop[-1, 0]),
@@ -1515,10 +1525,12 @@ def download_from_gcp(bucket: str, filename: str, input_dir: str, dir: str) -> T
         modraw_path = None
         modgeo_path = None
 
+    phys_path = None
     try:
-        phys_path = download_phys_image(bucket, filename, input_dir, dir)
+        if "VJ202" not in filename:  # TODO remove this once cloud data for NOAA-21
+            phys_path = download_phys_image(bucket, filename, input_dir, dir)
     except Exception:
-        phys_path = None
+        logger.exception("Failed to download cloud mask", exc_info=True)
 
     return dnb_path, geo_path, modraw_path, modgeo_path, phys_path
 
@@ -1557,13 +1569,32 @@ def copy_local_files(
     else:
         modgeo_path = None
 
-    if info.phys_filename is not None:
-        phys_path = os.path.join(dir, info.phys_filename)
-        shutil.copy2(os.path.join(info.input_dir, info.phys_filename), phys_path)
+    if info.cloud_maskname is not None:
+        phys_path = os.path.join(dir, info.cloud_maskname)
+        shutil.copy2(os.path.join(info.input_dir, info.cloud_maskname), phys_path)
     else:
         phys_path = None
 
     return dnb_path, geo_path, modraw_path, modgeo_path, phys_path
+
+
+def create_cloud_url_sips(
+    source_url: str, product_name: str, year: str, doy: str, time: str
+) -> str:
+    logger.debug(f"Retrieving: {source_url}/{product_name}/{year}/{doy}/{time}")
+    df = pd.read_html(
+        f"{source_url}/{product_name}/{year}/{doy}", extract_links="body"
+    )[0]
+    df = df.iloc[1:, :]
+
+    # Split tuple_col into two separate columns using .loc
+    df.loc[:, "name"] = [x[0] for x in df["Name"]]
+    df.loc[:, "url"] = [x[1] for x in df["Name"]]
+
+    filename = df.loc[df["url"].str.contains(f"A{year}{doy}.{time}", case=False)][
+        "url"
+    ].values[0]
+    return filename
 
 
 def create_earth_data_url(
@@ -1584,20 +1615,50 @@ def create_earth_data_url(
     str
         _description_
     """
-    logger.debug(f"Retrieving: {source_url}/{product_name}/{year}/{doy}/{time}")
-    df = pd.read_html(
-        f"{source_url}/{product_name}/{year}/{doy}", extract_links="body"
-    )[0]
 
-    df[["filename", "url"]] = pd.DataFrame(
-        df["Select All  Name"].tolist(), index=df.index
-    )
-    df = df.iloc[1:]
-    filename = df.loc[df["url"].str.contains(f"A{year}{doy}.{time}", case=False)][
-        "url"
-    ].values[0]
-    base = ("/").join(filename.split("/")[4:])
-    return f"{source_url}/{base}"
+    img_name = f"{source_url}/{product_name}/{year}/{doy}/{time}"
+    url = ""
+    padded_doy = "{:03}".format(1)
+    try:
+        logger.debug(f"Retrieving: {img_name}")
+        df = pd.read_html(
+            f"{source_url}/{product_name}/{year}/{doy}", extract_links="body"
+        )[0]
+
+        df[["filename", "url"]] = pd.DataFrame(
+            df["Select All  Name"].tolist(), index=df.index
+        )
+        padded_doy = "{:03}".format(1)
+
+        df = df.iloc[1:]
+        df = df.fillna("")
+        filename = df.loc[
+            df["url"].str.contains(f"A{year}{padded_doy}.{time}", case=False)
+        ]["url"].values[0]
+        base = ("/").join(filename.split("/")[4:])
+        url = f"{source_url}/{base}"
+        logger.debug(url)
+    except Exception as e:
+        logger.exception(e)
+        logger.info("Exception, checking NRT servers")
+        nrt_url = (
+            "https://nrt3.modaps.eosdis.nasa.gov/api/v2/content/details/allData/5200/"
+        )
+        URL = f"{nrt_url}{product_name}_NRT/{year}/{doy}?fields=all&formats=csv"
+        logger.debug(URL)
+        response = requests.get(URL, timeout=600)
+
+        if response.status_code == 200:
+            dataframe = pd.read_csv(io.StringIO(response.text))
+            dataframe = dataframe.fillna("")
+            url = dataframe.loc[
+                dataframe["name"].str.contains(f"{year}{doy}.{time}", case=False)
+            ]["downloadsLink"].values[0]
+        else:
+            logger.exception(
+                f"Failed to retrieve the CSV with status code: {response.status_code}"
+            )
+    return url
 
 
 def get_cld_filename(product_name: str, year: str, doy: str, time: str) -> str:
@@ -1626,6 +1687,14 @@ def get_cld_filename(product_name: str, year: str, doy: str, time: str) -> str:
     elif "VJ102" in product_name:
         cld_product = "CLDMSK_L2_VIIRS_NOAA20"
     cld_url = create_earth_data_url(source_url, cld_product, year, doy, time)
+
+    if not cld_url:
+        source_url = "https://sips-data.ssec.wisc.edu/nrt"
+        if "VNP02" in product_name:
+            cld_product = "CLDMSK_L2_VIIRS_SNPP_NRT"
+        elif "VJ102" in product_name:
+            cld_product = "CLDMSK_L2_VIIRS_NOAA20_NRT"
+        cld_url = create_cloud_url_sips(source_url, cld_product, year, doy, time)
 
     return cld_url
 
@@ -1740,9 +1809,13 @@ def download_url(
                 out.write(response.content)
                 return out
         else:
-            print(f"HTTP error: {response.status_code}, reason: {response.reason}")
+            logger.exception(
+                f"HTTP error: {response.status_code}, reason: {response.reason}"
+            )
     except Exception as ex:
-        print(f"Unexpected exception trying to download url: {url}. Error: {str(ex)}")
+        logger.exception(
+            f"Unexpected exception trying to download url: {url}. Error: {str(ex)}"
+        )
     return None
 
 
@@ -1760,12 +1833,12 @@ def get_chip_from_all_channels(all_channels: np.ndarray, x: int, y: int) -> np.n
     np.ndarray
 
     """
+    n_channels = all_channels.shape[0]
     chip_channels = all_channels[:, x - 10 : x + 10, y - 10 : y + 10]
     skip = False
-    if chip_channels.shape != (4, 20, 20):
-        chip_channels = np.zeros((4, 20, 20))
+    if chip_channels.shape != (n_channels, 20, 20):
+        chip_channels = np.zeros((n_channels, 20, 20))
         skip = True
-
     return chip_channels, skip
 
 
@@ -1802,6 +1875,9 @@ def get_all_times_from_date() -> List[str]:
     for time in index:
         times.append(time.strftime("%H:%M:%S")[0:2] + time.strftime("%H:%M:%S")[3:5])
     return times
+
+
+
 
 
 def get_detections_from_one_frame(
@@ -1929,10 +2005,69 @@ def format_dets_for_correlation(
                 "lon": detection["longitude"],
             }
         )
-
     frame = {
         "ts": detections["acquisition_time"],
         "polygon_points": detections["frame_extents"],
     }
 
     return formatted_detections, frame
+
+
+def extract_coords_from_infra(geojson_file: str) -> Tuple[np.ndarray, np.ndarray]:
+    """reads a geojson file, extracts coordinates and converts to lat/lon"""
+    # Load the GeoJSON file
+    with open(geojson_file, "r") as f:
+        geojson_data = json.load(f)
+
+    # Initialize empty arrays for latitudes and longitudes
+    latitudes = []
+    longitudes = []
+
+    # Iterate through the features and extract coordinates
+    for feature in geojson_data["features"]:
+        coordinates = feature["geometry"]["coordinates"]
+        longitude, latitude = coordinates  # GeoJSON uses [longitude, latitude] order
+
+        # Append coordinates to the respective arrays
+        latitudes.append(latitude)
+        longitudes.append(longitude)
+
+    # Convert lists to numpy arrays
+    latitudes_array = np.array(latitudes)
+    longitudes_array = np.array(longitudes)
+
+    return latitudes_array, longitudes_array
+
+
+def haversine_vectorized(
+    target_lat: float, target_lon: float, latitudes: np.ndarray, longitudes: np.ndarray
+) -> np.ndarray:
+    """Calculate the great circle distance between two points"""
+    # Convert latitude and longitude from degrees to radians
+    target_lat = np.radians(target_lat)
+    target_lon = np.radians(target_lon)
+    latitudes = np.radians(latitudes)
+    longitudes = np.radians(longitudes)
+
+    # Haversine formula
+    dlon = longitudes - target_lon
+    dlat = latitudes - target_lat
+    a = (
+        np.sin(dlat / 2) ** 2
+        + np.cos(target_lat) * np.cos(latitudes) * np.sin(dlon / 2) ** 2
+    )
+    c = 2 * np.arcsin(np.sqrt(a))
+
+    # Radius of the Earth in kilometers (mean value)
+    r = 6371.0
+
+    # Calculate the great circle distances
+    distances = r * c
+
+    return distances
+
+
+def check_distances_threshold(distances: np.ndarray, threshold_km: float) -> bool:
+    """checks whether any distances fall within threshold_km"""
+    # Use boolean indexing to check if any distances are greater than the threshold
+    return np.any(distances < threshold_km)

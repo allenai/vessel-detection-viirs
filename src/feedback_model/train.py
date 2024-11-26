@@ -17,14 +17,14 @@ from viirs_dataset import VIIRSVesselDataset
 from utils import log_val_predictions
 
 VAL_SIZE = 0.1
-N_EPOCHS = 10
+N_EPOCHS = 100
 TRAIN_BATCH_SIZE = 24
 VAL_BATCH_SIZE = 400
 SGD_MOMENTUM = 0.8
 LEARNING_RATE = 0.0001
 NUM_BATCHES_TO_LOG = 10
 
-MODEL = NightLightsNet()
+MODEL = NightLightsNet(N_CHANNELS=2)
 optimizer = optim.SGD(MODEL.parameters(), lr=LEARNING_RATE, momentum=SGD_MOMENTUM)
 device = torch.device("cuda:0" if torch.cuda.is_available() else "cpu")
 
@@ -93,7 +93,6 @@ for epoch in range(N_EPOCHS):
 
             p = torch.nn.functional.softmax(voutputs.detach(), dim=1)
 
-            # print(p)
             val_predictions = MODEL(vinputs)
             ground_truth_class_ids = vlabels
 
@@ -167,7 +166,6 @@ for epoch in range(N_EPOCHS):
             wandb.log({"validation_examples": images})
 
 artifact = wandb.Artifact("model_weights", type="model")
+torch.save(MODEL.state_dict(), MODEL_PATH)
 artifact.add_file(MODEL_PATH)
 wandb.log_artifact(artifact)
-
-torch.save(MODEL.state_dict(), MODEL_PATH)

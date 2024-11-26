@@ -82,6 +82,10 @@
           "output_dir": "output"
         },
         "properties": {
+          "cloud_maskname": {
+            "title": "Phys Filename",
+            "type": "string"
+          },
           "dnb_filename": {
             "title": "Dnb Filename",
             "type": "string"
@@ -112,10 +116,6 @@
           },
           "output_dir": {
             "title": "Output Dir",
-            "type": "string"
-          },
-          "phys_filename": {
-            "title": "Phys Filename",
             "type": "string"
           }
         },

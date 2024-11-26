@@ -49,6 +49,8 @@ model:
   # The value refers to the maximum number of orthogonal hops to consider a pixel
   # a neighbor. I don't recommend modifying this.
 
+  MAX_REGIONS_COMPUTE: 10000000
+
 postprocessor:
   TRIM_DETECTIONS_EDGE: 10
   # Artifacts appear on left edge of frame up to including 8 pixels (columns)
@@ -81,7 +83,7 @@ postprocessor:
   # land-water mask accuracy (500m) (i.e. at minimum 1625m). You may consider modifying
   # this if you want to pick up vessels closer to shore. I wouldn't go lower than 2000 though
 
-  FLARE_DISTANCE_THRESHOLD: 1.50
+  FLARE_DISTANCE_THRESHOLD: .750
   # in kilometers, how close to a gas flare to be considered part of a platform. You
   # may wish to modify this to a smaller value if you want to pick up vessels closer to
   # platofrms (recall that pixel==750 meteres)
@@ -90,7 +92,7 @@ postprocessor:
   # confidence threshold used in feedback cnn in postprocessor that controls whether
   # a detection is considered a false positive. Model outputs with confidence scores
   # above this value will be considered a false positive. modifying this will have the
-  # antiicpated result (higher value -> increase precision, less recall)
+  # anticipated result (higher value -> increase precision, less recall)
 
   EVAL_BATCH_SIZE: 100
   # batch size used in feedback CNN at inference. No need to modify.
@@ -101,6 +103,10 @@ postprocessor:
     WEST: -95
     EAST: -15
 
+  MARINE_INFRA_THRESHOLD: 0.750 # (in kilometers) This threshold controls how far a vessel must be from known infrastructures (detected by Satlas/Prior) to be considered a true positive.
+
+  DETECTION_CONTEXT: 10 # in pixels, the context on either side of the detection to calculate attributes
+
 pipeline:
   filters: aurora
     - bowtie
@@ -110,8 +116,12 @@ pipeline:
     - moonlight
     - lightning
     - gas_flares
-    - feedback_cnn
+    - feedback_cnn_quad_channel
     - south_atlantic_anomaly
+    - feedback_cnn_dual_channel
+    - remove_august23_noise
+    - remove_detections_near_infra
+    - noise_smile_artifacts
 
 utils:
   VIIRS_PIXEL_SIZE: 750
@@ -128,7 +138,7 @@ utils:
   # or on shore, you can add more values to this list. Note that the land-water mask is
   # defined in utils.
 
-  IMAGE_CHIP_SIZE: 20
+  IMAGE_CHIP_SIZE: 40
   # in pixels
 
   LIGHTNING_WIDTH: 15
@@ -178,3 +188,6 @@ utils:
   # reduces false positives on the edge of bright moonlit clouds. If you increase this
   # value, you will erode the clouds more which will result in fewer detections near clouds
   # (increased precision). It is not possible to decrease this value (higher recall)
+
+  FILL_VALUE: -999.90002 # this is the value that NASA assigns to missing pixels in the DNB data
+  THRESHOLD_FILL_VALUE: 2.0 # Values in the DNB data will be compared to FILL_VALUE within a tolerance defined by this value

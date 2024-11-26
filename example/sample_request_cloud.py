@@ -1,8 +1,5 @@
-"""Runs a sample request for VIIRS detections from running server for images in cloud
-"""
 import json
 import os
-import time
 
 import requests
 
@@ -22,7 +19,6 @@ def sample_request(sample_image_data: str) -> None:
     sample_image_data : str
 
     """
-    start = time.time()
 
     REQUEST_BODY = {
         "gcp_bucket": GCP_BUCKET,
@@ -38,8 +34,6 @@ def sample_request(sample_image_data: str) -> None:
     if response.ok:
         with open(output_filename, "w") as outfile:
             json.dump(response.json(), outfile)
-    end = time.time()
-    print(f"elapsed time for {sample_image_data} is: {end-start}")
 
 
 if __name__ == "__main__":

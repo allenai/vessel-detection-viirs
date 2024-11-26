@@ -1,29 +1,40 @@
 repos:
+  # Standard pre-commit hooks
   - repo: https://github.com/pre-commit/pre-commit-hooks
-    rev: v4.4.0
+    rev: v4.5.0
     hooks:
-      - id: check-yaml
+      # File formatting
       - id: end-of-file-fixer
       - id: trailing-whitespace
-      - id: check-json
       - id: mixed-line-ending
-      - id: requirements-txt-fixer
-      - id: pretty-format-json
-        args: ["--autofix"]
+
+      # Syntax checking
+      - id: check-yaml
+      - id: check-json
+      - id: check-toml
+      - id: check-ast
       - id: check-case-conflict
       - id: check-docstring-first
-      - id: check-added-large-files
-      - id: check-ast
-      - id: check-byte-order-marker
       - id: check-executables-have-shebangs
       - id: check-merge-conflict
-      - id: check-toml
-      - id: debug-statements
+      - id: check-byte-order-marker
+
+      # Content validation
+      - id: pretty-format-json
+        args: ["--autofix"]
+      - id: requirements-txt-fixer
+      - id: check-added-large-files
+        args: ["--maxkb=1000"]
+
+      # Security
       - id: detect-aws-credentials
         args: [--allow-missing-credentials]
       - id: detect-private-key
+      - id: debug-statements
+
+  # Type checking
   - repo: https://github.com/pre-commit/mirrors-mypy
-    rev: v1.1.1
+    rev: v1.8.0 # Updated to latest
     hooks:
       - id: mypy
         args:
@@ -31,25 +42,19 @@ repos:
             --install-types,
             --ignore-missing-imports,
             --disallow-untyped-defs,
-            --ignore-missing-imports,
             --non-interactive,
+            --exclude=(__init__.py)$,
           ]
-  - repo: https://github.com/pre-commit/pre-commit-hooks
-    rev: v4.4.0
-    hooks:
-      - id: detect-private-key
-  - repo: https://github.com/pre-commit/pre-commit-hooks
-    rev: v4.4.0
-    hooks:
-      - id: check-added-large-files
+
+  # Security scanning
   - repo: https://github.com/PyCQA/bandit
-    rev: "1.7.5"
+    rev: 1.7.7 # Updated to latest
     hooks:
       - id: bandit
         exclude: ^tests/
-        args:
-          - -s
-          - B101
+        args: [-s, B101]
+
+  # Documentation coverage
   - repo: local
     hooks:
       - id: interrogate
@@ -70,8 +75,21 @@ repos:
             .ipynb_checkpoints/,
             --fail-under=90,
           ]
-  - repo: https://github.com/charliermarsh/ruff-pre-commit
-    rev: "v0.0.257"
+
+  # Python linting
+  - repo: https://github.com/astral-sh/ruff-pre-commit
+    rev: v0.1.9 # Updated to latest
     hooks:
       - id: ruff
         exclude: docs/openapi.json
+
+  # Dockerfile linting
+  - repo: https://github.com/hadolint/hadolint
+    rev: v2.12.0 # Updated to latest
+    hooks:
+      - id: hadolint-docker
+        name: Lint Dockerfiles
+        description: Runs hadolint Docker image to lint Dockerfiles
+        language: docker_image
+        types: ["dockerfile"]
+        entry: ghcr.io/hadolint/hadolint hadolint

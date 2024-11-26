@@ -28,7 +28,7 @@
             "type": "number"
           },
           "nanowatts": {
-            "title": "Nanowatts",
+            "title": "radiance_nw",
             "type": "number"
           },
           "orientation": {

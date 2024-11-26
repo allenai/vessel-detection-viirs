@@ -68,9 +68,6 @@ Model parameters can be tuned in `src/config/config.yml`
 
 ## Architecture
 
-<<<<<<< HEAD
-![Model Architecture](images/model_arch.png)
-=======
 ## Development notes
 
 There are many parameters that can be modified to control precision and recall and tune the model to other desired use cases. See src/config/config.yml for the parameters that can be modified and how to do so.
@@ -96,7 +93,6 @@ There are many parameters that can be modified to control precision and recall a
 ## Contributing
 
 We are grateful for your feedback and contributions are appreciated. Please see CONTRIBUTING.md for details on contributing.
->>>>>>> main
 
 ## Limitations
 

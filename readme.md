@@ -1,4 +1,6 @@
-This repository contains a computer vision model along with a containerized restful API (FastAPI) for serving streaming detections of vessels in near real time. See [docs/openapi.json](./docs/openapi.json) for the API specification. This model was built for [Skylight](https://www.skylight.global/), a product of AI2 that supports maritime transparency through actionable intelligence in order to help protect our oceans.
+This repository contains a computer vision model along with a containerized restful API (FastAPI) for serving streaming detections of vessels in near real time. See [docs/openapi.json](./docs/openapi.json) for the API specification. This model was built for [Skylight](https://www.skylight.global/), a product of Ai2 that supports maritime transparency through actionable intelligence to help protect our oceans. This model processes data from all three VIIRS equipped satellites from NASA/NOAA (Suomi-NPP, NOAA-20, and NOAA-21). 
+
+See https://arxiv.org/abs/2312.03207 for details about the modeling architecture and performance. This paper was awarded "best paper" and a spotlight talk at the inaugural computational sustianability workshop at NeurIPS. 
 
 <p float="center">
   <img src="images/summary.png" width=700 >
@@ -86,15 +88,6 @@ Test files are stored on GitHub (test/test_files/) using git-lfs (retrieve these
 
 There are many parameters that can be modified to control precision and recall and tune the model to other desired use cases. See src/config/config.yml for the parameters that can be modified and how to do so.
 
-### Performance
-
-- Real-time latency is measured from the time that the light is emitted by a vessel and when we ultimately show the detected vessel to our users. In our plaftorm, we obvserve an average latency of 2 hours from a ship emitting light to when we surface that data to our users. The latency is determined primarily by the time required to downlink the data to NASA's servers. Our processing time is < 1 second.
-
-## Model architecture
-
-<p float="left">
-  <img src="images/model_arch.png">
-</p>
 
 ## Acknowledgements
 
